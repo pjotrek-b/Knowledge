@@ -6,7 +6,7 @@ DT = decktape -s 2048x1536
 
 SUBDIR = 
 OUT_BASE = ..
-REVEALJS = $(OUT_BASE)/../reveal4.js
+REVEALJS = $(OUT_BASE)/../../reveal4.js
 THEME = avrd
 
 SRC = $(wildcard *.md)
