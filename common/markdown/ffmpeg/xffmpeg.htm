@@ -1,0 +1,734 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>FFmpeg Basics</title>
+
+        <meta name="description" content="An Introduction to FFmpeg">
+        <meta name="author" content="Peter Bubestinger-Steindl">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/moon.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section>
+    <h1>FFmpeg Basics</h1>
+
+    <img class="plain" src="images/tools/ffmpeg_logo.svg" />
+</section>
+
+
+<section id="preview">
+    <h2>Contents</h2>
+
+	<ul>
+		<li>Introduction</li>
+		<li>Rewrap</li>
+		<li>Transcoding</li>
+		<li>Change Image Format</li>
+		<li>Split A/V</li>
+		<li>Video Excerpts</li>
+		<li>Video to Image (and back)</li>
+	</ul>
+</section>
+
+
+<section>
+    <h2>FFmpeg? Whatisthat?</h2>
+
+    <span class="fragment">
+    <quote>
+    <p>
+
+    FFmpeg is a free and open-source software project consisting of a suite of
+    libraries and programs for handling video, audio, and other multimedia
+    files and streams.
+    </p>
+
+    <p>
+    At its core is the command-line ffmpeg tool itself, designed for processing
+    of video and audio files.
+    </p>
+    </quote>
+
+    <p>&nbsp;</p>
+
+    <small>
+        Source: <a href="https://en.wikipedia.org/wiki/FFmpeg">Wikipedia: FFmpeg</a>
+    </small>
+    </span>
+</section>
+
+
+<section>
+    <h2>Where to get it from?</h2>
+
+    <p class="fragment">
+    ...from an <a href="https://ffmpeg.org/download.html">Organic Farmer's Market</a>.
+    </p>
+
+    <aside class="notes">
+        <p>
+        OpenSource ist wie Waren vom Bio-Bauernmarkt:
+
+        Es ist nicht unbedingt einheitlich, nicht unbedingt gewohnt/schön verpackt,
+        evtl. muss man handeln - und ab und zu kriegt man sogar was geschenkt.
+        Außerdem stehen oft direkt die die die Waren gemacht haben am Stand:
+        Die können einem oft Fragen sogar bis in's kleinste Detail beantworten - und erklären wie's gemacht wurde.
+        </p>
+        <p>
+        Wenn man sein Geld dann aber doch nur im Supermarkt lässt, wird's den Bauernmarkt dann leider
+        bald nicht mehr geben :(
+        </p>
+
+    </aside>
+</section>
+
+
+<section>
+	<h2> Digital Video Trinity </h2>
+
+    <img class="plain" src="images/tech-video/trinity/video_trinity.png" />
+</section>
+
+
+<section>
+    <h2>Basic Syntax</h2>
+
+    <code>ffmpeg [-y] -i INPUT_FILE [PARAMETER] [-f FORMAT] OUTPUT_FILE</code>
+</section>
+
+
+<section>
+    <h2>FFmpeg, what can you do?</h2>
+
+	<ul>
+		<li> List Containers: <code>-formats</code>
+			<pre>
+File formats:
+  D. = Demuxing supported
+  .E = Muxing supported
+			</pre>
+		</li>
+
+		<li> List Codecs:
+			<code>-codecs</code> /
+			<code>-encoder</code> /
+			<code>-decoder</code>
+
+			<pre>
+Codecs:
+  D..... = Decoding supported
+  .E.... = Encoding supported
+  ..V... = Video codec
+  ..A... = Audio codec
+  ..S... = Subtitle codec
+  ...I.. = Intra frame-only codec
+  ....L. = Lossy compression
+  .....S = Lossless compression
+			</pre>
+		</li>
+	</ul>
+</section>
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>Rewrap</h2>
+
+	<code>
+		ffmpeg -i INPUT_FILE -c copy OUTPUT_FILE
+	</code>
+</section>
+
+
+<section>
+	<img width="70%" class="plain" src="images/tools/ffmpeg-ffv1_to_dvd.png" />
+
+	<aside class="notes">
+		Explain default/common FFmpeg output.
+	</aside>
+</section>
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>Check Result</h2>
+	
+	<p class="fragment" data-fragment-index="1">
+		<span class="fragment fade-out" data-fragment-index="2">
+		<code> ffprobe -i INPUT_FILE </code>
+		</span>
+	</p>
+
+	<span class="fragment fade-in" data-fragment-index="2">
+	<p>
+	<code> ffprobe -i INPUT_FILE [-show_format] [-show_streams] [-of ...] [-pretty] </code>
+	</p>
+
+
+	<p>&nbsp;</p>
+	<small>
+	<a href="https://ffmpeg.org/ffprobe.html">FFprobe Dokumentation</a>
+	</small>
+	</span>
+
+	<aside class="notes">
+		Available output formats ("writers"):
+		compact,csv,flat,ini,json,xml
+	</aside>
+</section>
+
+
+<section>
+	<h2>A/V separately</h2>
+	
+	<ul>
+        <li> Video 'None': <code>-vn</code> </li>
+        <li> Audio 'None': <code>-an</code> </li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Set Encoding Codec</h2>
+
+    <ul>
+        <li> Videocodec: <code>-c:v CODEC</code> </li>
+        <li> Audiocodec: <code>-c:a CODEC</code> </li>
+        <li> A&nbsp;+&nbsp;V 1:1 kopieren: <code>-c copy</code> </li>
+    </ul>
+</section>
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>Transcode</h2>
+
+	<p class="fragment"> 
+	<code>
+		ffmpeg -i INPUT_FILE 
+		<span class="fragment">-c:v ffv1</span>
+		<span class="fragment">-c:a pcm_s24le</span>
+		OUTPUT_FILE
+	</code>
+	</p>
+
+	<p class="fragment"> 
+	<code> ffmpeg -i INPUT_FILE -c:v ffv1 -c:a pcm_s16le OUTPUT_FILE </code>
+	</p>
+
+	<aside class="notes">
+		CODEC enthält bei zB uncompressed PCM auch die Bittiefe/Endianess/Signed.
+		Fragen wer weiß was "pcm_s16le" heißt.
+
+		Hier Endianess und "Signed/Unsigned" erklären (WAV 4GB anyone? ;))
+    </aside>
+</section>
+
+
+<section>
+	<h2>Video 1</h2>
+
+    <ul>
+        <li> Resolution: <code>-s WIDTHxHEIGHT</code> </li>
+        <li> Aspect Ratio (DAR): <code>-aspect X:Y</code> </li>
+        <li> Framerate: <code>-r FPS</code> </li>
+    </ul>
+
+    <aside class="notes">
+        FPS: Can also be a fraction.
+
+        NTSC anyone?
+        e.g: 30000 / 1001
+    </aside>
+</section>
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>Change the "image"</h2>
+
+	<p class="fragment">
+	<code> ffmpeg -i INPUT_FILE -an -c:v ffv1 -vf scale=720:-1 OUTPUT_FILE </code>
+	</p>
+
+	<p class="fragment">
+	<code> ffmpeg -i INPUT_FILE -an -c:v ffv1 -aspect 4:3 OUTPUT_FILE </code>
+	</p>
+
+	<p class="fragment">
+	<code> ffmpeg -i INPUT_FILE -an -c:v ffv1 -r 30000/1001 OUTPUT_FILE </code>
+	</p>
+</section>
+
+
+<section>
+	<h2>Video 2</h2>
+
+	<ul>
+		<li> Color model / bit-depth: <code>-pix_fmt FORMAT</code> </li>
+	</ul>
+
+    <aside class="notes">
+        pix_fmt: Enthält Farbmodell, Subsampling, Farbtiefe
+		Siehe nächste Folie.
+    </aside>
+</section>
+
+
+<section>
+	<h2>pix_fmt?</h2>
+
+	<ul>
+		<li>yuv422p <strong class="fragment"> = YUV 4:2:2 planar</strong></li>
+		<li>yuv420p</li>
+		<br />
+		<li>yuv422p10le</li>
+		<li>yuv420p10le</li>
+		<br />
+		<li>yuva422p</li>
+		<br />
+		<li class="fragment">Keep-or-die: <code>-pix_fmt +</code></li>
+	</ul>
+
+	<p>&nbsp;</p>
+
+	<p class="fragment">
+		Liste: <code>-pix_fmts</code>
+	</p>
+
+	<aside class="notes">
+		Hier Endianess erklären!
+
+		btw: "+" wurde auf meine Anfrage hin eingeführt (25.Apr.2012):
+		http://www.ffmpeg-archive.org/Preserve-pix-fmt-regardless-of-codec-td4586546.html
+	</aside>
+</section>
+
+
+<section>
+	<h2>Change Subsampling</h2>
+
+    <code>ffmpeg -i INPUT_FILE -c:v ffv1 -pix_fmt yuv422p OUTPUT_FILE</code>
+
+    <small>
+	<p> (Watch out: re-encoding!) </p>
+    </small>
+</section>
+
+
+<section>
+    <h2>Audio</h2>
+
+    <ul>
+        <li> Audiocodec: <code>-c:a CODEC</code> </li>
+        <li> Samplerate: <code>-ar SAMPLERATE</code> </li>
+        <li> Channels: <code>-ac CHANNELS</code> </li>
+        <li> Bitrate: <code>-b:a BITRATE{k,M}</code> </li>
+    </ul>
+
+	<aside class="notes">
+	Audio channel manipulation:
+	https://trac.ffmpeg.org/wiki/AudioChannelManipulation
+	</aside>
+</section>
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>A/V separately</h2>
+
+	<ul>
+		<li> Only Image (keep encoding):<br />
+			<span class="fragment">
+				<code>ffmpeg -i INPUT_FILE -an -c:v copy OUTPUT_FILE</code>
+			</span>
+		</li>
+
+		<li> Only Audio (keep encoding):<br />
+			<span class="fragment">
+				<code>ffmpeg -i INPUT_FILE -vn -c:v copy OUTPUT_FILE</code>
+			</span>
+		</li>
+
+		<li> Only Audio (to MP3):<br />
+			<span class="fragment">
+				<code>ffmpeg -i INPUT_FILE -vn -c:a <a href="http://ffmpeg.org/ffmpeg-all.html#libmp3lame-1">mp3</a> -b:a 128k out.mp3</code>
+			</span>
+		</li>
+
+		<li> Only Audio (to FLAC):<br />
+			<span class="fragment">
+				<code>ffmpeg -i INPUT_FILE -vn -c:a <a href="http://ffmpeg.org/ffmpeg-all.html#flac-2">flac</a> out.flac</code>
+			</span>
+		</li>
+	</ul>
+</section>
+
+
+<section>
+    <h2>Video 3</h2>
+
+    <ul>
+        <li> Bitrate: <code>-b:v BITRATE{k,M}</code> </li>
+        <li> Bitrate (min): <code>-minrate BITRATE</code> </li>
+        <li> Bitrate (max): <code>-maxrate BITRATE</code> </li>
+        <li> <a href="av_properties.html#gop">GOP</a> size: <code>-g FRAMES</code> </li>
+    </ul>
+</section>
+
+
+
+<!--
+<section>
+    <h1>Video "editieren"</h1>
+</section>
+-->
+
+
+<section>
+    <h2>Video Excerpts</h2>
+
+    <ul>
+        <li> <a href="https://trac.ffmpeg.org/wiki/Seeking">Start position</a>: <code>-ss DURATION</code> </li>
+        <li> Backwards: <code>-sseof DURATION</code> </li>
+        <li> Length: <code>-t DURATION</code> </li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p>
+    <small>
+    <a href="http://ffmpeg.org/ffmpeg-utils.html#time-duration-syntax">DURATION</a>: <br />
+    Timecode: <code>[-][HH:]MM:SS[.m]</code><br />
+    or<br />
+    Seconds: <code>[-]S[.m]</code>
+    </small>
+    </p>
+
+
+    <aside class="notes">
+        3 Seeking Optionen (vor FFmpeg v2.1):<br />
+        <ul>
+            <li>Input seeking: before "-i"
+                Position parsed using keyframes. Fast but not 100% accurate (until v2.1)</li>
+            <li>Output seeking: after "-i"
+                Very slowly. Later position = longer time to wait.</li>
+		    <li>Combined seeking: before and after "-i"
+                Probably obsolete: replaced by accurate "input seeking" since v2.1</li>
+        </ul>
+    </aside>
+</section>
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+    <h2>Video Excerpts</h2>
+
+	<ul>
+		<li>Start Offset:<br />
+			<span class="fragment">
+			<code>ffmpeg -ss DURATION -i INPUT_FILE -c copy OUTPUT_FILE</code>
+			</span>
+		</li>
+
+		<li>Only Beginning:<br />
+			<span class="fragment">
+			<code>ffmpeg -t DURATION -i INPUT_FILE -c copy OUTPUT_FILE</code>
+			</span>
+		</li>
+
+		<li>Offset + Length:<br />
+			<span class="fragment">
+			<code>ffmpeg -ss DURATION -t DURATION -i INPUT_FILE -c copy OUTPUT_FILE</code>
+			</span>
+		</li>
+	</ul>
+</section>
+
+
+<!--
+<section>
+    <h2>Video skalieren</h2>
+
+    <ul>
+        <li> Resize: <code>-s WIDTHxHEIGHT</code> </li>
+        <li> Letterbox:<br/> <code>-filter:v "pad=iw:iw*3/4:(ow-iw)/2:(oh-ih)/2"</code> </li>
+        <li> Pillarbox (+resize):<br/> <code>-filter:v "colormatrix=bt601:bt709, scale=1440:1080:flags=lanczos, pad=1920:1080:240:0"</code> </li>
+    </ul>
+</section>
+
+
+<section>
+    <h2>Video beschneiden</h2>
+
+    <ul>
+        <li> Crop: <code>-vf "crop=width:height"</code> </li>
+        <li> Crop (offset):<br /> <code>-vf "crop=width:height:x_position:y_position"</code> </li>
+    </ul>
+</section>
+
+
+<section>
+    <h2>Videos "zusammenkleben"</h2>
+
+    <code>-f concat -i list.txt -c copy</code>
+
+    <aside class="notes">
+        Syntax "list.txt":
+        <pre>
+        file './one.ext'
+        file './two.ext'
+        ...
+        file './end.ext'
+        </pre>
+
+        Bash:
+        <pre>
+        -f concat -i &lt;(for f in ./*.avi; do echo "file '$PWD/$f'"; done)
+        </pre>
+    </aside>
+</section>
+-->
+
+
+<section>
+    <h1>Transcoding II</h1>
+</section>
+
+
+<section>
+    <h2>FFV1</h2>
+
+    <quote>
+    FFV1, which stands for "FF video codec 1", is a lossless intra-frame video codec.
+    </quote>
+
+    <p>&nbsp;</p>
+
+	<ul>
+		<li> Codec: <code>-c:v ffv1</code> </li>
+		<li> Version: <code>-level {1,3}</code> </li>
+		<li> Coder: <code>-coder {0=golomb,1=range}</code> </li>
+		<li> Context: <code>-context {0=small,1=large}</code> </li>
+		<li> Slices: <code>-slices {4,6,9,12,16,24,..}</code> </li>
+		<li> CRC: <code>-slicecrc {0,1}</code> </li>
+	</ul>
+
+	<p>&nbsp;</p>
+
+	<small>
+        Quellen: <a href="https://en.wikipedia.org/wiki/FFV1">Wikipedia: FFV1</a>, <a href="http://www.ffv1.info/">ffv1.info</a>
+    </small>
+</section>
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>FFV1</h2>
+
+	<code class="bash" data-noescape>
+	ffmpeg -i INPUT_FILE
+	<span class="fragment">-an</span>
+	<span class="fragment">-c:v ffv1</span>
+	<span class="fragment">-level 3</span>
+	<span class="fragment">-slices 24</span>
+	<span class="fragment">-slicecrc 1</span>
+	</code>
+</section>
+
+
+<section>
+    <h2>ProRes</h2>
+
+    <quote>
+    "Apple ProRes is a lossy video compression format developed by Apple Inc. for use in post-production"
+    </quote>
+
+    <p>&nbsp;</p>
+
+	<ul>
+		<li> Codec: <code>-c:v {prores,prores_aw,prores_ks}</code> </li>
+		<li> Profiles: <code>-profile:v {proxy,lt,standard,hq,4444,4444xq}</code> </li>
+	</ul>
+
+	<p>&nbsp;</p>
+
+	<small>
+		Quellen/Links:
+        <a href="https://en.wikipedia.org/wiki/Apple_ProRes">Wikipedia: Apple ProRes</a>,
+        <a href="https://ffmpeg.org/ffmpeg-all.html#ProRes">FFmpeg docs</a>,
+        <a href="https://codecs.multimedia.cx/2012/03/a-few-words-about-my-prores-encoder/">Kieran Kunya's Blog</a>,
+        <a href="https://documentation.apple.com/en/finalcutpro/professionalformatsandworkflows/index.html#chapter=10&section=2&tasks=true">FinalCut docs</a>
+    </small>
+</section>
+    
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>ProRes</h2>
+
+	<code class="bash" data-noescape>
+	ffmpeg -i INPUT_FILE
+	<span class="fragment">-an</span>
+	<span class="fragment">-c:v prores_ks</span>
+	<span class="fragment">-profile:v hq</span>
+	</code>
+
+	<aside class="notes">
+	Mal das ":v" bei "-profile" weglassen und schauen was passiert.
+	</aside>
+</section>
+
+
+<section>
+    <h2>H.264</h2>
+
+    <quote>
+    "x264 H.264/MPEG-4 AVC encoder wrapper. [...] <br />
+ 	libx264 supports an 
+    <a href="https://ffmpeg.org/ffmpeg-all.html#libx264_002c-libx264rgb">impressive number of features</a>, [...]"
+
+    </quote>
+
+    <p>&nbsp;</p>
+
+		<ul>
+			<li> Codec: <code>-c:v libx264</code> </li>
+			<li> Bitrate: <code>-b:v BITRATE{k,M}</code> </li>
+			<li> CRF:
+				<code>-crf 0
+					<sup>(lossless)</sup> - 51
+					<sup>(worst)</sup>
+				</code>
+			</li>
+			<li> Presets:
+				<code>-preset:v {ultrafast,superfast,veryfast,faster,fast,medium(*),slow,slower,veryslow}</code>
+			</li>
+			<li>
+				Feintuning:
+				<code>-tune {film,animation,grain,...}</code>
+			</li>
+		</ul>
+
+    <p>&nbsp;</p>
+
+    <small>
+        Quellen/Links:
+        <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki</a>,
+        <a href="https://ffmpeg.org/ffmpeg-all.html#libx264_002c-libx264rgb">FFmpeg docs</a>
+    </small>
+
+    <aside class="notes">
+        "subjectively sane range is 17-28"<br />
+		Preset: "medium" is default
+    </aside>
+
+</section>
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>H.264</h2>
+
+	<code class="bash" data-noescape>
+	ffmpeg -i INPUT_FILE <span class="fragment">-an</span> <span class="fragment">-c:v libx264</span> <span class="fragment">-preset:v superfast</span> <span class="fragment">-crf 22</span>
+	</code>
+</section>
+
+
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>From Video to Image</h2>
+
+	<code class="bash" data-noescape>
+    ffmpeg -i input.mp4
+    -an out/delme_%04d.png
+    -vn -c:a pcm_s16le out/delme.wav 
+	</code>
+</section>
+
+
+
+<section data-background="SeaGreen" data-background-transition="zoom">
+	<h2>From Image to Video</h2>
+
+	<code class="bash" data-noescape>
+    ffmpeg -r $FPS -start_number $FRAMENO -i out/xxx_%04d.png -i out/xxx.wav
+    -c:v libx264 -crf 22
+    -c:a aac -b:a 128k
+    output.mkv
+	</code>
+</section>
+
+
+<!-- LINKS -->
+
+<section>
+    <h2>Links</h2>
+
+    <ul>
+        <li> <a href="https://amiaopensource.github.io/ffmprovisr/">ffmprovisr</a> </li>
+        <li> <a href="http://ffmpeg.org/">FFmpeg Website</a> </li>
+        <li> <a href="http://ffmpeg.org/ffmpeg.html">FFmpeg Dokumentation</a> </li>
+        <li> <a href="https://trac.ffmpeg.org/">FFmpeg Wiki</a> </li>
+    </ul>
+</section>
+
+
+
+<!-- CREDITS -->
+
+<section id="credits">
+    <h1>License and Credits</h1>
+
+    <p>
+    Der Text dieser Präsentation steht unter einer freien Lizenz zur Verfügung:
+    </p>
+
+    <blockquote>
+        <q cite="https://creativecommons.org/licenses/by-sa/3.0/">
+            Creative Commons "Attribution-ShareAlike"<br />
+            (<a href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a>)
+        </q>
+    </blockquote>
+    <img src="images/cc-by-sa.png" />
+
+    <p>
+        <small>
+        Peter Bubestinger-Steindl<br />
+        (<code>email (at) ArkThis.com</code>)
+        </small>
+    </p>
+</section>
+
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>

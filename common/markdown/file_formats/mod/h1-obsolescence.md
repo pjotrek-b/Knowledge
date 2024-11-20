@@ -1,0 +1,3 @@
+
+# Obsolescence / Vendor Lock-in
+

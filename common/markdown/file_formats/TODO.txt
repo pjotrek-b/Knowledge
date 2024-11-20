@@ -1,0 +1,5 @@
+TODO:
+2024-05-27
+
+Bitrate missing in 50min file-formats overview
+At least mention it - and make clear that bitrate as option = lossy-only
