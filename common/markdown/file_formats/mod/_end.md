@@ -9,4 +9,4 @@
 
 Peter Bubestinger-Steindl
 
-`Peter @ ArkThis.com`
+`email (at) ArkThis com`

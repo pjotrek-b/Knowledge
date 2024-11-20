@@ -24,6 +24,15 @@
     - fix (renumber = rename) file sequence (then translate for DPX/TIF/PNG)
     - write mediainfo output to "$file.mediainfo"
 
+  * examples/exercises
+    - [Renumbering image sequences](http://www.das-werkstatt.com/forum/werkstatt/viewtopic.php?f=24&t=2640&p=4717)
+        http://www.das-werkstatt.com/forum/werkstatt/viewtopic.php?f=24&t=2641&p=4706
+    - [Replace a string in multiple files](https://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line)
+    - [Compile several JPGs into single PDF](http://www.das-werkstatt.com/forum/werkstatt/viewtopic.php?f=24&t=2505)
+    - [Script to sort JPG by metadata date](http://www.das-werkstatt.com/forum/werkstatt/viewtopic.php?f=24&t=2361)
+    - Download files by list from Youtube (yt-dlp)
+    - Create deep folder listing as CSV
+
 
 
 ## by Reto

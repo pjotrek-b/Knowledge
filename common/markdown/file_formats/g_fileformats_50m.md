@@ -1062,4 +1062,4 @@ mentioned above: More features = harder to implement, support, maintain, etc.
 
 Peter Bubestinger-Steindl
 
-`Peter @ ArkThis.com`
+`email (at) ArkThis com`

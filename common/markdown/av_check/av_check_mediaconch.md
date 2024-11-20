@@ -2,7 +2,7 @@
 title: Checking AV Properties - with MediaConch
 author: |
         | Peter Bubestinger-Steindl
-        | (Peter @ ArkThis.com)
+        | (email (at) ArkThis com)
 geometry: a4paper, margin=2cm
 toc: no
 toc-depth: 2
