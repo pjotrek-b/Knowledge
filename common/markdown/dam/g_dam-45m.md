@@ -2,7 +2,7 @@
 title: Collection Management Systems - Considerations.
 author: |-
         Peter Bubestinger-Steindl \
-        (`peter @ ArkThis.com`)
+        (`email (at) ArkThis com`)
 geometry: a4paper, margin=2cm
 toc: false
 toc-depth: 2
@@ -892,7 +892,7 @@ See  "[Heritage PID Resources](https://tanc-ahrc.github.io/PIDResources/)" for m
 Peter Bubestinger-Steindl
 
 `info@kulturerbe-digital.at`
-`peter @ ArkThis.com`
+`email (at) ArkThis com`
 
 <!--
 -->

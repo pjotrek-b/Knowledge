@@ -2,7 +2,7 @@
 title: Commandline Shell Basics
 author: |
         | Peter Bubestinger-Steindl
-        | `( email (at) ArkThis.com )`
+        | `( email (at) ArkThis com )`
 date: yyyy-mm-dd 
 
 geometry: a4paper, margin=2cm

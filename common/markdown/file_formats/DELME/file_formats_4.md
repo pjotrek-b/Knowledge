@@ -4,7 +4,7 @@ title: |-
        Making choices &amp; Best practices
 author: |-
         Peter Bubestinger-Steindl \
-        `( email (at) ArkThis.com )`
+        `( email (at) ArkThis com )`
 geometry: a4paper, margin=2cm
 toc: false
 linkcolor: blue
@@ -26,7 +26,7 @@ showNotes: false
 # Comments?
 ## Questions?
 
-`( email (at) ArkThis.com )`
+`( email (at) ArkThis com )`
 
 
 # Links

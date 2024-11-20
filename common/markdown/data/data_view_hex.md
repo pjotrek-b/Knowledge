@@ -2,7 +2,7 @@
 title: Viewing and Interpreting Binary Data
 author: |-
         Peter Bubestinger-Steindl \
-        `(peter @ ArkThis.com)`
+        `(email (at) ArkThis com)`
 geometry: a4paper, margin=2cm
 toc: no
 toc-depth: 2

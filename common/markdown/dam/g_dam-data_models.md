@@ -2,7 +2,7 @@
 title: Collection Management Systems - Considerations.
 author: |-
         Peter Bubestinger-Steindl \
-        (`peter @ ArkThis.com`)
+        (`email (at) ArkThis com`)
 geometry: a4paper, margin=2cm
 toc: false
 toc-depth: 2
@@ -783,5 +783,5 @@ which contains very valuable overviews and insights in a quick read :)
 
 Peter Bubestinger-Steindl
 
-`peter @ ArkThis.com`
+`email (at) ArkThis com`
 

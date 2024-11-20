@@ -2,7 +2,7 @@
 title: Archival Storage
 author: |-
         Peter Bubestinger-Steindl \
-        `(peter @ ArkThis.com)`
+        `(email (at) ArkThis com)`
 institute: ArkThis AV-RD
 geometry: a4paper, margin=2cm
 toc: false

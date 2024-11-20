@@ -3,7 +3,7 @@ title: |
        | Open Source &amp; Long Term
 author: |
         | Peter Bubestinger-Steindl
-        | `( email (at) ArkThis.com )`
+        | `( email (at) ArkThis com )`
 geometry: a4paper, margin=2cm
 toc: no
 toc-depth: 2
@@ -334,6 +334,6 @@ Creative Commons<br />
 
 <small>
 Peter Bubestinger-Steindl  
-<code>email (at) ArkThis.com</code>
+<code>email (at) ArkThis com</code>
 </small>
 

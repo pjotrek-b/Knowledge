@@ -4,7 +4,7 @@ title: |
        | From Chaos to a Lossless-Standard.
 author: |
         | Peter Bubestinger-Steindl
-        | `peter @ ArkThis.com`
+        | `email (at) ArkThis com`
 geometry: a4paper, margin=2cm
 linkcolor: blue
 date: 2022-11

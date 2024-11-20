@@ -2,7 +2,7 @@
 title: Software Updates - Why and When?
 author: |
         | Peter Bubestinger-Steindl
-        | `( email (at) ArkThis.com )`
+        | `( email (at) ArkThis com )`
 
 date: 2024-06
 

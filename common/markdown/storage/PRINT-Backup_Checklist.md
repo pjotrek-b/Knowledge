@@ -2,7 +2,7 @@
 title: Backup Checklist
 author: |
         | Peter Bubestinger-Steindl
-        | `( email (at) ArkThis.com )`
+        | `( email (at) ArkThis com )`
 geometry: a4paper, margin=2cm
 toc: no
 toc-depth: 2

@@ -2,7 +2,7 @@
 title: Commandline Shell Scripting
 author: |
         | Peter Bubestinger-Steindl
-        | `( email (at) ArkThis.com )`
+        | `( email (at) ArkThis com )`
 date: 2024-11-dd
 
 geometry: a4paper, margin=2cm

@@ -4,7 +4,7 @@ title: |-
        Quality &amp; Size
 author: |-
         Peter Bubestinger-Steindl \
-        `(peter @ ArkThis.com)`
+        `(email (at) ArkThis com)`
 geometry: a4paper, margin=2cm
 toc: false
 linkcolor: blue
