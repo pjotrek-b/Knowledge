@@ -2,3 +2,4 @@ common/pdf
 common/print
 common/html
 *.swp
+.*.swp
