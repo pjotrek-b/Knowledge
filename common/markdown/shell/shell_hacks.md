@@ -32,7 +32,7 @@ slideNumber: true
 
 # Listing as a CSV
 
-> List all entries of the current folder tree in a CSV-compatible format: <small>(including subfolders)</small> 
+> List all entries of the current folder tree in a CSV-compatible format: <small>(including subfolders)</small>
 
 `$ ls -laRQ --time-style=full-iso | tr -s ' '`
 
@@ -53,7 +53,7 @@ slideNumber: true
 <small>
 
   * General:  
-    `$ whatever_command > OUTPUT_TO_FILE`  
+    `$ whatever_command > OUTPUT_TO_FILE`
 
   * Example:  
     `$ ls *.* > list.txt`
@@ -100,7 +100,8 @@ drwxrwxr-x 12 pb pb 4096 2024-11-21 10:34:42.541595963 +0100 ".."
   * do stuff
 
 <aside class="notes">
-https://www.youtube.com/playlist?list=PLE5OQI8tcDyMEVo70zGl4b61apH_7qG10
+Example playlist:
+[64kB Demoscene music-videos by 'Conspiracy'](https://www.youtube.com/playlist?list=PLE5OQI8tcDyMEVo70zGl4b61apH_7qG10)
 </aside>
 
 
@@ -121,3 +122,23 @@ jq -r '.url, .title'
   * `.url, .title`:       JSON nodes to filter/output
 
 </small>
+
+
+# Loop "for-each line"
+
+```
+while read LINE; do
+  echo "$LINE"
+done < mylist.txt
+```
+
+
+# Splitting by delimiter
+
+```
+while read LINE; do
+    URL=$(echo "$LINE" | cut -d ' ' -f 1)
+    yt-dlp $URL
+done < "$LIST"
+```
+
