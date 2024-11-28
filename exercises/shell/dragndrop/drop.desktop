@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Test
+Comment=Will list what you've dropped.
+Exec=./drop.sh %F
+Icon=appimagekit_5689d1902dc7c6df1ee349f158a74b67_ykman
+Path=/home/pb/ArkThis/Presentations/git/exercises/shell/dragndrop/
+Terminal=true
+StartupNotify=false
+Name[en_GB]=Drag-n-Drop Test
+GenericName=Drag-n-drop stuff on me!
