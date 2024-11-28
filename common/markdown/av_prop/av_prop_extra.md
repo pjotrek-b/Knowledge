@@ -131,3 +131,9 @@ Pulse Code Modulation
 # Questions?
 ## Comments?
 
+
+# More to know about digital AV:
+
+  * [AV Format Intro](av_format_intro.html)
+  * [Basic](av_prop_basics.html)
+  * [Advanced](av_prop_advanced.html)

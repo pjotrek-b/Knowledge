@@ -90,6 +90,15 @@ and [Display Resolution (Wikipedia)](https://en.wikipedia.org/wiki/Display_resol
 <aside class="notes">
 Notice that the pixel resolution is almost always (or at least should be) an even number?
 With lossy-compression, it is even mandatory to have multiples of 8 or 16 pixel (blocks).
+
+Popular example `digital NTSC`:
+
+  * "Original" resolution `720 x 486px`
+  * h.264 (et al) require resolution to be divisible by 4
+  * 486 / 4 = 121.5 😥️
+  * Therefore cropping required: `720 x 480px`
+
+See: https://github.com/amiaopensource/vrecord/issues/854
 </aside>
 
 
@@ -332,7 +341,6 @@ Tataaa! :)
 # More to know about digital AV:
 
   * [AV Format Intro](av_format_intro.html)
-  * [Format Naming](av_prop_naming.html)
   * [Advanced](av_prop_advanced.html)
   * [Extra](av_prop_extra.html)
 

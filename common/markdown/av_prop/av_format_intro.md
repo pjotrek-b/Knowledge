@@ -276,7 +276,6 @@ This is just a random example to show that from the "outside" (=file explorer) y
 
 # More to know about digital AV:
 
-  * [Format Naming](av_prop_naming.html)
   * [Basic](av_prop_basics.html)
   * [Advanced](av_prop_advanced.html)
   * [Extra](av_prop_extra.html)

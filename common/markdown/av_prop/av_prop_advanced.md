@@ -415,5 +415,6 @@ Formula for GB/Min (PAL SD, 8BPC):
 
 # More to know about digital AV:
 
+  * [AV Format Intro](av_format_intro.html)
   * [Basic](av_prop_basics.html)
   * [Extra](av_prop_extra.html)
