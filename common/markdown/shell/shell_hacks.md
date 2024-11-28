@@ -90,6 +90,23 @@ drwxrwxr-x 12 pb pb 4096 2024-11-21 10:34:42.541595963 +0100 ".."
 </aside>
 
 
+<!-- ----------------------------------------- -->
+
+# Fix file number sequence
+
+Useful for film-scans 😄️
+
+```
+i=1
+for FILE in *.dpx; do
+    OUT=$(printf "reelX_%07d.dpx" $i)
+    echo "$FILE : $OUT"
+    mv $FILE $OUT
+
+    i=$((i+1))
+done
+```
+
 
 <!-- ----------------------------------------- -->
 
