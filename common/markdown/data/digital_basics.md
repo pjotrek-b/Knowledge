@@ -147,7 +147,7 @@ btw: Most "text documents" (docx, odt, pdf) **are not text**. They are binary da
 
 # Everything's a number
 
-![ASCII Table](../../../images/data/encoding/ascii_table-wide.png)
+![ASCII Table](../../../images/data/encoding/ascii_table-wide.png){width=700px}
 
 <aside class="notes">
 Each byte in a file is a number. Depending on the encoding, each number maps to
@@ -229,3 +229,6 @@ See [Science Emoji Proposal for Unicode v2 (Date: April 18, 2017)](https://www.u
 # Comments?
 ## Questions?
 
+# More...
+
+[Viewing and Interpreting Binary Data](data_view_hex.html)
