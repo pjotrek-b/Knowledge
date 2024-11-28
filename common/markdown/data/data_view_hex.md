@@ -294,7 +294,7 @@ wrongly renamed files.
 
 
 
-# Unix "file" command <small>(1973!)</small>
+# Unix "file" command <small>(since 1973 🎉️)</small>
 
 ![Identifying mixed file types on Linux](../../../images/tools/file/file-identify_nosuffix.png){ width=90% }
 
@@ -452,3 +452,7 @@ order to make sense of the bytes that are coming.
 # Comments?
 ## Questions?
 
+
+# More...?
+
+[Introduction to Data and Encoding](digital_basics.html)
