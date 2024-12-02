@@ -9,9 +9,9 @@ toc-depth: 2
 linkcolor: blue
 date: April 2022
 
-slideNumber: true
 transition: none
-;defaultTiming: 6
+defaultTiming: 30
+slideNumber: true
 ;print-pdf: ?print-pdf&showNotes=separate-page
 ;showNotes: separate-page
 ---

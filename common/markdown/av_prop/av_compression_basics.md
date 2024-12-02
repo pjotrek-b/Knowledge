@@ -10,6 +10,8 @@ linkcolor: blue
 date: November 2023
 
 transition: fade
+defaultTiming: 30
+slideNumber: true
 ;showNotes: "separate-page"
 ---
 

@@ -10,7 +10,7 @@ linkcolor: blue
 date: October 2022
 
 transition: none
-defaultTiming: 6
+defaultTiming: 30
 slideNumber: true
 ;fragments: false
 ---
