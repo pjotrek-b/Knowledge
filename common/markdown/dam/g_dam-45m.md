@@ -386,7 +386,7 @@ values, as well as general rules for handling this for cataloging:
 > 1981-01?, 20XX, 197X-11?-XX
 > <small> ([https://www.loc.gov/standards/datetime/iso-tc154-wg5_n0039_iso_wd_8601-2_2016-02-16.pdf](https://www.loc.gov/standards/datetime/iso-tc154-wg5_n0039_iso_wd_8601-2_2016-02-16.pdf)) </small>
 
-# The Identifer
+# The Identifier
 
 A "*must have*". Also known as:
 
@@ -891,7 +891,6 @@ See  "[Heritage PID Resources](https://tanc-ahrc.github.io/PIDResources/)" for m
 
 Peter Bubestinger-Steindl
 
-`info@kulturerbe-digital.at`
 `email (at) ArkThis com`
 
 <!--
