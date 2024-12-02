@@ -318,7 +318,7 @@ Source: [The Most Common Causes of Failed Open-Source Software Projects](https:/
 
 
 
-<!-- ---------------- CREDITS ---------------- --!>
+<!-- ---------------- CREDITS ---------------- -->
 
 
 # License and Credits

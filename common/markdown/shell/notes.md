@@ -31,8 +31,8 @@
     - [Compile several JPGs into single PDF](http://www.das-werkstatt.com/forum/werkstatt/viewtopic.php?f=24&t=2505)
     - [Script to sort JPG by metadata date](http://www.das-werkstatt.com/forum/werkstatt/viewtopic.php?f=24&t=2361)
     - Download files by list from Youtube (yt-dlp)
-    - Create deep folder listing as CSV
-
+    - [Create deep folder listing as CSV](https://stackoverflow.com/questions/14573262/convert-ls-output-into-csv)
+      `ls -laRQ --time-style=full-iso | tr -s ' '`
 
 
 ## by Reto
@@ -76,3 +76,11 @@ Anticipated content includes:
 
   * RegEx
     https://tldp.org/LDP/abs/html/bashver3.html#REGEXMATCHREF
+
+
+
+-----------------
+
+
+# Remarks, notes and links
+
