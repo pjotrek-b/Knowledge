@@ -107,7 +107,7 @@ And the other way around.
 
 # Unpossible?!
 
-![Source: Wikipedia, by [Arminia](https://de.wikipedia.org/wiki/Benutzer:Arminia)](../../images/open_source/farming/teutoburger_wald.jpg){height="600px"}
+![Source: Wikipedia, by [Arminia](https://de.wikipedia.org/wiki/Benutzer:Arminia)](../../../images/open_source/farming/teutoburger_wald.jpg){height="600px"}
 
 <aside class="notes">
 Compare it to: claiming a forest is a stable ecosystem - and possible - but noone ever saw a forest, and challenge you to prove it.
@@ -118,7 +118,7 @@ By letting you plant a tree (from seed) on a heavy-traffic highway.
 
 # Environmental- and starting conditions matter
 
-![](../../images/open_source/farming/tree-rudloc_road-small.jpg){height="600px"}
+![](../../../images/open_source/farming/tree-rudloc_road-small.jpg){height="600px"}
 
 <aside class="notes">
     At least here the tree will survive. But will it become a self-sustaining forest?
@@ -132,7 +132,7 @@ By letting you plant a tree (from seed) on a heavy-traffic highway.
 <!-- cite="https://www.fordfoundation.org/about/library/reports-and-studies/roads-and-bridges-the-unseen-labor-behind-our-digital-infrastructure/" -->
 > &ldquo;Shared, public code makes up the digital infrastructure of our society today.&rdquo;
 
-![](../../images/open_source/books/roads_and_bridges.png){height="350px"}
+![](../../../images/open_source/books/roads_and_bridges.png){height="350px"}
 
 <small>
 [www.fordfoundation.org/about/library/reports-and-studies/roads-and-bridges-the-unseen-labor-behind-our-digital-infrastructure/]()
@@ -248,14 +248,14 @@ Source: [The Most Common Causes of Failed Open-Source Software Projects](https:/
     </small>
 
   * What if they disappear?
-    ![](../../images/misc/emoji_shock.png){width="64px" class="plain"}
+    ![](../../../images/misc/emoji_shock.png){width="64px" class="plain"}
 
   * What's your (institution's) plan to keep these applications alive and kicking?
 
 
 # How much do you value 'IT'?
 
-![](../../images/open_source/farming/homestead.jpg)
+![](../../../images/open_source/farming/homestead.jpg)
 
 <aside class="notes">
     Difficult to judge the value of immaterial goods in our society...
@@ -289,7 +289,7 @@ Source: [The Most Common Causes of Failed Open-Source Software Projects](https:/
 
 # You are 'The Community'
 
-![](../../images/open_source/not_a_coder-contribute.png)
+![](../../../images/open_source/not_a_coder-contribute.png)
 
 
 # Contributions
@@ -330,7 +330,7 @@ Creative Commons<br />
 'Attribution-ShareAlike'<br />
 [http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA]()
 </blockquote>
-![](../../images/icons-logos/cc-by-sa.png)
+![](../../../images/icons-logos/cc-by-sa.png)
 
 <small>
 Peter Bubestinger-Steindl  
