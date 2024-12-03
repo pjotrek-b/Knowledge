@@ -330,7 +330,7 @@ Creative Commons<br />
 'Attribution-ShareAlike'<br />
 [http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA]()
 </blockquote>
-![](../../images/logos/cc-by-sa.png)
+![](../../images/icons-logos/cc-by-sa.png)
 
 <small>
 Peter Bubestinger-Steindl  
