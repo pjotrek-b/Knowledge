@@ -110,7 +110,7 @@ It is not unusual to discover an undesired modification or error only later on.
 
 # Sad, but true:
 
-  * With &gt; 4TB disks, **RAID-6 may be insufficient**...
+  * With larger density-per-disk (20 TB+), **RAID-6 is getting thin**...
   * Long rebuild times may "burn out" the left-over disks.
   * ZFS supports 3 disks parity, but ... future?
 

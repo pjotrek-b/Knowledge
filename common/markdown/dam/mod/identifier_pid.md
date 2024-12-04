@@ -5,7 +5,7 @@
 
 > "[PIDs] provide [means for offering] a long-lasting click-able link to a digital object."
 >
-> <cite>(Source: [https://tanc-ahrc.github.io/HeritagePIDs/](https://tanc-ahrc.github.io/HeritagePIDs/)</cite>
+> <cite>(Source: [https://tanc-ahrc.github.io/HeritagePIDs/](https://tanc-ahrc.github.io/HeritagePIDs/))</cite>
 
 
 

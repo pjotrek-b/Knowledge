@@ -809,20 +809,23 @@ Object based storage may very likely replace hierarchical filesystems
 **It's not yet (really) plug-compatible with existing programs.**
 
 
+# Filesystem = MAM?
 
-
-# Object Storage = MAM?
-
-  * The object filesystem **is an actual catalogue**
+  * An annotated filesystem **is an actual catalogue**
   * If implemented well, the storage itself may be a future DAM/MAM.
+    (key/value metadata in the filesystem)
   * Links/relationships between objects = 🤯🤠🥳
   * Combined with LoD, MD Standards & APIs = Wikidata for your files.
   * No more distance between file and its catalogue entry.
 
-Just an idea so far, but maybe...?
+This is still R&D, but maybe...
 
 <aside class="notes">
-There is great potential in Object Based Storage.
+There is great potential in using the filesystem as a catalogue.
+
+2 features are important:
+  * The ability to store key/value /with/ an object (xattrs)
+  * The ability to address by ID (rather than filename/path)
 
 OBS are already in production usage for a few years by major (online cloud)
 storage service providers. Yet, the "catalogue" world, including the WWW are
@@ -833,7 +836,9 @@ related to them" in a way that solely serves: Search and Retrieval.
 A basic condition for this to work well is that it is implemented using open
 and interoperable standards.
 
-Then, any metadata, any relationship - and additional description or history that would be assigned to a data-file over its lifecycle would simply accumulate as part of its object-record.
+Then, any metadata, any relationship - and additional description or history
+that would be assigned to a data-file over its lifecycle would simply
+accumulate as part of its object-record.
 On filesystem-level.
 
 The default file manager would function as a very basic asset-management system.
@@ -846,14 +851,12 @@ object, and that object can have certain basic metadata fields by its new
 
   1. objects can be file-data or metadata-only.
   2. +keywords / tags
-  3. +name = value pairs (as much as your hardware can handle)
+  3. +key = value pairs (as much as your hardware can handle)
   4. +relationships between objects (as many as your hardware can handle)
   5. relationships are themselves just regular "objects"
 
-This is currently just an idea...
+This is still ongoing R&D.
 </aside>
-
-
 
 <!-- 
 =========================================
@@ -1051,7 +1054,7 @@ It is not unusual to discover an undesired modification or error only later on.
 
 # Sad, but true:
 
-  * With &gt; 4TB disks, **RAID-6 may be insufficient**...
+  * With larger density-per-disk (20 TB+), **RAID-6 is getting thin**...
   * Long rebuild times may "burn out" the left-over disks.
   * ZFS supports 3 disks parity, but ... future?
 

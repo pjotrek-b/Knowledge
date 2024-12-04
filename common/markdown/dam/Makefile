@@ -8,7 +8,7 @@ DT = decktape -s 2048x1536
 SUBDIR = dam
 OUT_BASE = ../..
 REVEALJS = $(OUT_BASE)/../reveal4.js
-THEME = avrd
+THEME = avrd-ina
 
 SRC = $(wildcard *.md)
 HTML = $(SRC:.md=.html)
@@ -116,6 +116,35 @@ g_dam-45m.md: $(DIR_MOD)/_HEADER.md \
 	$(DIR_MOD)/does_it_scale.md \
 	$(DIR_MOD)/got_plugins.md \
 	$(DIR_MOD)/got_support.md \
+	$(DIR_MOD)/good_practice.md \
+	$(DIR_MOD)/have_failover.md \
+	$(DIR_MOD)/_END.md \
+	$(DIR_MOD)/value_source.md
+	cat $+ > $@
+
+g_dam-frame202412.md: $(DIR_MOD)/_HEADER.md \
+	$(DIR_MOD)/_BEGIN.md \
+	$(DIR_MOD)/asset_lifecycle.md \
+	$(DIR_MOD)/dam_intro.md \
+	$(DIR_MOD)/dam_list.md \
+	$(DIR_MOD)/not_equal.md \
+	$(DIR_MOD)/cms_criteria.md \
+	$(DIR_MOD)/language_matters.md \
+	$(DIR_MOD)/datetime.md \
+	$(DIR_MOD)/datetime_period.md \
+	$(DIR_MOD)/datetime_fuzzy.md \
+	$(DIR_MOD)/identifier.md \
+	$(DIR_MOD)/identifier_pid.md \
+	$(DIR_MOD)/identifier_requirements.md \
+	$(DIR_MOD)/common_terms.md \
+	$(DIR_MOD)/covocs.md \
+	$(DIR_MOD)/identifiers.md \
+	$(DIR_MOD)/wikidata.md \
+	$(DIR_MOD)/relationships_1.md \
+	$(DIR_MOD)/multi_schema.md \
+	$(DIR_MOD)/import_export.md \
+	$(DIR_MOD)/file_reference.md \
+	$(DIR_MOD)/does_it_scale.md \
 	$(DIR_MOD)/good_practice.md \
 	$(DIR_MOD)/have_failover.md \
 	$(DIR_MOD)/_END.md \

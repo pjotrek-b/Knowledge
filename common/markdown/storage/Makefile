@@ -32,6 +32,7 @@ g_storage_2h.md: $(DIR_MOD)/header.md \
 	$(DIR_MOD)/layers1.md \
 	$(DIR_MOD)/file_systems.md \
 	$(DIR_MOD)/object_storage.md \
+	$(DIR_MOD)/filesystem_catalog.md \
 	$(DIR_MOD)/the_cloud.md \
 	$(DIR_MOD)/ex_debate.md \
 	$(DIR_MOD)/failsafe.md \
@@ -50,6 +51,7 @@ g_storage_all.md: $(DIR_MOD)/begin.md \
 	$(DIR_MOD)/lto_tapes.md \
 	$(DIR_MOD)/file_systems.md \
 	$(DIR_MOD)/object_storage.md \
+	$(DIR_MOD)/filesystem_catalog.md \
 	$(DIR_MOD)/the_cloud.md \
 	$(DIR_MOD)/ex_debate.md \
 	$(DIR_MOD)/integrity_checks.md \
