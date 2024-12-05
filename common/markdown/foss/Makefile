@@ -44,7 +44,9 @@ g_foss_full.md: $(DIR_MOD)/_HEADER.md \
 	$(DIR_MOD)/mediainfo_checks.md \
 	$(DIR_MOD)/orphans.md \
 	$(DIR_MOD)/success_stories.md \
-	$(DIR_MOD)/mediainfo_checks.md \
+	$(DIR_MOD)/stories/ffv1.md \
+	$(DIR_MOD)/stories/mkv.md \
+	$(DIR_MOD)/stories/mediainfo_checks.md \
 	$(DIR_MOD)/taken_for_granted.md \
 	$(DIR_MOD)/community_you.md \
 	$(DIR_MOD)/summary1.md \
@@ -54,23 +56,27 @@ g_foss_full.md: $(DIR_MOD)/_HEADER.md \
 g_foss_frame202412.md: $(DIR_MOD)/_HEADER.md \
 	$(DIR_MOD)/_BEGIN.md \
 	$(DIR_MOD)/intro_foss.md \
+	$(DIR_MOD)/unprofessional.md \
 	$(DIR_MOD)/just_using.md \
 	$(DIR_MOD)/q_your_reasons.md \
 	$(DIR_MOD)/whatif_real_free.md \
 	$(DIR_MOD)/popular_mistakes.md \
 	$(DIR_MOD)/infrastructure.md \
+	$(DIR_MOD)/infrastructure_maintainer.md \
 	$(DIR_MOD)/roads_n_bridges_quotes.md \
 	$(DIR_MOD)/infrastructure_taxes.md \
 	$(DIR_MOD)/starting_conditions.md \
 	$(DIR_MOD)/unpossible.md \
 	$(DIR_MOD)/success_stories.md \
+	$(DIR_MOD)/stories/ffv1.md \
+	$(DIR_MOD)/stories/mkv.md \
+	$(DIR_MOD)/stories/mediainfo_checks.md \
 	$(DIR_MOD)/tools/tool_vlc.md \
 	$(DIR_MOD)/tools/tool_ffmpeg.md \
 	$(DIR_MOD)/tools/tool_vrecord.md \
 	$(DIR_MOD)/tools/tool_ampv.md \
 	$(DIR_MOD)/tools/tool_dvdisaster.md \
 	$(DIR_MOD)/tools/tools_mediaarea.md \
-	$(DIR_MOD)/mediainfo_checks.md \
 	$(DIR_MOD)/community_you.md \
 	$(DIR_MOD)/summary1.md \
 	$(DIR_MOD)/_END.md

@@ -11,11 +11,18 @@ gives these "4-freedoms" on software:
 And forces these rights to stay.
 
 
+# Open vs Closed
+
+![](../../../images/formats/lego-instructions1.jpg){height=400px}
+![](../../../images/formats/carriage2.png){height=400px; .plain}
+
+
 # Free Software / Open Source is:
 
   * NOT Freeware
   * NOT just for Linux/Commandline
   * NOT unprofessional
+  * NOT the opposite of "commercial"
 
 
 # Free? Open? Libre?
@@ -24,4 +31,9 @@ And forces these rights to stay.
 
 > Free was in "free speech",  
 > not as in "free beer".
+
+<aside class="notes">
+The term "Free Software" refers to freedoms and strong "Copyleft".
+The term "Open Source" was coined to make it (mentally) easier for "the industry" to pick it up as development model.
+</aside>
 

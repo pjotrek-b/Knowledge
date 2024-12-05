@@ -1,5 +1,5 @@
 ---
-title: FOSS in Archives
+title: Open Source in (AV) Archives
 author: |-
         Peter Bubestinger-Steindl \
         (`email (at) ArkThis com`)
@@ -124,11 +124,18 @@ gives these "4-freedoms" on software:
 And forces these rights to stay.
 
 
+# Open vs Closed
+
+![](../../../images/formats/lego-instructions1.jpg){height=400px}
+![](../../../images/formats/carriage2.png){height=400px; .plain}
+
+
 # Free Software / Open Source is:
 
   * NOT Freeware
   * NOT just for Linux/Commandline
   * NOT unprofessional
+  * NOT the opposite of "commercial"
 
 
 # Free? Open? Libre?
@@ -137,6 +144,65 @@ And forces these rights to stay.
 
 > Free was in "free speech",  
 > not as in "free beer".
+
+<aside class="notes">
+The term "Free Software" refers to freedoms and strong "Copyleft".
+The term "Open Source" was coined to make it (mentally) easier for "the industry" to pick it up as development model.
+</aside>
+
+# Apple
+
+![Apple 💝️ OpenSource](../../../images/open_source/201705-apple_opensource.png)  
+<small>
+[https://www.apple.com/opensource/](https://www.apple.com/opensource/)
+</small>
+
+<aside class="notes">
+Die Liste an Freier Software die MacOS verwendet ist recht lang.
+Siehe Scrollbalken am rechten Rand... :D
+</aside>
+
+
+# Meta (Facebook)
+
+![Meta (Facebook) 💝️ OpenSource](../../../images/open_source/201705-facebook_opensource.png)  
+<small>
+[https://code.facebook.com/projects](https://code.facebook.com/projects)
+</small>
+
+
+# Google
+
+![Google 💝️ OpenSource](../../../images/open_source/2017-google_gsoc.png)  
+<small>
+[https://developers.google.com/open-source/gsoc/](https://developers.google.com/open-source/gsoc/)
+</small>
+
+
+# Microsoft
+
+<img height="700px" src="../../../images/open_source/2016-ballmer_linux_cancer.png">
+
+
+# ...changed it's mind?
+
+![Microsoft 💝️ Linux](../../../images/open_source/MicrosoftLoveLinux.png)  
+<small>
+[https://open.microsoft.com/](https://open.microsoft.com/)
+</small>
+
+# ...and bought Github.
+
+![Microsoft 💝️ OpenSource](../../../images/open_source/201705-microsoft_github_opensource-cut.png)  
+<small>
+[https://github.com/microsoft/](https://github.com/microsoft/)
+</small>
+
+
+# Unprofessional?
+
+I think we've covered that.
+
 
 
 # Open Source
@@ -263,6 +329,15 @@ Quote:
 </aside>
 
 
+# You wouldn't believe...
+
+![](../../../images/open_source/thanklessly_maintained.png)
+
+
+# Quite true actually.
+
+![](../../../images/open_source/we_love_foss_issues.png)
+
 # Quoting "Roads &amp; Bridges"
 
 <small>
@@ -326,6 +401,53 @@ What if you had the right starting conditions, and a critical mass?
 
 (Or simply good real-world examples)
 
+# FFV1
+
+  * 2003: Created in Open Source project "FFmpeg"
+  * 2006: Bitstream frozen (version 1)
+  * 2009: Picked up for preservation
+  * 2010: Funding improvements
+  * 2012: Added 14bit RGB, Multithreading, SliceCRC
+  * 2013: Official release of "FFV1.3"
+  * 2014: PREFORMA Project
+  * 2016: Standardization in progress
+  * 2021: [IETF RFC 9043](https://datatracker.ietf.org/doc/rfc9043/)
+
+
+<aside class="notes">
+
+There are many legends, rumours and mysteries about the origins and history of
+FFV1: Initial release was in 2003 - what happened since then? What led to its
+use in the archives? Why does it matter that it's Open Source? This talk will
+cover FFV1's history - as well as a look at its current state and properties
+for preservation.
+
+</aside>
+
+
+# First contact
+
+![The rest ist history ;)](../../../images/ffv1/history/20100422-FFV1-1st_contact_PB_MN-mark.png){height=640px}
+
+# Matroska (MKV)
+
+  * Video container format
+  * Originally designed to rip DVDs 😇️
+  * Can contain almost any source material (unmodified)
+    <small>(and tech-properties)</small>
+  * Now the official go-to standard format for preservation
+
+# Mediainfo: File Conformance Checks
+
+Recently sponsored by the [Austrian Mediathek](www.mediathek.at):
+
+  * MP3, WAV, AAC
+  * AVI
+  * MP4: MOV, AVC, AAC, HEVC
+
+<small>(MKV check was already built in (funded by PREFORMA Project))</small>
+
+
 # Videolan VLC Player
 
 ![https://www.videolan.org/](../../../images/tools/vlc/VLC-media_information-ffv1_1.png)
@@ -380,17 +502,6 @@ Fork of MPV for Archival use:
   * [DVRescue](): Bitstream-aware DV-ingest
   * [BWFMetaEdit](): Metadata editor for BWF (Broadcast Wave)
   * ...
-
-# Mediainfo: File Conformance Checks
-
-Recently sponsored by the [Austrian Mediathek](www.mediathek.at):
-
-  * MP3, WAV, AAC
-  * AVI
-  * MP4: MOV, AVC, AAC, HEVC
-
-<small>(MKV check was already built in (funded by PREFORMA Project))</small>
-
 
 # You are 'The Community'
 
