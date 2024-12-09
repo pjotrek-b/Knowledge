@@ -70,13 +70,13 @@ g_foss_frame202412.md: $(DIR_MOD)/_HEADER.md \
 	$(DIR_MOD)/success_stories.md \
 	$(DIR_MOD)/stories/ffv1.md \
 	$(DIR_MOD)/stories/mkv.md \
+	$(DIR_MOD)/tools/tools_mediaarea.md \
 	$(DIR_MOD)/stories/mediainfo_checks.md \
 	$(DIR_MOD)/tools/tool_vlc.md \
 	$(DIR_MOD)/tools/tool_ffmpeg.md \
 	$(DIR_MOD)/tools/tool_vrecord.md \
 	$(DIR_MOD)/tools/tool_ampv.md \
 	$(DIR_MOD)/tools/tool_dvdisaster.md \
-	$(DIR_MOD)/tools/tools_mediaarea.md \
 	$(DIR_MOD)/community_you.md \
 	$(DIR_MOD)/summary1.md \
 	$(DIR_MOD)/_END.md

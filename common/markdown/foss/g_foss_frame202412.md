@@ -199,9 +199,9 @@ Siehe Scrollbalken am rechten Rand... :D
 </small>
 
 
-# Unprofessional?
+# FOSS = Unprofessional?
 
-I think we've covered that.
+I think we've covered that. 😉️
 
 
 
@@ -437,6 +437,15 @@ for preservation.
     <small>(and tech-properties)</small>
   * Now the official go-to standard format for preservation
 
+# MediaArea Tools
+
+  * [MediaInfo](): Insights into AV files.
+  * [MediaConch](): Profile-checks on media files.
+  * [QCtools](): Quality-Control for tape-based video ingest.
+  * [DVRescue](): Bitstream-aware DV-ingest
+  * [BWFMetaEdit](): Metadata editor for BWF (Broadcast Wave)
+  * ...
+
 # Mediainfo: File Conformance Checks
 
 Recently sponsored by the [Austrian Mediathek](www.mediathek.at):
@@ -493,15 +502,6 @@ Fork of MPV for Archival use:
 [by Carsten Gnörlich (2004)](https://en.wikipedia.org/wiki/Dvdisaster)
 
 ![](../../../images/tools/dvdisaster/dvdisaster-de.jpg)
-
-# MediaArea Tools
-
-  * [MediaInfo](): Insights into AV files.
-  * [MediaConch](): Profile-checks on media files.
-  * [QCtools](): Quality-Control for tape-based video ingest.
-  * [DVRescue](): Bitstream-aware DV-ingest
-  * [BWFMetaEdit](): Metadata editor for BWF (Broadcast Wave)
-  * ...
 
 # You are 'The Community'
 

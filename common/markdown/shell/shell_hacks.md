@@ -24,6 +24,50 @@ slideNumber: true
 
 <!-- ----------------------------------------- -->
 
+
+# Checksums / Hashcodes
+
+
+  * Create (one file):  
+    `$ md5sum FILENAME > manifest.md5`
+
+  * Create (by mask/selection):  
+    `$ md5sum *.* > manifest.md5`
+
+  * Check by manifest:    
+    `$ md5sum -c manifest.md5`
+
+<!-- ----------------------------------------- -->
+
+
+# Save output to a file?
+
+> Use `>`.
+
+  * General:  
+    `$ whatever_command > OUTPUT_TO_FILE`
+
+  * Example:  
+    `$ ls *.* > list.txt`
+
+  * Append:  
+    `$ ls *.* >> list.txt`
+
+
+<!-- ----------------------------------------- -->
+
+# Identifying file formats/types
+
+```
+$ file FILES
+```
+
+```
+$ file --mime *.*
+```
+
+<!-- ----------------------------------------- -->
+
 # Create a file/folder listing:
 
   * Plain text file
@@ -42,24 +86,6 @@ slideNumber: true
   * `-R`:       Recursive (traverse subfolders).
   * `-Q`:       Quote entries (wrap file-/foldernames in '"')
   * `tr -s ' '`:  'squeeze' double-spaces to a single one.
-
-</small>
-
-
-# Save it to a file?
-
-> Use `>`.
-
-<small>
-
-  * General:  
-    `$ whatever_command > OUTPUT_TO_FILE`
-
-  * Example:  
-    `$ ls *.* > list.txt`
-
-  * Applied:  
-    `$ ls -laRQ --time-style=full-iso | tr -s ' ' > dirlist.csv`
 
 </small>
 

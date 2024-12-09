@@ -47,8 +47,8 @@ Siehe Scrollbalken am rechten Rand... :D
 </small>
 
 
-# Unprofessional?
+# FOSS = Unprofessional?
 
-I think we've covered that.
+I think we've covered that. 😉️
 
 
