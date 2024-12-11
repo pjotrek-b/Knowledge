@@ -2,12 +2,13 @@ PD = pandoc
 PD_DATA = /usr/share/pandoc/data
 PD_TEMPLATE = --template=$(PD_DATA)/templates/default.revealjs
 
-DT = decktape -s 2048x1536
+#DT = decktape -s 2048x1536
+DT = decktape -s 3640x2048 -p 0
 
 SUBDIR = storage
 OUT_BASE = ../..
 REVEALJS = $(OUT_BASE)/../reveal4.js
-THEME = avrd-ina
+THEME = avrd
 
 SRC = $(wildcard *.md)
 HTML = $(SRC:.md=.html)
