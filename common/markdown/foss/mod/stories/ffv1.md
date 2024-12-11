@@ -25,4 +25,4 @@ for preservation.
 
 # First contact
 
-![The rest ist history ;)](../../../images/ffv1/history/20100422-FFV1-1st_contact_PB_MN-mark.png){height=640px}
+![The rest ist history ;)](../../../images/ffv1/history/20100422-FFV1-1st_contact_PB_MN-mark.png){height=480px}

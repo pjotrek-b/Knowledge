@@ -1,6 +1,6 @@
 # Apple
 
-![Apple 💝️ OpenSource](../../../images/open_source/201705-apple_opensource.png)  
+![Apple 💝️ OpenSource](../../../images/open_source/201705-apple_opensource.png){height=480px}  
 <small>
 [https://www.apple.com/opensource/](https://www.apple.com/opensource/)
 </small>
@@ -13,7 +13,7 @@ Siehe Scrollbalken am rechten Rand... :D
 
 # Meta (Facebook)
 
-![Meta (Facebook) 💝️ OpenSource](../../../images/open_source/201705-facebook_opensource.png)  
+![Meta (Facebook) 💝️ OpenSource](../../../images/open_source/201705-facebook_opensource.png){height=480px}  
 <small>
 [https://code.facebook.com/projects](https://code.facebook.com/projects)
 </small>
@@ -21,7 +21,7 @@ Siehe Scrollbalken am rechten Rand... :D
 
 # Google
 
-![Google 💝️ OpenSource](../../../images/open_source/2017-google_gsoc.png)  
+![Google 💝️ OpenSource](../../../images/open_source/2017-google_gsoc.png){height=480px}  
 <small>
 [https://developers.google.com/open-source/gsoc/](https://developers.google.com/open-source/gsoc/)
 </small>
@@ -29,7 +29,7 @@ Siehe Scrollbalken am rechten Rand... :D
 
 # Microsoft
 
-<img height="700px" src="../../../images/open_source/2016-ballmer_linux_cancer.png">
+![](../../../images/open_source/2016-ballmer_linux_cancer.png){height=480px}
 
 
 # ...changed it's mind?

@@ -152,7 +152,7 @@ The term "Open Source" was coined to make it (mentally) easier for "the industry
 
 # Apple
 
-![Apple 💝️ OpenSource](../../../images/open_source/201705-apple_opensource.png)  
+![Apple 💝️ OpenSource](../../../images/open_source/201705-apple_opensource.png){height=480px}  
 <small>
 [https://www.apple.com/opensource/](https://www.apple.com/opensource/)
 </small>
@@ -165,7 +165,7 @@ Siehe Scrollbalken am rechten Rand... :D
 
 # Meta (Facebook)
 
-![Meta (Facebook) 💝️ OpenSource](../../../images/open_source/201705-facebook_opensource.png)  
+![Meta (Facebook) 💝️ OpenSource](../../../images/open_source/201705-facebook_opensource.png){height=480px}  
 <small>
 [https://code.facebook.com/projects](https://code.facebook.com/projects)
 </small>
@@ -173,7 +173,7 @@ Siehe Scrollbalken am rechten Rand... :D
 
 # Google
 
-![Google 💝️ OpenSource](../../../images/open_source/2017-google_gsoc.png)  
+![Google 💝️ OpenSource](../../../images/open_source/2017-google_gsoc.png){height=480px}  
 <small>
 [https://developers.google.com/open-source/gsoc/](https://developers.google.com/open-source/gsoc/)
 </small>
@@ -181,7 +181,7 @@ Siehe Scrollbalken am rechten Rand... :D
 
 # Microsoft
 
-<img height="700px" src="../../../images/open_source/2016-ballmer_linux_cancer.png">
+![](../../../images/open_source/2016-ballmer_linux_cancer.png){height=480px}
 
 
 # ...changed it's mind?
@@ -331,12 +331,18 @@ Quote:
 
 # You wouldn't believe...
 
-![](../../../images/open_source/thanklessly_maintained.png)
+![](../../../images/open_source/thanklessly_maintained.png){height=480px}
+
+<aside class="notes">
+There are many "system-relevant" projects (FOSS licensed) which are maintained by a handful of individuals.
+Sometimes with structured and reliable funding, sometimes without.
+</aside>
 
 
-# Quite true actually.
+# Sad but true.
 
-![](../../../images/open_source/we_love_foss_issues.png)
+![](../../../images/open_source/we_love_foss_issues.png){height=480px}
+
 
 # Quoting "Roads &amp; Bridges"
 
@@ -379,7 +385,7 @@ Quote:
 
 # Unpossible?! 😉️
 
-![Source: Wikipedia, by [Arminia](https://de.wikipedia.org/wiki/Benutzer:Arminia)](../../../images/open_source/farming/teutoburger_wald.jpg){height="600px"}
+![Source: Wikipedia, by [Arminia](https://de.wikipedia.org/wiki/Benutzer:Arminia)](../../../images/open_source/farming/teutoburger_wald.jpg){height="480px"}
 
 <aside class="notes">
 Compare it to:
@@ -427,7 +433,7 @@ for preservation.
 
 # First contact
 
-![The rest ist history ;)](../../../images/ffv1/history/20100422-FFV1-1st_contact_PB_MN-mark.png){height=640px}
+![The rest ist history ;)](../../../images/ffv1/history/20100422-FFV1-1st_contact_PB_MN-mark.png){height=480px}
 
 # Matroska (MKV)
 
@@ -439,12 +445,13 @@ for preservation.
 
 # MediaArea Tools
 
-  * [MediaInfo](): Insights into AV files.
-  * [MediaConch](): Profile-checks on media files.
-  * [QCtools](): Quality-Control for tape-based video ingest.
-  * [DVRescue](): Bitstream-aware DV-ingest
-  * [BWFMetaEdit](): Metadata editor for BWF (Broadcast Wave)
+  * [MediaInfo](https://mediaarea.net/en/MediaInfo): Insights into AV files.
+  * [MediaConch](https://mediaarea.net/MediaConch): Profile-checks on media files.
+  * [QCtools](https://mediaarea.net/QCTools): Quality-Control for tape-based video ingest.
+  * [DVRescue](https://mediaarea.net/DVRescue): Bitstream-aware DV-ingest
+  * [BWFMetaEdit](https://mediaarea.net/BWFMetaEdit): Metadata editor for BWF (Broadcast Wave)
   * ...
+  * [See more!](https://mediaarea.net/)
 
 # Mediainfo: File Conformance Checks
 
@@ -501,7 +508,7 @@ Fork of MPV for Archival use:
 
 [by Carsten Gnörlich (2004)](https://en.wikipedia.org/wiki/Dvdisaster)
 
-![](../../../images/tools/dvdisaster/dvdisaster-de.jpg)
+![](../../../images/tools/dvdisaster/dvdisaster-de.jpg){height=480px}
 
 # You are 'The Community'
 

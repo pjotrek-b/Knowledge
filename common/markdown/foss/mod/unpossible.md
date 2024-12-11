@@ -1,7 +1,7 @@
 
 # Unpossible?! 😉️
 
-![Source: Wikipedia, by [Arminia](https://de.wikipedia.org/wiki/Benutzer:Arminia)](../../../images/open_source/farming/teutoburger_wald.jpg){height="600px"}
+![Source: Wikipedia, by [Arminia](https://de.wikipedia.org/wiki/Benutzer:Arminia)](../../../images/open_source/farming/teutoburger_wald.jpg){height="480px"}
 
 <aside class="notes">
 Compare it to:

@@ -3,7 +3,8 @@ PD_DATA = /usr/share/pandoc/data
 PD_TEMPLATE = --template=$(PD_DATA)/templates/default.revealjs
 PD_TEMPLATE_PRINT = --template=$(PD_DATA)/templates/default.revealjs-print
 
-DT = decktape -s 2048x1536
+#DT = decktape -s 2048x1536
+DT = decktape -s 3640x2048 -p 0
 
 SUBDIR = foss
 OUT_BASE = ../..
