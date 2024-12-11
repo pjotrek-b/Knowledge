@@ -3,3 +3,4 @@ common/print
 common/html
 *.swp
 .*.swp
+common/assets

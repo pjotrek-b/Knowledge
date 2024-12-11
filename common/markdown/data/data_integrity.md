@@ -17,7 +17,7 @@ transition: none
 
 # Data Integrity?
 
-![Identifying data integrity?](../../../images/team_dp/digiman-bitrot.png){width=90%}
+![Identifying data integrity?](images/team_dp/digiman-bitrot.png){width=90%}
 
 <aside class="notes">
  * What is that?
@@ -281,7 +281,7 @@ It's designed for speed.
 Linux / MacOS: `$ ls -la > dirlist.txt`   
 Windows: `C:\> dir /s /a > dirlist.txt`
 
-![screenshot of files/folders in a file manager (Thunar)](../../../images/fixity/example-dirlist.png){ width=80% }
+![screenshot of files/folders in a file manager (Thunar)](images/fixity/example-dirlist.png){ width=80% }
 
 <aside class="notes">
 For preservation, it's good practice to document these file/folder properties too.
@@ -343,9 +343,10 @@ Plaintext or machine readable format (XML, CSV, etc)
 # Level 2: Per File
 ## (The Classic)
 
-Linux / MacOS: `md5sum *.* > MD5SUMS.md5`
+Generate: `md5sum *.* > MD5SUMS.md5`  
+Check: `md5sum -c MD5SUMS.md5`
 
-![Plain text manifest file](../../../images/fixity/example-md5sum.png){ width=80% }
+![Plain text manifest file](images/fixity/example-md5sum.png){ width=80% }
 
 <aside class="notes">
 md5sum exists on all GNU/Linux distros and MacOS by default.
@@ -372,15 +373,16 @@ For example:
 
 > "Content hashing is still hardly known - yet incredibly powerful."
 
-  * One hash per data stream.
-  * One hash per frame/group of samples
+  1. `streamhash`: One hash per data stream.
+  2. `framemd5`: One hash per frame/group of samples
 
 
 # Level 3: Content - Streams
 
 ```
 $ ffmpeg -i input_file -map 0 \
--f streamhash -hash md5 -hide_banner - -v quiet
+-f streamhash -hash md5 \
+-hide_banner - -v quiet
 ```
 
 Output:
@@ -391,7 +393,18 @@ Output:
 ```
 
 <aside class="notes">
-Generates one hash per media stream:
+Generates one hash per media stream.
+
+The algorithm can be chosen. MD5 is just a very good allround-candidate: very
+popular, well-known, widely supported and reasonable computing times.
+
+By selecting a different value for `-hash', you can choose a different algorithm.
+See [FFmpeg Documentation on '4.44 hash'](https://ffmpeg.org/ffmpeg-formats.html#hash-1), listing:
+
+> "Supported values include MD5, murmur3, RIPEMD128, RIPEMD160, RIPEMD256,
+> RIPEMD320, SHA160, SHA224, SHA256 (default), SHA512/224, SHA512/256, SHA384,
+> SHA512, CRC32 and adler32."
+
 </aside>
 
 
@@ -401,9 +414,15 @@ Generates one hash per media stream:
 ffmpeg -loglevel quiet -i VIDEOFILE -an -f framemd5 VIDEOFILE.framemd5
 ```
 
-Generates One hash per frame:
+`framemd5`: Generates one (MD5) hash per frame:
 
-![Content payload "framemd5"](../../../images/fixity/example-framemd5.png){ width=80% }
+![Content payload "framemd5"](images/fixity/example-framemd5.png){ width=80% }
+
+
+<aside class="notes">
+"framemd5" is not an official term for image/content hashing, but originates from the FFmpeg project.
+There also is "framecrc". The algorithm doesn't matter here to show the concept of "content-hash" vs "file-hash".
+</aside>
 
 
 
@@ -414,7 +433,7 @@ Generates One hash per frame:
 GUI to handle hashcodes (Windows only).  
 <small>Website: [code.kliu.org/hashcheck](http://code.kliu.org/hashcheck/)</small>
 
-![HashCheck showing a mismatch error](../../../images/fixity/hashcheck-md5mismatch.png)
+![HashCheck showing a mismatch error](images/fixity/hashcheck-md5mismatch.png)
 
 
 
@@ -437,7 +456,7 @@ A GUI for handling BagIt bags.
 
 # Bagger
 
-![Bagger GUI](../../../images/tools/bagger/bagger-valid_bag.png){ width=80% }
+![Bagger GUI](images/tools/bagger/bagger-valid_bag.png){ width=74% }
 
 
 
@@ -453,7 +472,7 @@ A GUI for handling BagIt bags.
 
 # Data Integrity Playtime!
 
-![](../../../images/misc/archiveteam.jpg){ width=50% }
+![](images/misc/archiveteam.jpg){ width=50% }
 
 <aside class="notes">
 Only a single bit of this file has flipped (=broken).
