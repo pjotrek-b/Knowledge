@@ -1,13 +1,12 @@
 ---
 title: Data Integrity - Introduction
 author: |-
-        Peter Bubestinger-Steindl \
-        `(email (at) ArkThis com)`
+        Peter Bubestinger-Steindl
 geometry: a4paper, margin=2cm
 toc: no
 toc-depth: 2
 linkcolor: blue
-date: November 2022
+date: December 2024
 
 slideNumber: true
 transition: none
@@ -149,7 +148,7 @@ name of a file.
   * [CRC](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)
   * [MD5](https://en.wikipedia.org/wiki/MD5)
   * [SHA](https://en.wikipedia.org/wiki/SHA-2) .. 1 .. 2 .. 256 .. SHA512
-  * [XXHASH](https://github.com/Cyan4973/xxHash)
+  * [xxHASH](https://github.com/Cyan4973/xxHash)
 
 <aside class="notes">
 There are different hashing algorithms.
@@ -221,15 +220,14 @@ some have already researched into prototyping blockchain use for storage.
 
 # Hashcode Examples
 
- * CRC =  
-   <small style="font-family:courier">4294967295</small>
- * MD5 =  
-   <small style="font-family:courier">d41d8cd98f00b204e9800998ecf8427e</small>
- * SHA256 =  
-   <small style="font-family:courier">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</small>
- * xxHash =    
-   <small style="font-family:courier">e4c191d091bd8853</small>
-
+ * CRC <small>(10)</small> =  
+   <small> `4294967295` </small>
+ * MD5 <small> (32) </small> =  
+    <small> `d41d8cd98f00b204e9800998ecf8427e` </small>
+ * SHA256 <small> (64) </small> =  
+   <small> `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` </small>
+ * xxHash <small> (16) </small> =  
+   <small> `e4c191d091bd8853` </small>
 
 <aside class="notes">
 Algorithms in order of complexity/size:
@@ -410,11 +408,13 @@ See [FFmpeg Documentation on '4.44 hash'](https://ffmpeg.org/ffmpeg-formats.html
 
 # Level 3: Content - Image / Samples
 
+**framemd5** generates one hash <small>(md5)</small> per frame:
+
 ```
-ffmpeg -loglevel quiet -i VIDEOFILE -an -f framemd5 VIDEOFILE.framemd5
+ffmpeg -i INPUT.mkv -an -f framemd5 \
+-v quiet OUTPUT.mkv.framemd5
 ```
 
-`framemd5`: Generates one (MD5) hash per frame:
 
 ![Content payload "framemd5"](images/fixity/example-framemd5.png){ width=80% }
 
