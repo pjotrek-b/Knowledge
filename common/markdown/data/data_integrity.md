@@ -28,9 +28,10 @@ transition: none
 
 # What is "Fixity" information?
 
-<span class="fragment">
-Most popular: Hashcodes / Checksums
-</span>
+> Information/metadata to check/verify if binary data has not (been) changed.
+
+  * Like: document file/folder details and naming
+  * And: hashcodes / checksums
 
 <aside class="notes">
 Fixity information is metadata that can be used to check/verify that binary data
@@ -41,19 +42,15 @@ Fixity information is directly linked to so called "hashcodes".
 </aside>
 
 
+# When?
 
-# Hashcodes
+> Generate fixity information as early as possible in a file's lifecycle.
 
-Filename: `plain.txt`  
 
-> "This is a raw text file."
-
-<small class="fragment" style="font-family:courier">
-MD5 = **b3a2**43d2443037a783c8799fe2c4**926a**
-</small>
+# Hashcodes?
 
 <aside class="notes">
-Hashcode = A fixed size number that's like a fingerprint for data.
+Hashcode = A fixed size number that's like a fingerprint for arbitrary binary data sequences.
 
 A "hash" or "hashcode" is the result of a mathematical algorithm that produces
 something like a fingerprint number for the input data provided. With the
@@ -61,86 +58,11 @@ intention for any source *not* to map to an identical number. That would be
 called a "hash collision": 2 different sources mapping to the same hash
 value/number.
 
-To keep the numbers short(er), they are usually written in hexadecimal (0..9,
-A..F).
+To keep the numbers short(er), they are usually written in hexadecimal:
+`0..9, A..F`
 
-The above example is the hashcode for the string "This is a raw text file."
+Hashcode strings have a fixed-width per algorithm.
 </aside>
-
-
-
-# Hashcodes
-
-Filename: `plain.txt`  
-
-> "This is a raw text file.⎕"
-
-<small style="font-family:courier">
-<span class="fragment">
-MD5 = **7096**384353da7d8cb59b1395e63d**1250**  
-</span>
-<span class="fragment">
-REF = **b3a2**43d2443037a783c8799fe2c4**926a**
-</span>
-</small>
-
-<aside class="notes">
-Even though only a simple space character was added to the string from before,
-the resulting MD5 hashcode is completely different than before. That's good!
-
-This allows to quickly and securely identify even the smallest deviation in the
-source data. Even a small change like a single character - or even a binary
-bit. This way, a mismatching hashcode will tell you if your data is either
-*exactly* the way it was - or if *anything* has changed.
- </aside>
-
-
-
-# Hashcodes
-
-Filename: `plain.txt`  
-
-> "this is a raw text file."
-
-<small style="font-family:courier">
-<span class="fragment">
-MD5 = **a94a**15d1b72bbfee7997bf237cf0**347e**  
-</span>
-<span class="fragment">
-REF = **b3a2**43d2443037a783c8799fe2c4**926a**
-</span>
-</small>
-
-<aside class="notes">
-Now, the case of the first letter "T" was changed to "t":
-Different character = different hashcode. Again: Good! :)
-</aside>
-
-
-
-# Hashcodes
-
-Filename: `plain-text.txt`  
-
-> "this is a raw text file."
-
-<small style="font-family:courier">
-<span class="fragment">
-MD5 = **a94a**15d1b72bbfee7997bf237cf0**347e**  
-</span>
-<span class="fragment">
-REF = **a94a**15d1b72bbfee7997bf237cf0**347e**
-</span>
-</small>
-
-<aside class="notes">
-Now, the filename - *not* the content - was changed.
-
-This has no effect on the hashcode, as the hash only depicts the content. The
-filename is outside, on the filesystem level. The hashcode does not include the
-name of a file.
-</aside>
-
 
 
 # Different algorithms
@@ -258,9 +180,93 @@ It's designed for speed.
 
 
 
-# When?
+# Hashcodes: Behavior
 
-> Generate fixity information as early as possible in a file's lifecycle.
+Filename: `plain.txt`  
+
+> "This is a raw text file."
+
+<small class="fragment" style="font-family:courier">
+MD5 = **b3a2**43d2443037a783c8799fe2c4**926a**
+</small>
+
+<aside class="notes">
+The above example is the hashcode for the string "This is a raw text file."
+</aside>
+
+
+
+# Hashcodes
+
+Filename: `plain.txt`  
+
+> "This is a raw text file.⎕"
+
+<small style="font-family:courier">
+<span class="fragment">
+MD5 = **7096**384353da7d8cb59b1395e63d**1250**  
+</span>
+<span class="fragment">
+REF = **b3a2**43d2443037a783c8799fe2c4**926a**
+</span>
+</small>
+
+<aside class="notes">
+Even though only a simple space character was added to the string from before,
+the resulting MD5 hashcode is completely different than before. That's good!
+
+This allows to quickly and securely identify even the smallest deviation in the
+source data. Even a small change like a single character - or even a binary
+bit. This way, a mismatching hashcode will tell you if your data is either
+*exactly* the way it was - or if *anything* has changed.
+ </aside>
+
+
+
+# Hashcodes
+
+Filename: `plain.txt`  
+
+> "this is a raw text file."
+
+<small style="font-family:courier">
+<span class="fragment">
+MD5 = **a94a**15d1b72bbfee7997bf237cf0**347e**  
+</span>
+<span class="fragment">
+REF = **b3a2**43d2443037a783c8799fe2c4**926a**
+</span>
+</small>
+
+<aside class="notes">
+Now, the case of the first letter "T" was changed to "t":
+Different character = different hashcode. Again: Good! :)
+</aside>
+
+
+
+# Hashcodes
+
+Filename: `plain-text.txt`  
+
+> "this is a raw text file."
+
+<small style="font-family:courier">
+<span class="fragment">
+MD5 = **a94a**15d1b72bbfee7997bf237cf0**347e**  
+</span>
+<span class="fragment">
+REF = **a94a**15d1b72bbfee7997bf237cf0**347e**
+</span>
+</small>
+
+<aside class="notes">
+Now, the filename - *not* the content - was changed.
+
+This has no effect on the hashcode, as the hash only depicts the content. The
+filename is outside, on the filesystem level. The hashcode does not include the
+name of a file.
+</aside>
 
 
 
@@ -426,6 +432,7 @@ There also is "framecrc". The algorithm doesn't matter here to show the concept 
 
 
 
+<!--
 # Some Tools
 
 # HashCheck
@@ -458,6 +465,8 @@ A GUI for handling BagIt bags.
 
 ![Bagger GUI](images/tools/bagger/bagger-valid_bag.png){ width=74% }
 
+
+-->
 
 
 # Hashcode use: When?
