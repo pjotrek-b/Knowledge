@@ -4,6 +4,10 @@ REVEALJS = $(OUT_BASE)/../reveal4.js
 RES_PATH = .:$(HOME)/ArkThis/Presentations/
 THEME = avrd
 
+# DeckTape (for rendering PDF print versions):
+DT_VIEWPORT = -s 2048x1536
+DT := decktape -p 0 $(DT_VIEWPORT)
+
 # Use this for common assets:
 ASSETS = $(OUT_BASE)/assets
 # Use this for standalone assets:
@@ -30,11 +34,6 @@ endif
 #PD_OPTS1 := --email-obfuscation=javascript
 #PD_REBASE := -f markdown+rebase_relative_paths
 PD_OPTIONS = $(PD_TYPE) --standalone $(PD_OPTS1) $(PD_EMBED) $(PD_EXTRACT) --resource-path=$(RES_PATH) -V revealjs-url=$(REVEALJS) $(PD_TEMPLATE)
-
-
-# DeckTape (for rendering PDF print versions):
-DT_VIEWPORT = -s 2048x1536
-DT := decktape $(DT_VIEWPORT) 
 
 
 SRC = $(wildcard *.md)
