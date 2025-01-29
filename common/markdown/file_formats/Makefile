@@ -2,7 +2,7 @@ PD = pandoc
 PD_DATA = /usr/share/pandoc/data
 PD_TEMPLATE = --template=$(PD_DATA)/templates/default.revealjs
 
-DT = decktape -s 2048x1536
+DT = decktape -p 0 -s 2048x1536
 
 SUBDIR = file_formats
 OUT_BASE = ../..

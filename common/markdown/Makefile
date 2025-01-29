@@ -2,11 +2,16 @@ PD = pandoc
 PD_DATA = /usr/share/pandoc/data
 PD_TEMPLATE = --template=$(PD_DATA)/templates/default.revealjs
 
-DT = decktape -s 2048x1536
+# "-p 0" (don't pause between slides)
+# works on ubuntu 20.04:
+# decktape v3.14.0
+# npm v8.19.4
+# node v18.20.6
+DT = decktape -p 0 -s 2048x1536
 
 SUBDIR = 
 OUT_BASE = ..
-REVEALJS = $(OUT_BASE)/../../reveal4.js
+REVEALJS = $(OUT_BASE)/../reveal4.js
 THEME = avrd
 
 SRC = $(wildcard *.md)
