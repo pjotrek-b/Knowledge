@@ -1,3 +1,13 @@
+---
+title: Notes on Shell Tutorials
+author: |
+        | Peter Bubestinger-Steindl
+        | `( email (at) ArkThis com )`
+date: yyyy-mm-dd
+---
+
+
+
 # Sources:
 
   * [Ashley's commandline presentation](https://training.ashleyblewer.com/presentations/cli.html)
