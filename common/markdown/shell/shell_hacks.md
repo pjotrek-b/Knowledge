@@ -24,25 +24,22 @@ slideNumber: true
 
 <!-- ----------------------------------------- -->
 
+# Text to PDF?
 
-# Checksums / Hashcodes
+  1. Write a plain text file
+  2. Format the text like 'on an ancient typewriter' <small>(headline, bold, italic, etc)</small>
+  3. Save it as ".md"
+  4. Then: `pandoc text.md -o text.pdf`
 
-
-  * Create (one file):  
-    `$ md5sum FILENAME > manifest.md5`
-
-  * Create (by mask/selection):  
-    `$ md5sum *.* > manifest.md5`
-
-  * Check by manifest:    
-    `$ md5sum -c manifest.md5`
-
-<!-- ----------------------------------------- -->
+<aside class="notes">
+Of course you need a tool which can convert from [Markdown](https://en.wikipedia.org/wiki/Markdown) to PDF.
+Such as [pandoc](https://pandoc.org/).
+</aside>
 
 
-# Save output to a file?
+# Save any command output to a file?
 
-> Use `>`.
+> Use `>` <small>(overwrite)</small> or `>>` <small>(append)</small>
 
   * General:  
     `$ whatever_command > OUTPUT_TO_FILE`
@@ -70,8 +67,11 @@ $ file --mime *.*
 
 # Create a file/folder listing:
 
-  * Plain text file
-  * CSV Spreadsheet <small>(Comma Separated Value)</small>
+> Get path/filename/size/etc information on any file/folder branch of any
+> digital collection.
+
+  1. As **plain text** file: `ls -laR > listing.txt`
+  2. Or: **CSV spreadsheet** <small>(Comma Separated Value)</small>
 
 
 # Listing as a CSV
@@ -133,30 +133,26 @@ for FILE in *.dpx; do
 done
 ```
 
+<aside class="notes">
+I prefer to use "[symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)" instead of renaming the source files.
+
+So instead of `mv $FILE $OUT`: `ln -s $FILE $OUT`.
+
+This allows to keeping the original filename structure, while getting a "thin copy" with your changes.
+</aside>
+
 
 # Create sequence files (out of thin air)
 
 ```
 for i in $(seq 10); do
-  touch $(printf "image_%05d.dpx" "$i")
+  touch $(printf "image_%05d.png" "$i")
 done
 ```
 
 
 
 <!-- ----------------------------------------- -->
-
-# Download stuff from a list (txt)
-
-  * loop "for-each line"
-  * get link
-  * do stuff
-
-<aside class="notes">
-Example playlist:
-[64kB Demoscene music-videos by 'Conspiracy'](https://www.youtube.com/playlist?list=PLE5OQI8tcDyMEVo70zGl4b61apH_7qG10)
-</aside>
-
 
 # Get all video-URLs in a YT playlist
 
@@ -175,6 +171,18 @@ jq -r '.url, .title'
   * `.url, .title`:       JSON nodes to filter/output
 
 </small>
+
+<aside class="notes">
+Example playlist:
+[64kB Demoscene music-videos by 'Conspiracy'](https://www.youtube.com/playlist?list=PLE5OQI8tcDyMEVo70zGl4b61apH_7qG10)
+</aside>
+
+
+# Download stuff from a list (txt)
+
+  * loop "for-each line"
+  * get link
+  * do stuff
 
 
 # Loop "for-each line"
@@ -195,3 +203,22 @@ while read LINE; do
 done < "$LIST"
 ```
 
+
+
+# Checksums / Hashcodes
+
+
+  * Create (one file):  
+    `$ md5sum FILENAME > manifest.md5`
+
+  * Create (by mask/selection):  
+    `$ md5sum *.* > manifest.md5`
+
+  * Check by manifest:    
+    `$ md5sum -c manifest.md5`
+
+<!-- ----------------------------------------- -->
+
+
+
+# Curious for /more/? 😎️

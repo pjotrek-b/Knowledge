@@ -39,17 +39,32 @@ You may find their original wordings here and then still :)
 </aside>
 
 
+# Welcome to "The Shell"
 
-# What is Command Line Interface?
+![](../../../images/tools/ffmpeg/ffmpeg-ffv1_to_dvd.png){width=500px}
+
+
+# ...yes with colors! 🎉️
+
+![](../../../images/shell/btop-large_png_gimp.png){width=500px}
+
+
+# What is a "Command Line Interface"?
 
   * **Terminal window:**  
-    Text-only window in a GUI (Graphical User Interface) that emulates a console.
+    <small>
+    Text-only window in a GUI (Graphical User Interface) that emulates a console and provides "a shell".
+    </small>
 
   * **A command:**  
+    <small>
     Instruction telling a computer to do something (such as launch a program).
+    </small>
 
   * **Command Line Interface** (CLI):  
+    <small>
     The "text-only black background thing" that computer hackers use to talk with machines.
+    </small>
 
 
 <aside class="notes">
@@ -70,31 +85,49 @@ A command interpreter, also referred to as a **shell**, is a program whose prima
 
 # Why learn this? 
 
-> Think about books...
+<table>
+<tr>
+<td>
 
-  1. GUI = graphical images.
-  2. CLI = written text.
-  3. GUI + CLI = best of both worlds.
+**Remember books? 😉️**
 
-Would you say the movie is better than the book? ;)
+  1. **GUI** = graphical images.
+  2. **CLI** = written text.
+  3. **GUI + CLI** = best of both worlds.
 
+Or do you prefer the classic dependency on "code-literates"?
+
+</td>
+<td>
+![](../../../images/shell/code_literacy.jpg)
+</td>
+
+</tr>
+</table>
 
 <aside class="notes">
+Just like we learned in history class, that when most people could not
+interpret written text - but only images/drawings - the power was in the hands
+of those who /could/ master the written words.
+
+Like it or not, but in a digital world, the ones who can read/write and master
+code are in control.
 </aside>
 
 
 # Why learn this? 
 
-  1. You can express with CLI (words) what no GUI (image) can.
-     (And other way around)
+  1. You can **express** with CLI (words) what no GUI (image) can.
+     <small>(And other way around)</small>
 
-  2. Anything you can express in CLI you can repeat/script/automate.
+  2. Anything you can express in CLI you can **repeat/script/automate**.
 
-  3. Remote access:
+  3. **Remote access**:
      There are devices, situations where there is no GUI.
-     But you can still "talk" with the `headless` machines using CLI.
+     But you can still "talk" with the `headless machines` using CLI
+     <small>(servers, TVs, routers, etc)</small>
 
-  4. Magic/spells are always worth learning! 🧙
+  4. And: **magic/spells are always worth learning!** 🧙
 
 <aside class="notes">
 When working through commands, it may seem strange to learn how to use the
@@ -116,21 +149,38 @@ the files on that server and you will have to communicate with this computer
 
 # Opening a shell/terminal
 
-  * MacOS applications: Search for `terminal`
-  * Linux: Ctrl+Alt+T (or search `terminal`)
-  * Windows: it's complicated...
+  * **MacOS**:  
+    Applications: Search for `terminal`
+
+  * **Linux**:  
+    Applications: Search for `terminal`
+    <small>(or press: `ctrl+alt+T`)</small>
+
+  * **Windows**:  
+    `Win+R` then type `cmd`.
+     <small>but there's a catch...</small>
+
+<aside class="notes">
+
+</aside>
 
 
 # Windows
 
-  * Commandline (aka "DOS prompt")
-  * PowerShell (windows-native automation shell)
-  * WSL: **Linux terminal**
+  * **Legacy Commandline**: <small>(aka "DOS prompt")</small>  
+    Very limited; Syntax only valid in DOS/Windows.
+
+  * **PowerShell**: <small>(windows-native automation shell)</small>  
+    More powerful, but again: syntax /only/ valid in Windows.
+
+  * **[Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install)** (WSL):
+    <small>(finally, a proper 'nix-shell)</small>  
+    This is compatible with the rest of the world.  
+    See: "[Running Linux on Win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)"
+
 
 
 # Windows: Other options
-
-  * [Running Linux on Windows10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
   * [gow](https://github.com/bmatzelle/gow)  
     (GNU On Windows): Installs basic UNIX commands.
@@ -142,15 +192,17 @@ the files on that server and you will have to communicate with this computer
 # A note about getting stuck
 
   * **Command is taking too long?**:
-    * ctrl+c: Abort whatever the process is doing.
-    * ctrl+z: Send process to background <small>(long story...)</small>
+    * `ctrl+c`: Abort whatever the process is doing.
 
   * **Stuck in a text file?**
     * `:q!` (if the editor is `vi`)
 
   * **Stuck, confused, and panicking?**
-    * Close the window. Breathe. :D
+    * `Close the window`. Breathe. 😎️
 
+
+<aside class="notes">
+</aside>
 
 
 # Drag and drop
@@ -165,33 +217,50 @@ It often inserts the full filename/path as text-string in the commandline window
 </aside>
 
 
-# Words and terms
+# Useful words and terms
 
-  * folder = directory = dir
-  * path
-  * Linux/Mac/etc = `unix-like`
+  * CLI = shell = terminal = console
+  * folder = directory = dir = path
+  * Linux / Mac / etc = `unix-like` systems.
 
 
 ------------------
 
 # Let's get started!
 
+
+# List directory contents
+
+  * Unix-like: `ls your/path/here/`
+  * Win: `dir C:\your\path\here\`
+
+<aside class="notes">
+Unix-like:
+Get a nice(r) ASCII-Art view of tree-structured listings: `tree`
+</aside>
+
+
 # Show current directory
 
   * Unix-like: `pwd`
   * Win: `ch` or `chdir`
 
-# Change current directory
+
+# Change directory
 
   * Unix-like: `cd /path/you/want/to/go`
   * Win: `dir d:\here\they\do\backslash\`
 
 
-# Absolute or relative?
+# Absolute or relative (path)?
 
-  * **Relative** to the current folder "you are in".  
-  * **Absolute**, full-path:  
-    Starts with `/` (*nix) or drive-letter (Win)
+  * **Relative** <small>(to the current folder "you are in")</small>  
+    `ls ../images/*.jpg`
+
+  * **Absolute** <small>(=full-path)</small>  
+    Starts with `/` (*nix) or drive-letter `X:\` (Win).  
+    `cd /home/username/Documents/`
+
 
 <aside class="notes">
 Whether the path you are typing in has a slash in front of it or not is
@@ -208,22 +277,24 @@ folder you are in).
 </aside>
 
 
-# List directory contents
+# More moving around:
 
-  * Unix-like: `ls your/path/here/`
-  * Win: `dir`
+  * `cd ..`: <small>Go UP one level</small>
+  * `cd ../..`: <small>Go UP two levels...</small>
+  * `cd ~`: <small>Go home. `~ = $HOME`</small>
+  * `cd -`: <small>Go back to previous folder (wherever that was)</small>
 
-<aside class="notes">
-Unix-like:
-Get a nice(r) ASCII-Art view of tree-structured listings: `tree`
-</aside>
 
 # Wildcards
 
-  * `*.*`
-  * `VID-*.mp4`
-  * `*.txt`
-  * `IMG000?.jpg`
+Here's how you can select files/folders matching patterns:
+
+  * `*.*`: <small>Most regular files</small>
+  * `VID-*.mp4`: <small>Every file starting with `VID-` and ending with `.mp4`</small>
+
+  * `*.txt`: <small>Only textfiles.</small>
+
+  * `IMG000?.jpg`: <small>Starting with `IMG000` - and then /one/ character - then `.jpg`</small>
 
 
 <aside class="notes">
@@ -240,8 +311,8 @@ Get a nice(r) ASCII-Art view of tree-structured listings: `tree`
 
 # Create a file
 
-  * Unix-like: `touch myfile.xxx`
-    (Also used to update timestamps ;))
+  * `touch myfile.xxx`  
+    (Also used to update timestamps 😄️)
 
 
 # Copying a file
@@ -249,7 +320,7 @@ Get a nice(r) ASCII-Art view of tree-structured listings: `tree`
   * Unix-like: `cp SOURCE TARGET`
   * Win: `copy`
 
-**Example:** `cp -av name-of-file.txt name-of-copy.txt`
+**Example:** `cp -av file.txt filecopy.txt`
 
 <aside class="notes">
 btw: `cp -av` will preserve as much of the original properties as-it-can (timestamps, ownership, etc)
@@ -259,7 +330,9 @@ btw: `cp -av` will preserve as much of the original properties as-it-can (timest
 # Move or Rename:
 
   * Unix-like: `mv SOURCE TARGET`
-  * Win: `ren SOURCE TARGET`
+  * Win: `ren`
+
+**Example:** `mv file.txt Nicer_Name.txt`
 
 
 # Deleting (Removing):
@@ -267,7 +340,7 @@ btw: `cp -av` will preserve as much of the original properties as-it-can (timest
   * Unix-like: `rm WHATEVER`
   * Win: `del`
 
-**NOTE:** There's no Recycle-bin used here. Deleted things are gone.
+**NOTE:** There's no Recycle-bin used here. Deleted things are gone, once you hit `Enter`.
 
 <aside class="notes">
 I once read something like "Unix-like systems treat you like an adult."
@@ -278,8 +351,10 @@ And with great power comes great responsibility ;)
 
 # Removing empty directories:
 
-  * `rmdir name-of-directory`
-    (Will throw an error if folder is NOT empty. Very useful!)
+  * `rmdir my_folder`  
+    Will remove "my_folder" if it's empty <small>(and return an error it's NOT empty)</small>
+
+    Very useful!
 
 
 <aside class="notes">
@@ -294,6 +369,9 @@ if you've overlooked something.
 
 
 # Additional Resources
+
+<small>
+
 - [Advanced Bash Scripting Guide (TLDP)](https://tldp.org/LDP/abs/html/index.html)
 - [awesome-shell](https://github.com/alebcay/awesome-shell)
 - [Command Line Cheat Sheet](https://www.git-tower.com/blog/posts/command-line-cheat-sheet)
@@ -308,26 +386,15 @@ if you've overlooked something.
 - [the sourcecaster](https://datapraxis.github.io/sourcecaster/)
 - [AMIA Digipres101 presentation](https://docs.google.com/presentation/d/1c3xhHbgpF3KQVwY9P_VpECZbwCTqwdQFh1DiBjWDue0/edit#slide=id.p)
 
----
+</small>
+
+
 -------------
-
-
-# More folder syntax:
-
-All:
-
-  * `cd ..`: Go UP one level
-
-Unix-like:
-
-  * `cd ~`: Go home.
-  * `cd -`: Go back to previous folder (wherever that was)
-
 
 
 # Opening a file
 
-  * MacOS: `open name-of-file`
-  * Linux: `xdg-open name-of-file`
-  * Win: `name-of-file`
+  * MacOS: `open MyFile.xxx`
+  * Linux: `xdg-open MyFile.xxx`
+  * Win: `MyFile.xxx`
 
