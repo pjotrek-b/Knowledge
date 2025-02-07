@@ -27,8 +27,26 @@ slideNumber: true
   * `>`: redirect output *TO*...
   * `<`: redirect input *FROM*...
   * `-`: stdin/stdout (stderr?)
-  
 
 <aside class="notes">
 https://tldp.org/LDP/lpg/node1.html
 </aside>
+
+
+
+# Variables
+
+> TODO.
+
+
+# CLI Parameters / Arguments
+
+> TODO.
+
+
+
+# Useful, popular shell "all-stars"
+
+  * `echo`:
+  * `cat`:
+  * `grep`:

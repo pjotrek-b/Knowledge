@@ -3,7 +3,7 @@ title: Commandline Shell Basics
 author: |
         | Peter Bubestinger-Steindl
         | `( email (at) ArkThis com )`
-date: yyyy-mm-dd 
+date: 2025-02
 
 geometry: a4paper, margin=2cm
 toc: false
@@ -48,6 +48,10 @@ You may find their original wordings here and then still :)
 
 ![](../../../images/shell/btop-large_png_gimp.png){width=500px}
 
+
+# ...or even more?
+
+![](../../../images/shell/hacker.gif){width=900px}
 
 # What is a "Command Line Interface"?
 
@@ -332,7 +336,11 @@ btw: `cp -av` will preserve as much of the original properties as-it-can (timest
   * Unix-like: `mv SOURCE TARGET`
   * Win: `ren`
 
-**Example:** `mv file.txt Nicer_Name.txt`
+**Examples:**  
+
+  * `mv file.txt Nicer_Name.txt`
+  * `mv *.dpx other_folder/`  
+     <small>(hint: works great with wildcards!)</small>
 
 
 # Deleting (Removing):
