@@ -3,7 +3,7 @@ title: Commandline Shell Advanced
 author: |
         | Peter Bubestinger-Steindl
         | `( email (at) ArkThis com )`
-date: yyyy-mm-dd
+;date: yyyy-mm-dd
 
 geometry: a4paper, margin=2cm
 toc: false
@@ -13,7 +13,7 @@ linkcolor: blue
 ; If both values are specified, totalTime wins and defaultTiming is ignored:
 ;defaultTiming: 6
 ;totalTime: 30
-;transition: none
+transition: none
 ;print-pdf: ?print-pdf&showNotes=separate-page
 ;showNotes: separate-page | false
 
@@ -21,32 +21,226 @@ slideNumber: true
 ---
 
 
+# Dynamic elements of a "script"
+
+  * **Variables**:  
+    Placeholders for values.
+
+  * **Conditionals**:  
+    "if this, then do that ..."
+
+  * **Choices (case)**:  
+    Run different code for different "use cases".
+
+  * **Loops**:  
+    repeat x "so many" times, or until...
+
+
+
+
+# Variables
+
+Declaration: `NAME=value`
+
+  * `FILENAME="myfile.txt"`
+  * `FRAME_IMAGE="scan_$INDEX.dpx"`
+  * `INDEX=7`
+
+<small>(Text needs quotes, numbers do not)</small>
+
+<aside class="notes">
+In BASH, there must be /NO/ space around the `=`, and double-quotes are preferred to wrap strings (=text).
+And variables can be used anywhere in your code. Even when declaring other values in variables.
+</aside>
+
+
+
+# Conditionals (if-then-else)
+
+```{.bash}
+if (condition is true)
+then
+  <here goes any code you'd like>
+fi
+```
+
+<small>
+See: [https://www.geeksforgeeks.org/bash-scripting-else-if-statement/](https://www.geeksforgeeks.org/bash-scripting-else-if-statement/)
+</small>
+
+
+# Conditionals
+
+  * if ... then
+  * else
+  * else if (other condition)
+
+
+# Examples
+
+```{.bash}
+INDEX=99
+LIMIT=100
+if [ $INDEX -lt $LIMIT ]; then
+    echo "Yes, we're below the limit ($LIMIT)!"
+fi
+```
+
+
+# Examples
+
+```{.bash}
+FILENAME="x"
+if [ -z $FILENAME ]; then
+    echo "Empty filename given. :("
+fi
+```
+
+
+# Bash Comparisons Operators
+
+  * **-eq** : equal
+  * **-ne** : not equal
+  * **-gt** : greater than
+  * **-lt** : less than
+  * **-z** : string has zero length <small>(=empty)</small>
+  * **!** : NOT
+  * ...
+
+<small>See: [https://tldp.org/LDP/abs/html/comparison-ops.html](https://tldp.org/LDP/abs/html/comparison-ops.html)</small>
+
+
+
+# Choices (case)
+
+The BASH "case" statement:
+
+```{.bash}
+case EXPRESSION in
+    OPTION_1)
+    ;;
+
+    OPTION_2)
+    ;;
+
+    *)
+    # Anything not matching before, goes here.
+    echo "Syntax: You may select 'OPTION_1' or 'OPTION_2'"
+    ;;
+```
+
+
+# Loops
+
+There are different basic kind of loops:
+
+  * **while** <small>(condition is true)</small> do something.
+  * do something **until** <small>(condition is true)</small>
+  * **for** <small>(each of a set)</small> do something.
+
+
+# A "while" loop
+
+```{.bash}
+while [ $COUNTER -le 10 ]
+do
+    echo "Number: $COUNTER"
+    ((COUNTER++))
+done
+```
+
+(`le` = less-than-or-equal)
+
+
+# An "until loop
+
+```{.bash}
+until [ $COUNTER -gt 10 ]
+do
+    echo "Number: $COUNTER"
+    ((COUNTER++))
+done
+```
+
+(`gt` = greater-than)
+
+
+# A "for" loop
+
+```{.bash}
+THINGS="cat dog mouse brokkoli"
+
+for THING in $THINGS; do
+    echo "Here's a: '$THING'"
+done
+```
+
+
+
+# Parameters / Arguments
+
+  * It's possible to provide parameters to a script.
+  * Called: "commandline arguments" (or `args`)
+
+Like:
+
+  * `$ ./my_script.sh arg1 arg2 arg3 ... 
+
+
+# Commandline Arguments (args): 
+
+  * `$@` : all args in sequence.
+  * `$#` : number of args used.
+  * `$0` : name of the command itself.
+  * `$1, $2, ...` : 1st arg, 2nd arg, etc.
+
+
+# "Args" handling: Examples
+
+`$ ./my_script.sh one two three four five`
+
+```{.bash}
+ARGS=$@
+ARGS_COUNT=$#
+
+echo "All $ARGS_COUNT parameters: $ARGS"
+echo "First:  $1"
+echo "Second: $2"
+echo "Third:  $3"
+```
+
+```
+All 5 parameters: one two three four five
+First:  one
+Second: two
+Third:  three
+```
+
+
+# Useful, popular shell "allstars" 🌟️
+
+  * `echo`:  
+    print some text on the screen.
+
+  * `cat`:  
+    print a file on the screen.
+
+  * `grep`:  
+    search text by filtering by expression.
+
+  * `printf`:  
+    print formatted text output (with placeholders).
+
+
 # Piping!
 
-  * `|`: pipe
-  * `>`: redirect output *TO*...
-  * `<`: redirect input *FROM*...
-  * `-`: stdin/stdout (stderr?)
+  * `|` : pipe
+  * `>` : redirect output *TO*...
+  * `<` : redirect input *FROM*...
+  * `-` : stdin/stdout
 
 <aside class="notes">
 https://tldp.org/LDP/lpg/node1.html
 </aside>
 
 
-
-# Variables
-
-> TODO.
-
-
-# CLI Parameters / Arguments
-
-> TODO.
-
-
-
-# Useful, popular shell "all-stars"
-
-  * `echo`:
-  * `cat`:
-  * `grep`:
