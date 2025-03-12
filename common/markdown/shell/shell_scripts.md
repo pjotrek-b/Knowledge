@@ -104,11 +104,13 @@ fi
 ```{.bash}
 echo "Converting '$INPUT' to h.264, using CRF=$CRF and $PIXFMT."
 echo "Output file is: '$OUTPUT'"
-echo "Using ffmpeg binary: '$FFMPEG'"
+echo "Using ffmpeg binary: '$FFMPEG'" 
 
 # Wait for user to confirm:
 read -p "Press RETURN to continue..."
 ```
 
+# Putting it all together...
 
+See: [exercises/shell/ffmpeg_x264.sh](../../../exercises/shell/scripts/ffmpeg_x264.sh)
 
