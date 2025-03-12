@@ -237,6 +237,36 @@ Third:  three
     print formatted text output (with placeholders).
 
 
+
+# echo
+
+  * `echo "hello world."`
+  * `echo ""` (=empty line)
+  * `echo "Hello $YOUR_NAME"`
+
+
+# cat
+
+  * Print file contents on screen:  
+    `cat some_file.txt`
+  * Same, but use a variable:  
+    `cat $FILENAME`
+  * Concatenate 2 files to a new file:  
+    `cat $FILE1 $FILE2 > output.txt`
+
+
+# grep
+
+  * `grep -Ri "findme!" *.*`
+  * `cat some_file.txt | grep "findme!"`
+
+
+# printf
+
+  * `printf "image-%s-%05d.dpx" "my_film" 123`  
+    (image-my_film-00123.dpx)
+
+
 # Piping!
 
   * `|` : pipe
@@ -249,3 +279,7 @@ https://tldp.org/LDP/lpg/node1.html
 </aside>
 
 
+# Comments?
+## Questions?
+
+# - The End -
