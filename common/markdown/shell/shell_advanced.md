@@ -3,7 +3,8 @@ title: Commandline Shell Advanced
 author: |
         | Peter Bubestinger-Steindl
         | `( email (at) ArkThis com )`
-;date: yyyy-mm-dd
+
+date: 2025-03
 
 geometry: a4paper, margin=2cm
 toc: false
@@ -35,6 +36,8 @@ slideNumber: true
   * **Loops**:  
     repeat x "so many" times, or until...
 
+  * **Functions**:  
+    Code-snippets to re-use within the script.
 
 
 
@@ -118,14 +121,16 @@ The BASH "case" statement:
 ```{.bash}
 case EXPRESSION in
     OPTION_1)
+      # code for option 1 goes here...
     ;;
 
     OPTION_2)
+      # code for option 2 goes here...
     ;;
 
     *)
-    # Anything not matching before, goes here.
-    echo "Syntax: You may select 'OPTION_1' or 'OPTION_2'"
+      # Anything not matching before, goes here.
+      echo "Syntax: You may select 'OPTION_1' or 'OPTION_2'"
     ;;
 ```
 
