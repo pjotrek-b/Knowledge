@@ -29,8 +29,8 @@ Stück für Stück ein Script mit FFmpeg im Core ausbauen.
 
 # The "#!" (shebang)
 
-  * Any code script is "just a textfile"
-  * Computer needs to know what to "run it with"
+  * Any code script is "just a textfile".
+  * Computer needs to know what to "run" that text with.
 
 ```{.bash}
 #!/bin/bash
@@ -63,5 +63,52 @@ output_file                \    $OUTPUT
 # The core command
 
 ```{.bash}
-CMD="$FFMPEG -i $INPUT -c:v libx264 -preset veryslow -crf $CRF -pix_fmt $PIXFMT -c:a copy $OUTPUT"
+CMD="$FFMPEG -i $INPUT -c:v libx264 -preset veryslow 
+-crf $CRF -pix_fmt $PIXFMT -c:a copy $OUTPUT"
+
+echo "$CMD"     # print/show the command before running it.
+#eval "$CMD"    # execute the "string".
 ```
+
+
+# Adding variables
+
+```{.bash}
+FFMPEG="ffmpeg"
+
+INPUT="$1"      # Script argument 1
+OUTPUT="$2"     # Script argument 2
+
+CRF=18  # See: https://trac.ffmpeg.org/wiki/Encode/H.264#crf
+PIXFMT="yuv420p"    # YUV, 4:2:0, 8 bits-per-component
+```
+
+
+# Adding sanity checks
+
+```{.bash}
+if [ -z "$INPUT" ]; then
+    echo "ERROR: No input file given."
+    exit 1
+fi
+
+if [ -s "$INPUT" ]; then
+    echo "ERROR: Invalid input source (0 bytes)?"
+    exit 2
+fi
+```
+
+
+# Add Status/Progress Output
+
+```{.bash}
+echo "Converting '$INPUT' to h.264, using CRF=$CRF and $PIXFMT."
+echo "Output file is: '$OUTPUT'"
+echo "Using ffmpeg binary: '$FFMPEG'"
+
+# Wait for user to confirm:
+read -p "Press RETURN to continue..."
+```
+
+
+
