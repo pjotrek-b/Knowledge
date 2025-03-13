@@ -63,7 +63,7 @@ And variables can be used anywhere in your code. Even when declaring other value
 ```{.bash}
 if (condition is true)
 then
-  <here goes any code you'd like>
+    # here goes any code you'd like
 fi
 ```
 
