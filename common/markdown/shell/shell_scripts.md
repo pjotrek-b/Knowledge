@@ -143,7 +143,8 @@ See: [exercises/shell/ffmpeg_x264.sh](../../../exercises/shell/scripts/ffmpeg_x2
 
   * Identify other encoding "parameters" that could be interesting to vary.
   * And replace them with BASH variables.
-  * Set the CRF from a 3rd commandline argument.
+    (Their values declared at the top of the script)
+  * Set the video-codec from a 3rd commandline argument.
 
 
 # Comments?

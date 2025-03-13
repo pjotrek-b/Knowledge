@@ -279,6 +279,30 @@ https://tldp.org/LDP/lpg/node1.html
 </aside>
 
 
+
+# Manipulating Strings
+
+  * **${string:position}** :  
+
+    <small>Extracts substring from `$string` at `$position`</small>
+
+  * **${string:position:length}** :  
+
+    <small>Extracts `$length` characters from `$string` at `$position`</small>
+
+  * **${string#substring}** :  
+
+    <small>Deletes shortest match of `$substring` from **front** of `$string`.</small>
+
+  * **${string%substring}** :  
+
+    <small>Deletes shortest match of `$substring` from **back** of `$string`.</small>
+
+<small>
+See more: [https://tldp.org/LDP/abs/html/string-manipulation.html](https://tldp.org/LDP/abs/html/string-manipulation.html)
+</small>
+
+
 # Comments?
 ## Questions?
 
