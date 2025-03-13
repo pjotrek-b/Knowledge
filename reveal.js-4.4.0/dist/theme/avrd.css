@@ -5,8 +5,11 @@
  * Adjustments by Peter B. (pb@av-rd.com)
  * Version: 2022-11-02
  */
+
 @import url(./fonts/league-gothic/league-gothic.css);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+/** @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic); */
+
+
 /**
  * Solarized colors by Ethan Schoonover
  */
