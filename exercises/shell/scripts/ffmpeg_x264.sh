@@ -50,7 +50,7 @@ read -p "Press RETURN to continue..."
 
 # Assemble the ffmpeg command used for conversion:
 
-CMD="$FFMPEG -i '$INPUT' -c:v libx264 -preset veryslow \
+CMD="$FFMPEG -i '$INPUT' -t 5 -c:v libx264 -preset veryslow \
     -crf $CRF -pix_fmt $PIXFMT -c:a aac -b:a 192k '$OUTPUT'"
 
 echo "$CMD"         # print/show the command before running it.
