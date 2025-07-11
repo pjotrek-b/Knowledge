@@ -368,3 +368,10 @@ It should look like this, when fixed:
 > ./g80ca-r36s-kinmris-k36_clone-stock_firmware-cut.img3 17858560 25671679  7813120  3,7G Microsoft basic data
 
 :)
+
+
+# Links
+
+  * Thanks to the people who contributed to ["Re-size" the .img for smaller SD-card. How to SHRINK a bootable SD card image](https://askubuntu.com/questions/1174487/re-size-the-img-for-smaller-sd-card-how-to-shrink-a-bootable-sd-card-image). Thanks to you, I knew it was possible by showing me how.
+
+  * [gdisk: GPT repairing](https://www.rodsbooks.com/gdisk/repairing.html)
