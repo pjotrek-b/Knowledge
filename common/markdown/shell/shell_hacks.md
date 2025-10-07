@@ -122,7 +122,7 @@ drwxrwxr-x 12 pb pb 4096 2024-11-21 10:34:42.541595963 +0100 ".."
 
 Useful for film-scans 😄️
 
-```
+```{.bash}
 i=1
 for FILE in *.dpx; do
   OUT=$(printf "reelX_%07d.dpx" $i)
@@ -144,7 +144,7 @@ This allows to keeping the original filename structure, while getting a "thin co
 
 # Create sequence files (out of thin air)
 
-```
+```{.bash}
 for i in $(seq 10); do
   touch $(printf "image_%05d.png" "$i")
 done
@@ -156,14 +156,14 @@ done
 
 # Get all video-URLs in a YT playlist
 
-```
+```{.bash}
 yt-dlp --flat-playlist $YT_PLAYLIST_URL -j | \
 jq -r '.url, .title'
 ```
 
 <small>
 
-  * `yt-dlp`:             YT tool
+  * `yt-dlp`:             [sophisticated video download tool (CLI)](https://github.com/yt-dlp/yt-dlp)
   * `--flat-playlist`:    Do not extract the videos of a playlist
   * `-j`:                 Quiet, but print JSON information for each url
   * `jq`:                 JSON CLI parser
@@ -187,7 +187,7 @@ Example playlist:
 
 # Loop "for-each line"
 
-```
+```{.bash}
 while read LINE; do
   echo "$LINE"
 done < mylist.txt
@@ -196,7 +196,7 @@ done < mylist.txt
 
 # Splitting by delimiter
 
-```
+```{.bash}
 while read LINE; do
     URL=$(echo "$LINE" | cut -d ' ' -f 1)
     yt-dlp $URL
