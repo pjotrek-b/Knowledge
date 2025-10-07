@@ -99,7 +99,7 @@ g_fileformats_50m.md: $(DIR_MOD)/_header.md \
     $(DIR_MOD)/choice_tempting.md \
     $(DIR_MOD)/questions/q_your_formats.md \
 	$(DIR_MOD)/av_trinity.md \
-    $(DIR_MOD)/av_format_naming1.md \
+	$(DIR_MOD)/naming/av_format_naming1.md \
 	$(DIR_MOD)/ex_rebrand.md \
     $(DIR_MOD)/h1-look_inside.md \
     $(DIR_MOD)/look_inside1.md \

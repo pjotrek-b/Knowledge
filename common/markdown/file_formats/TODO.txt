@@ -1,5 +1,16 @@
-TODO:
-2024-05-27
+# TODO:
+
+## 2025-06-26 (post FRAME Basics)
+
+ - Add lossy/lossless/uncompressed slides!
+ - Add linked-list of popular formats (exist elsewhere) - containers, codecs, etc.
+
+
+
+
+# FIXED
+
+## ~~2024-05-27
 
 Bitrate missing in 50min file-formats overview
 At least mention it - and make clear that bitrate as option = lossy-only

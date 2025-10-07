@@ -407,3 +407,31 @@ shell/code_literacy.jpg https://caltech-prod.s3.amazonaws.com/main/images/Mediev
 
 misc/vanishing_culture.jpg https://archive.org/details/vanishing-culture-report
 misc/vanishing_culture.jpg https://files.mastodon.social/media_attachments/files/113/956/605/378/308/836/original/1cc86b8668ad7bb1.jpg
+
+
+repair/reparaturbonus_lebkuchenherz.png https://www.reparaturbonus.at/_assets/d520de923ac5980f7c00dcf4542702c2/img/header_user.png
+repair/reparaturbonus_lebkuchenherz.png https://www.reparaturbonus.at/
+
+repair/mutterschluessel.webp https://www.reparaturbonus.at/fileadmin/user_upload/pics/icons/mutterschluessel.png
+repair/mutterschluessel.webp https://www.reparaturbonus.at/
+
+
+open_source/qnap_exfat_license-screenshot.png https://www.qnap.com/de-de/product/tvs-h1288x/specs/software
+
+knowledge/pkg_heroes_journey.png  "The Hero's Journey Spiral © 2019 by Thea Cooke is licensed under Attribution-NonCommercial-ShareAlike 4.0 International.1"
+knowledge/pkg_heroes_journey.png https://personalknowledgegraphs.com/#/page/heroes%20journey%3A%20notes%20towards%20a%20pkg%20book
+knowledge/pkg_heroes_journey.png https://lh5.googleusercontent.com/-Qc8wjuIfXFcWD2SlkG9qJbcvoTLWFgSLcrNT_kXkjGlId40eoImkitrJoPht6xTq1EfTN7BA7RAsh30rXwR-zQjssH2-xi3EIXHLCukcDwXSLoiZstiXAOgT-1NZAzO0t8mkJoOJlF2Clo-ZpfK5ss
+
+data/encoding/ascii_color_esc_table.png     https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+data/encoding/ascii_color_esc_table.png     https://i.sstatic.net/9UVnC.png
+
+updates/win_trash_icon.jpg https://mastodon.social/@gumnos@bsd.cafe/114740260428797858
+updates/win_trash_icon.jpg https://files.mastodon.social/cache/media_attachments/files/114/740/260/385/815/731/original/9ab724e6254d863c.jpg 
+
+
+iamai/iamai-added_business_value.jpg https://files.mastodon.social/cache/media_attachments/files/114/773/256/347/608/065/original/9e218082f3c29010.jpg
+iamai/iamai-added_business_value.jpg https://mastodon.social/@Natasha_Jay@tech.lgbt/114773256419636085
+
+misc/darth_fire.jpg https://werd.social/@ben/115277268747545402
+misc/darth_fire.jpg https://files.mastodon.social/cache/media_attachments/files/115/277/270/048/837/119/original/08bf2afa5d8898ff.jpeg
+
