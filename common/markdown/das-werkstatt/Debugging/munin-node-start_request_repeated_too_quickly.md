@@ -14,9 +14,52 @@ Failed to start munin-node.service - Munin Node.
 ```
 
 I couldn't find any helpful error in journalctl output.
-The logfile '/var/log/munin-node.log` just contained stuff like:
+The logfile '/var/log/munin-node.log` contained stuff like:
 
-> shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+
+```
+2025/11/05-17:40:12 Munin::Node::Server (type Net::Server::Fork) starting! pid(1623030)
+Resolved [*]:4949 to [::]:4949, IPv6
+Not including resolved host [0.0.0.0] IPv4 because it will be handled by [::] IPv6
+Binding to TCP port 4949 on host :: with IPv6
+2025/11/05-17:40:12 Can't connect to TCP port 4949 on :: [Invalid argument]
+  at line 66 in file /usr/share/perl5/Net/Server/Proto/TCP.pm
+2025/11/05-17:40:12 Server closing!
+shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+2025/11/05-17:40:13 Munin::Node::Server (type Net::Server::Fork) starting! pid(1623039)
+Resolved [*]:4949 to [::]:4949, IPv6
+Not including resolved host [0.0.0.0] IPv4 because it will be handled by [::] IPv6
+Binding to TCP port 4949 on host :: with IPv6
+2025/11/05-17:40:13 Can't connect to TCP port 4949 on :: [Invalid argument]
+  at line 66 in file /usr/share/perl5/Net/Server/Proto/TCP.pm
+2025/11/05-17:40:13 Server closing!
+shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+2025/11/05-17:40:13 Munin::Node::Server (type Net::Server::Fork) starting! pid(1623044)
+Resolved [*]:4949 to [::]:4949, IPv6
+Not including resolved host [0.0.0.0] IPv4 because it will be handled by [::] IPv6
+Binding to TCP port 4949 on host :: with IPv6
+2025/11/05-17:40:13 Can't connect to TCP port 4949 on :: [Invalid argument]
+  at line 66 in file /usr/share/perl5/Net/Server/Proto/TCP.pm
+2025/11/05-17:40:13 Server closing!
+shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+2025/11/05-17:40:13 Munin::Node::Server (type Net::Server::Fork) starting! pid(1623048)
+Resolved [*]:4949 to [::]:4949, IPv6
+Not including resolved host [0.0.0.0] IPv4 because it will be handled by [::] IPv6
+Binding to TCP port 4949 on host :: with IPv6
+2025/11/05-17:40:13 Can't connect to TCP port 4949 on :: [Invalid argument]
+  at line 66 in file /usr/share/perl5/Net/Server/Proto/TCP.pm
+2025/11/05-17:40:13 Server closing!
+shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+2025/11/05-17:40:14 Munin::Node::Server (type Net::Server::Fork) starting! pid(1623055)
+Resolved [*]:4949 to [::]:4949, IPv6
+Not including resolved host [0.0.0.0] IPv4 because it will be handled by [::] IPv6
+Binding to TCP port 4949 on host :: with IPv6
+2025/11/05-17:40:14 Can't connect to TCP port 4949 on :: [Invalid argument]
+  at line 66 in file /usr/share/perl5/Net/Server/Proto/TCP.pm
+2025/11/05-17:40:14 Server closing!
+
+shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+```
 
 I've also tried resetting the failed-count of this systemd process:
 
