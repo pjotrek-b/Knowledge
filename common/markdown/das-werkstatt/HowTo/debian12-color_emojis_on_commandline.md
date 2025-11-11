@@ -49,12 +49,14 @@ cat $LGEN                                       # Show the final config file
 
 This should give you something like this:
 
-> # This file lists locales that you wish to have built. You can find a list
-> # of valid supported locales at /usr/share/i18n/SUPPORTED, and you can add
-> # user defined locales to /usr/local/share/i18n/SUPPORTED. If you change
-> # this file, you need to rerun locale-gen.
-> de_AT.UTF-8 UTF-8
-> en_US.UTF-8 UTF-8
+```
+# This file lists locales that you wish to have built. You can find a list
+# of valid supported locales at /usr/share/i18n/SUPPORTED, and you can add
+# user defined locales to /usr/local/share/i18n/SUPPORTED. If you change
+# this file, you need to rerun locale-gen.
+de_AT.UTF-8 UTF-8
+en_US.UTF-8 UTF-8
+```
 
 If that output is listing the languages/encodings you want, let's generate the locales:
 
