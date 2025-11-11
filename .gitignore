@@ -1,6 +1,6 @@
 common/pdf
 common/print
 common/html
+common/assets
 *.swp
 .*.swp
-common/assets
