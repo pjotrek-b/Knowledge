@@ -36,10 +36,43 @@ Edit that file, to match the following contents:
 > ListenStream=
 > ListenStream=7022
 
-I remember the empty `ListenStream=` entry is required to /DROP/ port 22 it would bind to by default.
+The first empty `ListenStream=` entry is required to /DROP/ port 22 it would bind to by default.
 When I just added `ListenStream=7022`, it would bind to both: 22 + 7022.
 
-Anyways: **This is where you now may set your SSH daemon port**
+Anyways: **This is how-and-where you set your SSH daemon port, /in systemd/**
 
 Works on Debian12, and related derivative-flavors (eg Ubuntu, MX-Linux, etc).
 
+
+# Optional:
+
+When you get an error like this from systemd:
+
+> -- The unit ssh.socket has entered the 'failed' state with result 'service-start-limit-hit'.
+
+Use this to reset the failed counter of "ssh.socket" service:
+
+`systemctl reset-failed ssh.socket`
+
+This occurs fairly often, if your `sshd_config` has an error - then ssh.socket will run into too-many-failed-retries pretty quickly.
+
+
+# Other error: "ssh.service already active":
+
+Output from `journalctl -xeu ssh`
+
+> Nov 12 21:27:39 systemd[1]: ssh.socket: Socket service ssh.service already active, refusing.
+> Nov 12 21:27:39 systemd[1]: Failed to listen on ssh.socket - OpenBSD Secure Shell server socket.
+
+Most likely, your sshd and systemd.ssh.socket are somehow fighting over the same port, due to a racing condition?
+
+`sudo systemctl daemon-reload`
+
+Then stop everything, and start `ssh.socket`:
+
+`systemctl stop ssh.socket`
+`systemctl stop sshd.socket`
+
+...which then auto-starts sshd upon the first connection request.
+
+Works!
