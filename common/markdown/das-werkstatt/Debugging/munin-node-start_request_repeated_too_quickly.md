@@ -2,6 +2,26 @@
 
 `munin-node` on Debian 12, fresh install - won't start:
 
+This is the error message in `/var/log/munin/munin-node.log`:
+
+```
+shutdown() on unopened socket GEN0 at /usr/lib/x86_64-linux-gnu/perl-base/IO/Socket.pm line 325.
+```
+
+It's very likely related to ipv6 being disabled and `Host *` in `/etc/munin/munin-node.conf`.
+See [Issue #1641 and its fix](https://github.com/munin-monitoring/munin/pull/1665) for more details.
+
+
+# Quick solution:
+
+Replace `host *` with `host 0.0.0.0` in `/etc/munin/munin-node.conf`
+
+
+# Here are more infos...
+
+Regarding error messages and behavior:
+
+
 ```
 munin-node.service: Main process exited, code=exited, status=1/FAILURE
 munin-node.service: Failed with result 'exit-code'.
@@ -88,5 +108,22 @@ host 127.0.0.1
 host 192.168.0.200
 ```
 
+Or:
+```
+# Which address to bind to;
+#host *
+host 0.0.0.0
+```
+
 That did the trick.
 I'm still wondering though, where I would be able to find log output for this?
+
+
+# Links:
+
+  * [[Bug] Munin-node fails to start when 'host *' is set in munin-node.conf #1641](https://github.com/munin-monitoring/munin/issues/1641)
+
+  * [munin-node.service doesn't start until reboot [if IPv6 has just been disabled by sysctl] on Ubuntu 23.04 (Lunar Lobster) final release [similar on Debian 12 (Bookworm)] #3434
+](https://github.com/iiab/iiab/issues/3434)
+
+  * [munin-node.conf: add comment on how to make default host * work in IPv4-only case #1666](https://github.com/munin-monitoring/munin/pull/1666)
