@@ -435,3 +435,6 @@ iamai/iamai-added_business_value.jpg https://mastodon.social/@Natasha_Jay@tech.l
 misc/darth_fire.jpg https://werd.social/@ben/115277268747545402
 misc/darth_fire.jpg https://files.mastodon.social/cache/media_attachments/files/115/277/270/048/837/119/original/08bf2afa5d8898ff.jpeg
 
+
+misc/library_to_help.jpg https://tech.lgbt/@Natasha_Jay/115609488234245874
+misc/library_to_help.jpg https://files.mastodon.social/cache/media_attachments/files/115/609/488/690/742/396/original/612e5f3c8243e487.jpg
