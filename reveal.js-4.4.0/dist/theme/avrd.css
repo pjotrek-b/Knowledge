@@ -330,6 +330,16 @@ h2.institute {
   white-space: pre;
 }
 
+/* 
+ * Code Syntax highlight colors override
+ * span.va = variables
+ **/
+code span.va {
+    color: #bdb76b;
+}
+
+
+
 .reveal table {
   margin: auto;
   border-collapse: collapse;
