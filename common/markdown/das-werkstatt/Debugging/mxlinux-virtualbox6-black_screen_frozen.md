@@ -24,3 +24,7 @@ However, the issue remains this kind of "lockout" /should not happen/ in the fir
 
 If you have any ideas, please let me know :)
 
+
+# Maybe related (?) links
+
+  * [VirtualBox, Linux distributions, black screen after inactivity (October 30, 2024 on Dedoimedo.com)](https://www.dedoimedo.com/computers/virtualbox-black-screen.html)
