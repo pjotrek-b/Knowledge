@@ -22,20 +22,64 @@ linkcolor: blue
 slideNumber: true
 ---
 
+
 <!-- ----------------------------------------- -->
 
-# Text to PDF?
+# Identifying file formats/types
 
-  1. Write a plain text file
-  2. Format the text like 'on an ancient typewriter' <small>(headline, bold, italic, etc)</small>
-  3. Save it as ".md"
-  4. Then: `pandoc text.md -o text.pdf`
+General Syntax: 
+```
+$ file FILES
+```
+
+Example:
+```
+$ file *
+```
+
+Example: Show MIME types of `*.*`:
+```
+$ file --mime *.*
+```
+
+<!-- ----------------------------------------- -->
+
+# Fix file number sequence
+
+Useful for film-scans 😄️
+
+```{.bash}
+i=1                                 # start counter at 1
+for FILE in *.dpx; do               # loop over all DPX files
+  OUT=$(printf "reelX_%07d.dpx" $i) # Define the OUTput filename pattern
+  echo "$FILE : $OUT"               # Show the new OUTput filename
+  mv $FILE $OUT                     # Move (=rename) $FILE to $OUT
+
+  i=$((i+1))                        # Increment counter +1
+done
+```
 
 <aside class="notes">
-Of course you need a tool which can convert from [Markdown](https://en.wikipedia.org/wiki/Markdown) to PDF.
-Such as [pandoc](https://pandoc.org/).
+I prefer to use "[symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)" instead of renaming the source files.
+
+So instead of `mv $FILE $OUT`: `ln -s $FILE $OUT`.
+
+This allows to keeping the original filename structure, while getting a "thin copy" with your changes.
 </aside>
 
+
+<!--
+# Create sequence files (out of thin air)
+
+```{.bash}
+for i in $(seq 10); do
+  touch $(printf "image_%05d.png" "$i")
+done
+```
+-->
+
+
+<!-- ----------------------------------------- -->
 
 # Save any command output to a file?
 
@@ -53,18 +97,6 @@ Such as [pandoc](https://pandoc.org/).
 
 <!-- ----------------------------------------- -->
 
-# Identifying file formats/types
-
-```
-$ file FILES
-```
-
-```
-$ file --mime *.*
-```
-
-<!-- ----------------------------------------- -->
-
 # Create a file/folder listing:
 
 > Get path/filename/size/etc information on any file/folder branch of any
@@ -73,6 +105,7 @@ $ file --mime *.*
   1. As **plain text** file: `ls -laR > listing.txt`
   2. Or: **CSV spreadsheet** <small>(Comma Separated Value)</small>
 
+<!-- ----------------------------------------- -->
 
 # Listing as a CSV
 
@@ -118,39 +151,63 @@ drwxrwxr-x 12 pb pb 4096 2024-11-21 10:34:42.541595963 +0100 ".."
 
 <!-- ----------------------------------------- -->
 
-# Fix file number sequence
+# Markdown!
 
-Useful for film-scans 😄️
-
-```{.bash}
-i=1
-for FILE in *.dpx; do
-  OUT=$(printf "reelX_%07d.dpx" $i)
-  echo "$FILE : $OUT"
-  mv $FILE $OUT
-
-  i=$((i+1))
-done
-```
+  1. Write a plain text file
+  2. Format the text like 'on an ancient typewriter' <small>(headline, bold, italic, etc)</small>
+  3. Save it as ".md"
+  4. Then:  
+     `pandoc text.md -o text.pdf` <small>(to convert to PDF)</small>
 
 <aside class="notes">
-I prefer to use "[symbolic links](https://en.wikipedia.org/wiki/Symbolic_link)" instead of renaming the source files.
-
-So instead of `mv $FILE $OUT`: `ln -s $FILE $OUT`.
-
-This allows to keeping the original filename structure, while getting a "thin copy" with your changes.
+Of course you need a tool which can convert from [Markdown](https://en.wikipedia.org/wiki/Markdown) to PDF.
+Such as [pandoc](https://pandoc.org/).
 </aside>
 
 
-# Create sequence files (out of thin air)
+<!-- ----------------------------------------- -->
+
+# Download stuff from a list (txt)
+
+  * loop "for-each line"
+  * get link
+  * do stuff
+
+<!-- ----------------------------------------- -->
+
+# Loop "for-each line"
 
 ```{.bash}
-for i in $(seq 10); do
-  touch $(printf "image_%05d.png" "$i")
-done
+while read LINE; do
+  echo "$LINE"
+done < mylist.txt
 ```
 
+<!-- ----------------------------------------- -->
 
+
+# Splitting by a character
+
+```{.bash}
+while read LINE; do
+    URL=$(echo "$LINE" | cut -d ' ' -f 1)
+    yt-dlp $URL
+done < "$LIST"
+```
+
+<!-- ----------------------------------------- -->
+
+# Checksums / Hashcodes
+
+
+  * Create (one file):  
+    `$ md5sum FILENAME > manifest.md5`
+
+  * Create (by mask/selection):  
+    `$ md5sum *.* > manifest.md5`
+
+  * Check by manifest:    
+    `$ md5sum -c manifest.md5`
 
 <!-- ----------------------------------------- -->
 
@@ -177,48 +234,6 @@ Example playlist:
 [64kB Demoscene music-videos by 'Conspiracy'](https://www.youtube.com/playlist?list=PLE5OQI8tcDyMEVo70zGl4b61apH_7qG10)
 </aside>
 
-
-# Download stuff from a list (txt)
-
-  * loop "for-each line"
-  * get link
-  * do stuff
-
-
-# Loop "for-each line"
-
-```{.bash}
-while read LINE; do
-  echo "$LINE"
-done < mylist.txt
-```
-
-
-# Splitting by delimiter
-
-```{.bash}
-while read LINE; do
-    URL=$(echo "$LINE" | cut -d ' ' -f 1)
-    yt-dlp $URL
-done < "$LIST"
-```
-
-
-
-# Checksums / Hashcodes
-
-
-  * Create (one file):  
-    `$ md5sum FILENAME > manifest.md5`
-
-  * Create (by mask/selection):  
-    `$ md5sum *.* > manifest.md5`
-
-  * Check by manifest:    
-    `$ md5sum -c manifest.md5`
-
 <!-- ----------------------------------------- -->
-
-
 
 # Curious for /more/? 😎️

@@ -3,7 +3,7 @@ title: Commandline Shell Basics
 author: |
         | Peter Bubestinger-Steindl
         | `( email (at) ArkThis com )`
-date: 2025-02
+date: 2025-11
 
 geometry: a4paper, margin=2cm
 toc: false
@@ -39,7 +39,12 @@ You may find their original wordings here and then still :)
 </aside>
 
 
-# Welcome to "The Shell"
+# Welcome to "The Shell"!
+
+![](../../../images/shell/hacker.gif){width=900px}
+
+
+# Oookaay, it's usually more like this:
 
 ![](../../../images/tools/ffmpeg/ffmpeg-ffv1_to_dvd.png){width=500px}
 
@@ -49,9 +54,7 @@ You may find their original wordings here and then still :)
 ![](../../../images/shell/btop-large_png_gimp.png){width=500px}
 
 
-# ...or even more?
 
-![](../../../images/shell/hacker.gif){width=900px}
 
 # What is a "Command Line Interface"?
 
@@ -183,7 +186,7 @@ the files on that server and you will have to communicate with this computer
     See: "[Running Linux on Win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)"
 
 
-
+<!-- Don't bother: Use WSL!
 # Windows: Other options
 
   * [gow](https://github.com/bmatzelle/gow)  
@@ -191,6 +194,7 @@ the files on that server and you will have to communicate with this computer
 
   * [Cygwin](http://cygwin.com/)  
     Cygwin is a "Linux-like environment" for Windows (see [cheat-sheet](https://www.pcwdld.com/cygwin-cheat-sheet) to get started)
+-->
 
 
 # A note about getting stuck
@@ -202,7 +206,8 @@ the files on that server and you will have to communicate with this computer
     * `:q!` (if the editor is `vi`)
 
   * **Stuck, confused, and panicking?**
-    * `Close the window`. Breathe. 😎️
+    * `Close the window`.
+    * Breathe. 😎️ 🌻️
 
 
 <aside class="notes">
@@ -212,8 +217,8 @@ the files on that server and you will have to communicate with this computer
 # Drag and drop
 
   * Works on most OSs.
-  * Inserts filename/path as text in terminal.
-  * Useful to save typing/avoid typos.
+  * Inserts path/filename as text in terminal.
+  * Useful to save typing & avoid typos.
 
 <aside class="notes">
 In recent OSs, you may try drag-n-drop of files/folders from the GUI onto the CLI.
@@ -244,6 +249,32 @@ Get a nice(r) ASCII-Art view of tree-structured listings: `tree`
 </aside>
 
 
+# Wildcards
+
+  * `*` = Match 0+ characters of any kind
+  * `?` = Match a single character
+
+Classic: `ls *.mkv`
+
+
+# Wildcards
+
+You can select files/folders matching patterns:
+
+  * `*`: <small>Everything</small>
+  * `.*`: <small>Hidden stuff (Mac/Linux)</small>
+  * `*.*`: <small>Most regular files (with `dot-suffix`)</small>
+  * `VID-*.mp4`: <small>Every file starting with `VID-` and ending with `.mp4`</small>
+
+  * `*.txt`: <small>Only textfiles.</small>
+
+  * `IMG000?.jpg`: <small>Starting with `IMG000` - and then /one/ character - then `.jpg`</small>
+
+
+<aside class="notes">
+</aside>
+
+
 # Show current directory
 
   * Unix-like: `pwd`
@@ -253,7 +284,7 @@ Get a nice(r) ASCII-Art view of tree-structured listings: `tree`
 # Change directory
 
   * Unix-like: `cd /path/you/want/to/go`
-  * Win: `dir d:\here\they\do\backslash\`
+  * Win: `cd d:\here\they\do\backslash\`
 
 
 # Absolute or relative (path)?
@@ -287,25 +318,6 @@ folder you are in).
   * `cd ../..`: <small>Go UP two levels...</small>
   * `cd ~`: <small>Go home. `~ = $HOME`</small>
   * `cd -`: <small>Go back to previous folder (wherever that was)</small>
-
-
-# Wildcards
-
-Here's how you can select files/folders matching patterns:
-
-  * `*.*`: <small>Most regular files</small>
-  * `VID-*.mp4`: <small>Every file starting with `VID-` and ending with `.mp4`</small>
-
-  * `*.txt`: <small>Only textfiles.</small>
-
-  * `IMG000?.jpg`: <small>Starting with `IMG000` - and then /one/ character - then `.jpg`</small>
-
-
-<aside class="notes">
-`*` = 0+ characters of any kind.
-`?` = Single character wildcard.
-</aside>
-
 
 
 # Create a directory
@@ -360,7 +372,8 @@ And with great power comes great responsibility ;)
 # Removing empty directories:
 
   * `rmdir my_folder`  
-    Will remove "my_folder" if it's empty <small>(and return an error it's NOT empty)</small>
+    Will remove "my_folder" **only if it's empty**
+    <small>(and return an error it's NOT empty)</small>
 
     Very useful!
 

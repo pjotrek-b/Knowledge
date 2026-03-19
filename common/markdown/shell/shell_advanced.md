@@ -84,6 +84,7 @@ See: [https://www.geeksforgeeks.org/bash-scripting-else-if-statement/](https://w
 ```{.bash}
 INDEX=99
 LIMIT=100
+
 if [ $INDEX -lt $LIMIT ]; then
     echo "Yes, we're below the limit ($LIMIT)!"
 fi
@@ -94,6 +95,7 @@ fi
 
 ```{.bash}
 FILENAME="x"
+
 if [ -z $FILENAME ]; then
     echo "Empty filename given. :("
 fi
