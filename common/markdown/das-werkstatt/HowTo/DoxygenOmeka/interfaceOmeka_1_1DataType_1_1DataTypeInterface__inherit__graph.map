@@ -1,0 +1,12 @@
+<map id="Omeka\DataType\DataTypeInterface" name="Omeka\DataType\DataTypeInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,85,261,112"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1DataType_1_1AbstractDataType.html" title=" " alt="" coords="309,56,561,83"/>
+<area shape="rect" id="node5" href="$interfaceOmeka_1_1DataType_1_1DataTypeWithOptionsInterface.html" title=" " alt="" coords="321,107,549,149"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1DataType_1_1Literal.html" title=" " alt="" coords="619,5,797,32"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1DataType_1_1Uri.html" title=" " alt="" coords="630,56,786,83"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1DataType_1_1Resource_1_1AbstractResource.html" title=" " alt="" coords="609,107,807,149"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1DataType_1_1Resource_1_1All.html" title=" " alt="" coords="861,35,1079,61"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1DataType_1_1Resource_1_1Item.html" title=" " alt="" coords="855,85,1085,112"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1DataType_1_1Resource_1_1Itemset.html" title=" " alt="" coords="871,137,1069,178"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1DataType_1_1Resource_1_1Media.html" title=" " alt="" coords="871,202,1069,243"/>
+</map>

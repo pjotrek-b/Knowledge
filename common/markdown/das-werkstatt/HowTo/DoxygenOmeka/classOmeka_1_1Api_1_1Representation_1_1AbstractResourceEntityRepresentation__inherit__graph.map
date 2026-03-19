@@ -1,0 +1,13 @@
+<map id="Omeka\Api\Representation\AbstractResourceEntityRepresentation" name="Omeka\Api\Representation\AbstractResourceEntityRepresentation">
+<area shape="rect" id="node1" title=" " alt="" coords="1308,104,1585,145"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Api_1_1Representation_1_1ItemRepresentation.html" title=" " alt="" coords="1651,5,1847,47"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Api_1_1Representation_1_1ItemSetRepresentation.html" title=" " alt="" coords="1651,71,1847,112"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Api_1_1Representation_1_1MediaRepresentation.html" title=" " alt="" coords="1651,136,1847,177"/>
+<area shape="rect" id="node11" href="$classOmeka_1_1Api_1_1Representation_1_1ValueAnnotationRepresentation.html" title=" " alt="" coords="1633,201,1865,243"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Api_1_1Representation_1_1AbstractEntityRepresentation.html" title=" " alt="" coords="1043,104,1260,145"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Api_1_1Representation_1_1AbstractResourceRepresentation.html" title=" " alt="" coords="756,104,995,145"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Api_1_1Representation_1_1AbstractRepresentation.html" title=" " alt="" coords="512,104,708,145"/>
+<area shape="rect" id="node5" href="$interfaceOmeka_1_1Api_1_1Representation_1_1RepresentationInterface.html" title=" " alt="" coords="268,104,464,145"/>
+<area shape="rect" id="node6" title=" " alt="" coords="50,86,175,113"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,137,220,163"/>
+</map>

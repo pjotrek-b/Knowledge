@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interfaceOmeka_1_1Media_1_1FileRenderer_1_1RendererInterface.html" title=" " alt="" coords="5,104,204,145"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Media_1_1FileRenderer_1_1AbstractRenderer.html" title=" " alt="" coords="252,104,451,145"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Media_1_1FileRenderer_1_1AudioRenderer.html" title=" " alt="" coords="499,5,697,47"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Media_1_1FileRenderer_1_1FallbackRenderer.html" title=" " alt="" coords="499,71,697,112"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Media_1_1FileRenderer_1_1ThumbnailRenderer.html" title=" " alt="" coords="499,136,697,177"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Media_1_1FileRenderer_1_1VideoRenderer.html" title=" " alt="" coords="499,201,697,243"/>
+</map>

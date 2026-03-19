@@ -1,0 +1,8 @@
+<map id="Omeka\Form\Element\AbstractGroupByOwnerSelect" name="Omeka\Form\Element\AbstractGroupByOwnerSelect">
+<area shape="rect" id="node1" title=" " alt="" coords="216,71,435,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Form_1_1Element_1_1ItemSetSelect.html" title=" " alt="" coords="495,5,657,47"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Form_1_1Element_1_1ResourceTemplateSelect.html" title=" " alt="" coords="483,71,669,112"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Form_1_1Element_1_1SiteSelect.html" title=" " alt="" coords="495,136,657,177"/>
+<area shape="rect" id="node2" title=" " alt="" coords="55,49,118,75"/>
+<area shape="rect" id="node3" href="$interfaceOmeka_1_1Form_1_1Element_1_1SelectSortInterface.html" title=" " alt="" coords="5,100,168,141"/>
+</map>

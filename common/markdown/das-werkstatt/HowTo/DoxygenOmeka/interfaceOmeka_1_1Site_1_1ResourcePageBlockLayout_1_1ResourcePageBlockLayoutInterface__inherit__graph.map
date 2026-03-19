@@ -1,0 +1,14 @@
+<map id="Omeka\Site\ResourcePageBlockLayout\ResourcePageBlockLayoutInterface" name="Omeka\Site\ResourcePageBlockLayout\ResourcePageBlockLayoutInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,332,304,373"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1Fallback.html" title=" " alt="" coords="369,5,597,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1ItemSets.html" title=" " alt="" coords="369,71,597,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1LightboxGallery.html" title=" " alt="" coords="369,136,597,177"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1LinkedResources.html" title=" " alt="" coords="369,201,597,243"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1MediaEmbeds.html" title=" " alt="" coords="369,267,597,308"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1MediaList.html" title=" " alt="" coords="369,332,597,373"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1MediaRender.html" title=" " alt="" coords="369,397,597,439"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1ResourceClass.html" title=" " alt="" coords="369,463,597,504"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1SitePages.html" title=" " alt="" coords="369,528,597,569"/>
+<area shape="rect" id="node11" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1ThemeProvidedResourcePageBlockLayout.html" title=" " alt="" coords="352,594,615,650"/>
+<area shape="rect" id="node12" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1Values.html" title=" " alt="" coords="369,675,597,716"/>
+</map>

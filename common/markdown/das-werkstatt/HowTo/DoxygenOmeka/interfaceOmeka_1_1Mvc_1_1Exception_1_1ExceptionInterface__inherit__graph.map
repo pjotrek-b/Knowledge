@@ -1,0 +1,8 @@
+<map id="Omeka\Mvc\Exception\ExceptionInterface" name="Omeka\Mvc\Exception\ExceptionInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,172,80"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Mvc_1_1Exception_1_1PermissionDeniedException.html" title=" " alt="" coords="220,5,428,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Mvc_1_1Exception_1_1RuntimeException.html" title=" " alt="" coords="241,71,407,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Mvc_1_1Exception_1_1InvalidJsonException.html" title=" " alt="" coords="514,5,681,47"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Mvc_1_1Exception_1_1NotFoundException.html" title=" " alt="" coords="514,71,681,112"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Mvc_1_1Exception_1_1UnsupportedMediaTypeException.html" title=" " alt="" coords="476,136,719,177"/>
+</map>

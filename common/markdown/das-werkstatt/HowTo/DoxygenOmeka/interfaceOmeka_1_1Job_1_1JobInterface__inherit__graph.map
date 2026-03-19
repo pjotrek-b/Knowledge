@@ -1,0 +1,8 @@
+<map id="Omeka\Job\JobInterface" name="Omeka\Job\JobInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,180,108"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Job_1_1AbstractJob.html" title=" " alt="" coords="228,81,399,108"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Job_1_1BatchDelete.html" title=" " alt="" coords="471,5,647,32"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Job_1_1BatchUpdate.html" title=" " alt="" coords="469,56,649,83"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Job_1_1IndexFulltextSearch.html" title=" " alt="" coords="447,107,672,133"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Job_1_1UpdateSiteItems.html" title=" " alt="" coords="457,157,662,184"/>
+</map>

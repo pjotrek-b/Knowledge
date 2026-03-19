@@ -1,0 +1,20 @@
+<map id="Omeka\Site\BlockLayout\BlockLayoutInterface" name="Omeka\Site\BlockLayout\BlockLayoutInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,417,187,459"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Site_1_1BlockLayout_1_1AbstractBlockLayout.html" title=" " alt="" coords="270,449,451,491"/>
+<area shape="rect" id="node18" href="$interfaceOmeka_1_1Site_1_1BlockLayout_1_1TemplateableBlockLayoutInterface.html" title=" " alt="" coords="235,384,487,425"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Site_1_1BlockLayout_1_1Asset.html" title=" " alt="" coords="553,201,734,243"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Site_1_1BlockLayout_1_1BrowsePreview.html" title=" " alt="" coords="553,267,734,308"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Site_1_1BlockLayout_1_1Fallback.html" title=" " alt="" coords="553,776,734,817"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Site_1_1BlockLayout_1_1Html.html" title=" " alt="" coords="535,333,752,359"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Site_1_1BlockLayout_1_1IiifImage.html" title=" " alt="" coords="553,841,734,883"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Site_1_1BlockLayout_1_1IiifPresentation.html" title=" " alt="" coords="553,907,734,948"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Site_1_1BlockLayout_1_1ItemWithMetadata.html" title=" " alt="" coords="553,384,734,425"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Site_1_1BlockLayout_1_1LineBreak.html" title=" " alt="" coords="553,449,734,491"/>
+<area shape="rect" id="node11" href="$classOmeka_1_1Site_1_1BlockLayout_1_1ListOfPages.html" title=" " alt="" coords="553,515,734,556"/>
+<area shape="rect" id="node12" href="$classOmeka_1_1Site_1_1BlockLayout_1_1ListOfSites.html" title=" " alt="" coords="553,580,734,621"/>
+<area shape="rect" id="node13" href="$classOmeka_1_1Site_1_1BlockLayout_1_1Media.html" title=" " alt="" coords="553,645,734,687"/>
+<area shape="rect" id="node14" href="$classOmeka_1_1Site_1_1BlockLayout_1_1Oembed.html" title=" " alt="" coords="553,711,734,752"/>
+<area shape="rect" id="node15" href="$classOmeka_1_1Site_1_1BlockLayout_1_1PageDateTime.html" title=" " alt="" coords="553,5,734,47"/>
+<area shape="rect" id="node16" href="$classOmeka_1_1Site_1_1BlockLayout_1_1PageTitle.html" title=" " alt="" coords="553,71,734,112"/>
+<area shape="rect" id="node17" href="$classOmeka_1_1Site_1_1BlockLayout_1_1TableOfContents.html" title=" " alt="" coords="553,136,734,177"/>
+</map>

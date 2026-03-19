@@ -1,0 +1,7 @@
+<map id="Omeka\Site\BlockLayout\Oembed" name="Omeka\Site\BlockLayout\Oembed">
+<area shape="rect" id="node1" title=" " alt="" coords="535,39,716,80"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Site_1_1BlockLayout_1_1AbstractBlockLayout.html" title=" " alt="" coords="270,5,451,47"/>
+<area shape="rect" id="node3" href="$interfaceOmeka_1_1Site_1_1BlockLayout_1_1BlockLayoutInterface.html" title=" " alt="" coords="5,71,187,112"/>
+<area shape="rect" id="node5" href="$interfaceOmeka_1_1Site_1_1BlockLayout_1_1TemplateableBlockLayoutInterface.html" title=" " alt="" coords="235,71,487,112"/>
+<area shape="rect" id="node4" href="$interfaceOmeka_1_1ServiceManager_1_1SortableInterface.html" title=" " alt="" coords="7,5,185,47"/>
+</map>

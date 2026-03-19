@@ -1,0 +1,34 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,993,187,1019"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Controller_1_1Admin_1_1AssetController.html" title=" " alt="" coords="267,5,450,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Controller_1_1Admin_1_1ColumnsController.html" title=" " alt="" coords="267,71,450,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Controller_1_1Admin_1_1IndexController.html" title=" " alt="" coords="267,136,450,177"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Controller_1_1Admin_1_1ItemController.html" title=" " alt="" coords="267,201,450,243"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Controller_1_1Admin_1_1ItemSetController.html" title=" " alt="" coords="267,267,450,308"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Controller_1_1Admin_1_1JobController.html" title=" " alt="" coords="267,332,450,373"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Controller_1_1Admin_1_1MediaController.html" title=" " alt="" coords="267,397,450,439"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Controller_1_1Admin_1_1ModuleController.html" title=" " alt="" coords="267,463,450,504"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Controller_1_1Admin_1_1PropertyController.html" title=" " alt="" coords="267,528,450,569"/>
+<area shape="rect" id="node11" href="$classOmeka_1_1Controller_1_1Admin_1_1QueryController.html" title=" " alt="" coords="267,593,450,635"/>
+<area shape="rect" id="node12" href="$classOmeka_1_1Controller_1_1Admin_1_1ResourceClassController.html" title=" " alt="" coords="266,659,451,700"/>
+<area shape="rect" id="node13" href="$classOmeka_1_1Controller_1_1Admin_1_1ResourceTemplateController.html" title=" " alt="" coords="253,724,464,765"/>
+<area shape="rect" id="node14" href="$classOmeka_1_1Controller_1_1Admin_1_1SettingController.html" title=" " alt="" coords="267,789,450,831"/>
+<area shape="rect" id="node15" href="$classOmeka_1_1Controller_1_1Admin_1_1SystemInfoController.html" title=" " alt="" coords="267,855,450,896"/>
+<area shape="rect" id="node16" href="$classOmeka_1_1Controller_1_1Admin_1_1UserController.html" title=" " alt="" coords="267,920,450,961"/>
+<area shape="rect" id="node17" href="$classOmeka_1_1Controller_1_1Admin_1_1VocabularyController.html" title=" " alt="" coords="267,985,450,1027"/>
+<area shape="rect" id="node18" href="$classOmeka_1_1Controller_1_1IiifViewerController.html" title=" " alt="" coords="257,1051,460,1092"/>
+<area shape="rect" id="node19" href="$classOmeka_1_1Controller_1_1IndexController.html" title=" " alt="" coords="239,1117,479,1143"/>
+<area shape="rect" id="node20" href="$classOmeka_1_1Controller_1_1InstallController.html" title=" " alt="" coords="269,1168,449,1209"/>
+<area shape="rect" id="node21" href="$classOmeka_1_1Controller_1_1LoginController.html" title=" " alt="" coords="239,1234,478,1261"/>
+<area shape="rect" id="node22" href="$classOmeka_1_1Controller_1_1MaintenanceController.html" title=" " alt="" coords="247,1285,471,1327"/>
+<area shape="rect" id="node23" href="$classOmeka_1_1Controller_1_1MigrateController.html" title=" " alt="" coords="263,1351,454,1392"/>
+<area shape="rect" id="node24" href="$classOmeka_1_1Controller_1_1SearchController.html" title=" " alt="" coords="235,1417,483,1443"/>
+<area shape="rect" id="node25" href="$classOmeka_1_1Controller_1_1Site_1_1CrossSiteSearchController.html" title=" " alt="" coords="261,1468,456,1509"/>
+<area shape="rect" id="node26" href="$classOmeka_1_1Controller_1_1Site_1_1IndexController.html" title=" " alt="" coords="276,1533,441,1575"/>
+<area shape="rect" id="node27" href="$classOmeka_1_1Controller_1_1Site_1_1ItemController.html" title=" " alt="" coords="276,1599,441,1640"/>
+<area shape="rect" id="node28" href="$classOmeka_1_1Controller_1_1Site_1_1ItemSetController.html" title=" " alt="" coords="276,1664,441,1705"/>
+<area shape="rect" id="node29" href="$classOmeka_1_1Controller_1_1Site_1_1MediaController.html" title=" " alt="" coords="276,1729,441,1771"/>
+<area shape="rect" id="node30" href="$classOmeka_1_1Controller_1_1Site_1_1PageController.html" title=" " alt="" coords="276,1795,441,1836"/>
+<area shape="rect" id="node31" href="$classOmeka_1_1Controller_1_1SiteAdmin_1_1IndexController.html" title=" " alt="" coords="255,1860,462,1901"/>
+<area shape="rect" id="node32" href="$classOmeka_1_1Controller_1_1SiteAdmin_1_1PageController.html" title=" " alt="" coords="255,1925,462,1967"/>
+</map>

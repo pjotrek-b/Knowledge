@@ -1,0 +1,5 @@
+<map id="Omeka\Media\FileRenderer\ThumbnailRenderer" name="Omeka\Media\FileRenderer\ThumbnailRenderer">
+<area shape="rect" id="node1" title=" " alt="" coords="5,184,204,225"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Media_1_1FileRenderer_1_1AbstractRenderer.html" title=" " alt="" coords="5,95,204,136"/>
+<area shape="rect" id="node3" href="$interfaceOmeka_1_1Media_1_1FileRenderer_1_1RendererInterface.html" title=" " alt="" coords="5,5,204,47"/>
+</map>

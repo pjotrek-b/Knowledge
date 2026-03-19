@@ -1,0 +1,12 @@
+<map id="Omeka\Form\Element\SelectSortInterface" name="Omeka\Form\Element\SelectSortInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,235,168,276"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Form_1_1Element_1_1AbstractGroupByOwnerSelect.html" title=" " alt="" coords="230,104,449,145"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Form_1_1Element_1_1AbstractVocabularyMemberSelect.html" title=" " alt="" coords="216,201,463,243"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Form_1_1Element_1_1ResourceSelect.html" title=" " alt="" coords="258,267,421,308"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Form_1_1Element_1_1UserSelect.html" title=" " alt="" coords="258,332,421,373"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Form_1_1Element_1_1ItemSetSelect.html" title=" " alt="" coords="523,5,685,47"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Form_1_1Element_1_1ResourceTemplateSelect.html" title=" " alt="" coords="511,71,697,112"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Form_1_1Element_1_1SiteSelect.html" title=" " alt="" coords="523,136,685,177"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Form_1_1Element_1_1PropertySelect.html" title=" " alt="" coords="523,201,685,243"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Form_1_1Element_1_1ResourceClassSelect.html" title=" " alt="" coords="523,267,685,308"/>
+</map>

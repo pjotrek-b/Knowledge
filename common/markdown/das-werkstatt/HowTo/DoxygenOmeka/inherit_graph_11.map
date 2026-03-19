@@ -1,0 +1,14 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interfaceOmeka_1_1DataType_1_1ConversionTargetInterface.html" title=" " alt="" coords="330,57,541,98"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1DataType_1_1Literal.html" title=" " alt="" coords="619,5,797,32"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1DataType_1_1Resource_1_1AbstractResource.html" title=" " alt="" coords="609,209,807,250"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1DataType_1_1Uri.html" title=" " alt="" coords="630,56,786,83"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1DataType_1_1Resource_1_1All.html" title=" " alt="" coords="861,224,1079,251"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1DataType_1_1Resource_1_1Item.html" title=" " alt="" coords="855,275,1085,301"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1DataType_1_1Resource_1_1Itemset.html" title=" " alt="" coords="871,93,1069,134"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1DataType_1_1Resource_1_1Media.html" title=" " alt="" coords="871,158,1069,199"/>
+<area shape="rect" id="node9" href="$interfaceOmeka_1_1DataType_1_1DataTypeInterface.html" title=" " alt="" coords="5,111,261,137"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1DataType_1_1AbstractDataType.html" title=" " alt="" coords="309,5,561,32"/>
+<area shape="rect" id="node11" href="$interfaceOmeka_1_1DataType_1_1DataTypeWithOptionsInterface.html" title=" " alt="" coords="321,198,549,239"/>
+<area shape="rect" id="node12" href="$interfaceOmeka_1_1DataType_1_1ValueAnnotatingInterface.html" title=" " alt="" coords="313,122,557,163"/>
+</map>

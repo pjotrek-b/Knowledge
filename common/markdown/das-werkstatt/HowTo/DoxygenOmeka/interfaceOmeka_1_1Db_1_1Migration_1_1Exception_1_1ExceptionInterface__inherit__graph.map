@@ -1,0 +1,5 @@
+<map id="Omeka\Db\Migration\Exception\ExceptionInterface" name="Omeka\Db\Migration\Exception\ExceptionInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,43,221,84"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Db_1_1Migration_1_1Exception_1_1ClassNotFoundException.html" title=" " alt="" coords="269,5,524,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Db_1_1Migration_1_1Exception_1_1DowngradeUnsupportedException.html" title=" " alt="" coords="271,71,522,127"/>
+</map>

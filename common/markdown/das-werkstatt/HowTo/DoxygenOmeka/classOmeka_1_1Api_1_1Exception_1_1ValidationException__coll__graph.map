@@ -1,0 +1,7 @@
+<map id="Omeka\Api\Exception\ValidationException" name="Omeka\Api\Exception\ValidationException">
+<area shape="rect" id="node1" title=" " alt="" coords="83,273,245,315"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Api_1_1Exception_1_1BadRequestException.html" title=" " alt="" coords="80,184,248,225"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Api_1_1Exception_1_1RuntimeException.html" title=" " alt="" coords="83,95,245,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,13,147,39"/>
+<area shape="rect" id="node5" href="$interfaceOmeka_1_1Api_1_1Exception_1_1ExceptionInterface.html" title=" " alt="" coords="171,5,333,47"/>
+</map>

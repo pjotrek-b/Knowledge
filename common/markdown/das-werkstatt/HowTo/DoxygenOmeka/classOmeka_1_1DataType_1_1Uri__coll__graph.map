@@ -1,0 +1,7 @@
+<map id="Omeka\DataType\Uri" name="Omeka\DataType\Uri">
+<area shape="rect" id="node1" title=" " alt="" coords="609,64,765,91"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1DataType_1_1AbstractDataType.html" title=" " alt="" coords="309,5,561,32"/>
+<area shape="rect" id="node3" href="$interfaceOmeka_1_1DataType_1_1DataTypeInterface.html" title=" " alt="" coords="5,5,261,32"/>
+<area shape="rect" id="node4" href="$interfaceOmeka_1_1DataType_1_1ValueAnnotatingInterface.html" title=" " alt="" coords="313,57,557,98"/>
+<area shape="rect" id="node5" href="$interfaceOmeka_1_1DataType_1_1ConversionTargetInterface.html" title=" " alt="" coords="330,122,541,163"/>
+</map>

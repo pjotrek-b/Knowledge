@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interfaceOmeka_1_1Media_1_1Ingester_1_1IngesterInterface.html" title=" " alt="" coords="5,188,175,229"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Media_1_1Ingester_1_1Fallback.html" title=" " alt="" coords="235,5,404,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Media_1_1Ingester_1_1IIIF.html" title=" " alt="" coords="223,71,416,98"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Media_1_1Ingester_1_1IiifPresentation.html" title=" " alt="" coords="235,123,404,164"/>
+<area shape="rect" id="node5" href="$interfaceOmeka_1_1Media_1_1Ingester_1_1MutableIngesterInterface.html" title=" " alt="" coords="224,188,415,229"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Media_1_1Ingester_1_1Upload.html" title=" " alt="" coords="235,253,404,295"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Media_1_1Ingester_1_1Url.html" title=" " alt="" coords="223,319,415,346"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Media_1_1Ingester_1_1Youtube.html" title=" " alt="" coords="235,371,404,412"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Media_1_1Ingester_1_1Html.html" title=" " alt="" coords="464,166,669,193"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Media_1_1Ingester_1_1OEmbed.html" title=" " alt="" coords="482,217,651,259"/>
+</map>

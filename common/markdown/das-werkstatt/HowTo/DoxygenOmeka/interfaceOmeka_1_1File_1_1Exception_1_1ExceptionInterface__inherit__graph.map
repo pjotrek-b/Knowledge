@@ -1,0 +1,8 @@
+<map id="Omeka\File\Exception\ExceptionInterface" name="Omeka\File\Exception\ExceptionInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,168,112"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1File_1_1Exception_1_1ConfigException.html" title=" " alt="" coords="234,5,397,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1File_1_1Exception_1_1InvalidArgumentException.html" title=" " alt="" coords="216,71,415,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1File_1_1Exception_1_1RuntimeException.html" title=" " alt="" coords="234,136,397,177"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1File_1_1Exception_1_1CannotCreateThumbnailException.html" title=" " alt="" coords="463,103,711,144"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1File_1_1Exception_1_1InvalidThumbnailerException.html" title=" " alt="" coords="479,168,695,209"/>
+</map>

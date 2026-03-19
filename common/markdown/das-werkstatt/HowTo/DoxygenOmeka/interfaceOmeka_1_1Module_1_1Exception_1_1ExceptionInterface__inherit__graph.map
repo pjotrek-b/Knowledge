@@ -1,0 +1,7 @@
+<map id="Omeka\Module\Exception\ExceptionInterface" name="Omeka\Module\Exception\ExceptionInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,193,145"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Module_1_1Exception_1_1ModuleCannotInstallException.html" title=" " alt="" coords="247,5,471,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Module_1_1Exception_1_1ModuleNotInDatabaseException.html" title=" " alt="" coords="241,71,476,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Module_1_1Exception_1_1ModuleNotRegisteredException.html" title=" " alt="" coords="243,136,474,177"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Module_1_1Exception_1_1ModuleStateInvalidException.html" title=" " alt="" coords="251,201,467,243"/>
+</map>

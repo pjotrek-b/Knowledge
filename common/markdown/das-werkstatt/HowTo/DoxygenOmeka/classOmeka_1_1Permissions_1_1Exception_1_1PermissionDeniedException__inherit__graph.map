@@ -1,0 +1,8 @@
+<map id="Omeka\Permissions\Exception\PermissionDeniedException" name="Omeka\Permissions\Exception\PermissionDeniedException">
+<area shape="rect" id="node1" title=" " alt="" coords="539,39,757,80"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Api_1_1Exception_1_1PermissionDeniedException.html" title=" " alt="" coords="805,5,1013,47"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Mvc_1_1Exception_1_1PermissionDeniedException.html" title=" " alt="" coords="805,71,1013,112"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Permissions_1_1Exception_1_1RuntimeException.html" title=" " alt="" coords="272,39,491,80"/>
+<area shape="rect" id="node3" title=" " alt="" coords="44,17,185,43"/>
+<area shape="rect" id="node4" href="$interfaceOmeka_1_1Permissions_1_1Exception_1_1ExceptionInterface.html" title=" " alt="" coords="5,68,224,109"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Omeka\Api\Adapter\ResourceClassAdapter" name="Omeka\Api\Adapter\ResourceClassAdapter">
+<area shape="rect" id="node1" title=" " alt="" coords="236,348,448,389"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Api_1_1Adapter_1_1AbstractEntityAdapter.html" title=" " alt="" coords="239,259,445,300"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Api_1_1Adapter_1_1AbstractAdapter.html" title=" " alt="" coords="128,169,335,211"/>
+<area shape="rect" id="node4" href="$interfaceOmeka_1_1Api_1_1Adapter_1_1AdapterInterface.html" title=" " alt="" coords="130,80,333,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,5,220,32"/>
+<area shape="rect" id="node6" href="$interfaceOmeka_1_1Api_1_1ResourceInterface.html" title=" " alt="" coords="244,5,459,32"/>
+<area shape="rect" id="node7" href="$interfaceOmeka_1_1Api_1_1Adapter_1_1EntityAdapterInterface.html" title=" " alt="" coords="359,169,549,211"/>
+</map>

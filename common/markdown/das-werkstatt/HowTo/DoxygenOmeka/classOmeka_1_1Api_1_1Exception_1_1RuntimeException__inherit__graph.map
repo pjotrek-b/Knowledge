@@ -1,0 +1,10 @@
+<map id="Omeka\Api\Exception\RuntimeException" name="Omeka\Api\Exception\RuntimeException">
+<area shape="rect" id="node1" title=" " alt="" coords="215,104,376,145"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Api_1_1Exception_1_1BadRequestException.html" title=" " alt="" coords="429,71,597,112"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Api_1_1Exception_1_1BadResponseException.html" title=" " alt="" coords="424,136,603,177"/>
+<area shape="rect" id="node2" title=" " alt="" coords="15,82,157,109"/>
+<area shape="rect" id="node3" href="$interfaceOmeka_1_1Api_1_1Exception_1_1ExceptionInterface.html" title=" " alt="" coords="5,133,167,175"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Api_1_1Exception_1_1NotFoundException.html" title=" " alt="" coords="702,5,863,47"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Api_1_1Exception_1_1OperationNotImplementedException.html" title=" " alt="" coords="651,71,915,112"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Api_1_1Exception_1_1ValidationException.html" title=" " alt="" coords="702,136,863,177"/>
+</map>

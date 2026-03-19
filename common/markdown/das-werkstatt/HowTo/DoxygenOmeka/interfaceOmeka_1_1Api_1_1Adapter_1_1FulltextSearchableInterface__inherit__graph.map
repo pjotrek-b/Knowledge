@@ -1,0 +1,10 @@
+<map id="Omeka\Api\Adapter\FulltextSearchableInterface" name="Omeka\Api\Adapter\FulltextSearchableInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,149,207,190"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Api_1_1Adapter_1_1AbstractResourceEntityAdapter.html" title=" " alt="" coords="255,115,462,157"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Api_1_1Adapter_1_1SitePageAdapter.html" title=" " alt="" coords="255,181,463,222"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Api_1_1Adapter_1_1ItemAdapter.html" title=" " alt="" coords="523,5,757,32"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Api_1_1Adapter_1_1ItemSetAdapter.html" title=" " alt="" coords="539,57,741,98"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Api_1_1Adapter_1_1MediaAdapter.html" title=" " alt="" coords="519,123,761,149"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Api_1_1Adapter_1_1ResourceAdapter.html" title=" " alt="" coords="534,174,746,215"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Api_1_1Adapter_1_1ValueAnnotationAdapter.html" title=" " alt="" coords="511,239,769,281"/>
+</map>

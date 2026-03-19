@@ -1,0 +1,9 @@
+<map id="Omeka\Settings\AbstractSettings" name="Omeka\Settings\AbstractSettings">
+<area shape="rect" id="node1" title=" " alt="" coords="220,80,456,107"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Settings_1_1AbstractTargetSettings.html" title=" " alt="" coords="113,155,336,196"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Settings_1_1Settings.html" title=" " alt="" coords="360,162,543,189"/>
+<area shape="rect" id="node2" href="$interfaceOmeka_1_1Settings_1_1SettingsInterface.html" title=" " alt="" coords="93,5,333,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="357,5,572,32"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Settings_1_1SiteSettings.html" title=" " alt="" coords="5,244,212,271"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Settings_1_1UserSettings.html" title=" " alt="" coords="236,244,448,271"/>
+</map>

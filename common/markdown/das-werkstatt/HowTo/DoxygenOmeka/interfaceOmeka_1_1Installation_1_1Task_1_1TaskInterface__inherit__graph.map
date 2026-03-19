@@ -1,0 +1,13 @@
+<map id="Omeka\Installation\Task\TaskInterface" name="Omeka\Installation\Task\TaskInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,300,152,341"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Installation_1_1Task_1_1AddDefaultSettingsTask.html" title=" " alt="" coords="222,5,437,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Installation_1_1Task_1_1CheckDirPermissionsTask.html" title=" " alt="" coords="216,71,443,112"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1Installation_1_1Task_1_1CheckEnvironmentTask.html" title=" " alt="" coords="224,136,435,177"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1Installation_1_1Task_1_1ClearCacheTask.html" title=" " alt="" coords="248,201,411,243"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Installation_1_1Task_1_1CreateFirstUserTask.html" title=" " alt="" coords="235,267,424,308"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Installation_1_1Task_1_1DestroySessionTask.html" title=" " alt="" coords="235,332,424,373"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Installation_1_1Task_1_1InstallDefaultTemplatesTask.html" title=" " alt="" coords="208,397,451,439"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Installation_1_1Task_1_1InstallDefaultVocabulariesTask.html" title=" " alt="" coords="200,463,459,504"/>
+<area shape="rect" id="node10" href="$classOmeka_1_1Installation_1_1Task_1_1InstallSchemaTask.html" title=" " alt="" coords="239,528,419,569"/>
+<area shape="rect" id="node11" href="$classOmeka_1_1Installation_1_1Task_1_1RecordMigrationsTask.html" title=" " alt="" coords="228,593,431,635"/>
+</map>

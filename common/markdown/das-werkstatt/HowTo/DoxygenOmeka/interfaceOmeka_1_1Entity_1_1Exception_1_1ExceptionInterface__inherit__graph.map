@@ -1,0 +1,5 @@
+<map id="Omeka\Entity\Exception\ExceptionInterface" name="Omeka\Entity\Exception\ExceptionInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,184,80"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1Entity_1_1Exception_1_1InvalidArgumentException.html" title=" " alt="" coords="232,5,431,47"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Entity_1_1Exception_1_1RuntimeException.html" title=" " alt="" coords="242,71,421,112"/>
+</map>

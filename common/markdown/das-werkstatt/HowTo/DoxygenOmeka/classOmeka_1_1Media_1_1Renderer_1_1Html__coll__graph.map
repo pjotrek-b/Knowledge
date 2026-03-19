@@ -1,0 +1,5 @@
+<map id="Omeka\Media\Renderer\Html" name="Omeka\Media\Renderer\Html">
+<area shape="rect" id="node1" title=" " alt="" coords="259,46,469,73"/>
+<area shape="rect" id="node2" href="$interfaceOmeka_1_1Media_1_1Renderer_1_1RendererInterface.html" title=" " alt="" coords="21,5,195,47"/>
+<area shape="rect" id="node3" href="$interfaceOmeka_1_1Media_1_1Renderer_1_1FulltextSearchableInterface.html" title=" " alt="" coords="5,71,211,112"/>
+</map>

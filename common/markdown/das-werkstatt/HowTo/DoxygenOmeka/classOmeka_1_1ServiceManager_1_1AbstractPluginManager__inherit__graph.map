@@ -1,0 +1,11 @@
+<map id="Omeka\ServiceManager\AbstractPluginManager" name="Omeka\ServiceManager\AbstractPluginManager">
+<area shape="rect" id="node1" title=" " alt="" coords="260,158,437,199"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1Api_1_1Adapter_1_1Manager.html" title=" " alt="" coords="495,5,704,32"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1ColumnType_1_1Manager.html" title=" " alt="" coords="493,56,706,83"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1DataType_1_1Manager.html" title=" " alt="" coords="502,107,697,133"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1Media_1_1Ingester_1_1Manager.html" title=" " alt="" coords="515,158,684,199"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1Site_1_1BlockLayout_1_1Manager.html" title=" " alt="" coords="509,223,690,265"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1Site_1_1Navigation_1_1Link_1_1Manager.html" title=" " alt="" coords="513,289,685,330"/>
+<area shape="rect" id="node9" href="$classOmeka_1_1Site_1_1ResourcePageBlockLayout_1_1Manager.html" title=" " alt="" coords="485,354,713,395"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,165,212,192"/>
+</map>

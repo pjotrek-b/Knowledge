@@ -1,0 +1,10 @@
+<map id="Omeka\DataType\ConversionTargetInterface" name="Omeka\DataType\ConversionTargetInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="5,78,216,119"/>
+<area shape="rect" id="node2" href="$classOmeka_1_1DataType_1_1Literal.html" title=" " alt="" coords="273,27,452,53"/>
+<area shape="rect" id="node3" href="$classOmeka_1_1DataType_1_1Resource_1_1AbstractResource.html" title=" " alt="" coords="264,78,461,119"/>
+<area shape="rect" id="node8" href="$classOmeka_1_1DataType_1_1Uri.html" title=" " alt="" coords="285,144,441,171"/>
+<area shape="rect" id="node4" href="$classOmeka_1_1DataType_1_1Resource_1_1All.html" title=" " alt="" coords="515,5,734,32"/>
+<area shape="rect" id="node5" href="$classOmeka_1_1DataType_1_1Resource_1_1Item.html" title=" " alt="" coords="509,56,740,83"/>
+<area shape="rect" id="node6" href="$classOmeka_1_1DataType_1_1Resource_1_1Itemset.html" title=" " alt="" coords="526,107,723,149"/>
+<area shape="rect" id="node7" href="$classOmeka_1_1DataType_1_1Resource_1_1Media.html" title=" " alt="" coords="526,173,723,214"/>
+</map>
