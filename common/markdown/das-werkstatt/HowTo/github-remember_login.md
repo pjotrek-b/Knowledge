@@ -2,9 +2,12 @@
 
 I use Virtual Machines (VMs) or containers (LXC) a lot as development environments. Some of them are my own, some of them are run by my clients.
 
-Therefore, I don't like to have "my main" SSH keys on those machines.
+Therefore, I do NOT like to have "my main" SSH keys on those machines. ;)
 
-So I prefer to do the following:
+
+## Variant 1: temporary SSH keys
+
+This is my preferred working method:
 
   1. Generate throw-away ssh keys on the VMs
   2. Register those public-keys on Github (or other remote git-development platform)
@@ -72,6 +75,17 @@ Here's an example of a `my_project/.git/config`, pointing to the SSH config (and
 
 NOTE: the remote url says "git@github" (instead of "github.com"):
 This only works /if/ the SSH config "github" is working properly, so you won't accidentially connect without a key/config.
+
+
+## Variant 2: Let git cache credentials (no ssh-key)
+
+The following 2 commands will enable the credential cache, and set the time to keep logins to 10 hours:
+
+```
+# Credential cache with timeout in seconds (10h):
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=36000'
+```
 
 
 Enjoy!
