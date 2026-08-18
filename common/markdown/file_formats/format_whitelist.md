@@ -24,6 +24,7 @@ slideNumber: true
 > Convert source data-format to one that is "more suitable".
 
 <aside class="notes">
+
 **"More suitable:"**
 
   * preserves better.
@@ -101,11 +102,14 @@ Convert anything to a better suitable format/codec that is not whitelisted.
   * Formats that can be considered to "preserve well".
   * Formats that are easier to handle:  
     Over time, and in different environments.
+  * Formats for which a proper open source (FOSS) implementation is available.
 
 <small>
+
 **Examples:**  
 Containers: AVI, MOV, MKV, MP4, MXF  
 Codecs: DV, MPEG-1/2/4/\*, FFV1
+
 </small>
 
 
@@ -123,7 +127,7 @@ More details (and discussion) in a later slide.
   * Technical specification available?
   * Without artificial restrictions?
   * Open Standard?
-  * <span class="fragment highlight-green">FOSS implementation available?</span>
+  * <span class="fragment highlight-green">Open source (FOSS) implementation available?</span>
   * Widely adopted?
   * Minimalistic Complexity?
 
@@ -135,11 +139,12 @@ is educated guesswork and a bit of luck.
 No, just using what "the others" or "the big ones" are using, may not be the
 best choice for other collections/institutions.
 
-**FOSS implementation available?**
+**FOSS implementation available?** 
 This is a special one. If this is given, almost all other considerations become
-negligible due to the fact that having the source code under a FOSS license,
-makes it practically impossible to keep you from accessing/converting these
-files under any (yet-unknown) future conditions.
+negligible due to the fact that having the source code under a "Free and Open
+Source Software" (FOSS) license, makes it practically impossible to prevent you
+from accessing/converting these files under any (yet-unknown) future
+conditions.
 
 A reliable FOSS encoder/decoder (=practice) even beats paper-specifications
 (=theory), since there is a long way between theory and practice ;)
