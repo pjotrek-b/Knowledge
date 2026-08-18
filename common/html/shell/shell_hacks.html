@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Useful Shell Hacks (for preservation)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Useful Shell Hacks<br />
+(for preservation)</h1>
+  <p class="author"><div class="line-block">Peter
+Bubestinger-Steindl<br />
+<code>( email (at) ArkThis com )</code></div></p>
+  <p class="date">2024-11</p>
+</section>
+
+<section class="slide level1">
+
+<!-- ----------------------------------------- -->
+</section>
+<section id="identifying-file-formatstypes" class="slide level1">
+<h1>Identifying file formats/types</h1>
+<p>General Syntax:</p>
+<pre><code>$ file FILES</code></pre>
+<p>Example:</p>
+<pre><code>$ file *</code></pre>
+<p>Example: Show MIME types of <code>*.*</code>:</p>
+<pre><code>$ file --mime *.*</code></pre>
+<!-- ----------------------------------------- -->
+</section>
+<section id="fix-file-number-sequence" class="slide level1">
+<h1>Fix file number sequence</h1>
+<p>Useful for film-scans 😄️</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">i</span><span class="op">=</span>1                                 <span class="co"># start counter at 1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> FILE <span class="kw">in</span> <span class="pp">*</span>.dpx<span class="kw">;</span> <span class="cf">do</span>               <span class="co"># loop over all DPX files</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">OUT</span><span class="op">=</span><span class="va">$(</span><span class="bu">printf</span> <span class="st">&quot;reelX_%07d.dpx&quot;</span> <span class="va">$i)</span> <span class="co"># Define the OUTput filename pattern</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$FILE</span><span class="st"> : </span><span class="va">$OUT</span><span class="st">&quot;</span>               <span class="co"># Show the new OUTput filename</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mv</span> <span class="va">$FILE</span> <span class="va">$OUT</span>                     <span class="co"># Move (=rename) $FILE to $OUT</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">i</span><span class="op">=</span><span class="va">$((i</span><span class="op">+</span><span class="dv">1</span><span class="va">))</span>                        <span class="co"># Increment counter +1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<aside class="notes">
+<p>I prefer to use “<a
+href="https://en.wikipedia.org/wiki/Symbolic_link">symbolic links</a>”
+instead of renaming the source files.</p>
+<p>So instead of <code>mv $FILE $OUT</code>:
+<code>ln -s $FILE $OUT</code>.</p>
+This allows to keeping the original filename structure, while getting a
+“thin copy” with your changes.
+</aside>
+<!--
+# Create sequence files (out of thin air)
+
+```{.bash}
+for i in $(seq 10); do
+  touch $(printf "image_%05d.png" "$i")
+done
+```
+-->
+<!-- ----------------------------------------- -->
+</section>
+<section id="save-any-command-output-to-a-file" class="slide level1">
+<h1>Save any command output to a file?</h1>
+<blockquote>
+<p>Use <code>&gt;</code> <small>(overwrite)</small> or
+<code>&gt;&gt;</code> <small>(append)</small></p>
+</blockquote>
+<ul>
+<li><p>General:<br />
+<code>$ whatever_command &gt; OUTPUT_TO_FILE</code></p></li>
+<li><p>Example:<br />
+<code>$ ls *.* &gt; list.txt</code></p></li>
+<li><p>Append:<br />
+<code>$ ls *.* &gt;&gt; list.txt</code></p></li>
+</ul>
+<!-- ----------------------------------------- -->
+</section>
+<section id="create-a-filefolder-listing" class="slide level1">
+<h1>Create a file/folder listing:</h1>
+<blockquote>
+<p>Get path/filename/size/etc information on any file/folder branch of
+any digital collection.</p>
+</blockquote>
+<ol type="1">
+<li>As <strong>plain text</strong> file:
+<code>ls -laR &gt; listing.txt</code></li>
+<li>Or: <strong>CSV spreadsheet</strong> <small>(Comma Separated
+Value)</small></li>
+</ol>
+<!-- ----------------------------------------- -->
+</section>
+<section id="listing-as-a-csv" class="slide level1">
+<h1>Listing as a CSV</h1>
+<blockquote>
+<p>List all entries of the current folder tree in a CSV-compatible
+format: <small>(including subfolders)</small></p>
+</blockquote>
+<p><code>$ ls -laRQ --time-style=full-iso | tr -s ' '</code></p>
+<p><small></p>
+<ul>
+<li><code>-la</code>: detailed (long) listing of all (+hidden)
+entries.</li>
+<li><code>-R</code>: Recursive (traverse subfolders).</li>
+<li><code>-Q</code>: Quote entries (wrap file-/foldernames in ‘“’)</li>
+<li><code>tr -s ' '</code>: ‘squeeze’ double-spaces to a single
+one.</li>
+</ul>
+<p></small></p>
+</section>
+<section id="output-example" class="slide level1">
+<h1>Output example</h1>
+<figure>
+<img data-src="../../../images/shell/dirlist_csv.png"
+alt="folder listing as CSV output" />
+<figcaption aria-hidden="true">folder listing as CSV output</figcaption>
+</figure>
+<aside class="notes">
+<p>Here’s an excerpt csv-text copy to play with:</p>
+<pre><code>&quot;./av_prop&quot;:
+total 88
+drwxrwxr-x 2 pb pb 4096 2024-11-20 15:54:33.566710817 +0100 &quot;.&quot;
+drwxrwxr-x 12 pb pb 4096 2024-11-21 10:34:42.541595963 +0100 &quot;..&quot;
+-rw-rw-r-- 1 pb pb 7231 2024-11-20 15:54:33.562710814 +0100 &quot;av_compression_basics.md&quot;
+-rw-rw-r-- 1 pb pb 7449 2024-11-20 15:54:33.566710817 +0100 &quot;av_format_intro.md&quot;
+-rw-rw-r-- 1 pb pb 4399 2024-11-20 15:54:33.562710814 +0100 &quot;av_format_list.md&quot;
+-rw-rw-r-- 1 pb pb 10316 2024-11-20 15:54:33.562710814 +0100 &quot;av_prop_advanced.md&quot;
+-rw-rw-r-- 1 pb pb 8778 2024-11-20 15:54:33.566710817 +0100 &quot;av_prop_basics.md&quot;
+-rw-rw-r-- 1 pb pb 3371 2024-11-20 15:54:33.562710814 +0100 &quot;av_prop_extra.md&quot;
+-rw-rw-r-- 1 pb pb 1158 2024-11-20 15:54:33.566710817 +0100 &quot;Makefile&quot;
+-rw-rw-r-- 1 pb pb 226 2024-11-20 15:54:33.566710817 +0100 &quot;README&quot;
+-rw-rw-r-- 1 pb pb 8463 2024-11-20 15:54:33.566710817 +0100 &quot;xav_format_choice.md&quot;
+-rw-rw-r-- 1 pb pb 4143 2024-11-20 15:54:33.562710814 +0100 &quot;xav_prop_naming.md&quot;</code></pre>
+</aside>
+<!-- ----------------------------------------- -->
+</section>
+<section id="markdown" class="slide level1">
+<h1>Markdown!</h1>
+<ol type="1">
+<li>Write a plain text file</li>
+<li>Format the text like ‘on an ancient typewriter’ <small>(headline,
+bold, italic, etc)</small></li>
+<li>Save it as “.md”</li>
+<li>Then:<br />
+<code>pandoc text.md -o text.pdf</code> <small>(to convert to
+PDF)</small></li>
+</ol>
+<aside class="notes">
+Of course you need a tool which can convert from <a
+href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> to PDF. Such
+as <a href="https://pandoc.org/">pandoc</a>.
+</aside>
+<!-- ----------------------------------------- -->
+</section>
+<section id="download-stuff-from-a-list-txt" class="slide level1">
+<h1>Download stuff from a list (txt)</h1>
+<ul>
+<li>loop “for-each line”</li>
+<li>get link</li>
+<li>do stuff</li>
+</ul>
+<!-- ----------------------------------------- -->
+</section>
+<section id="loop-for-each-line" class="slide level1">
+<h1>Loop “for-each line”</h1>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">LINE</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$LINE</span><span class="st">&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> mylist.txt</span></code></pre></div>
+<!-- ----------------------------------------- -->
+</section>
+<section id="splitting-by-a-character" class="slide level1">
+<h1>Splitting by a character</h1>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">LINE</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">URL</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$LINE</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">&#39; &#39;</span> <span class="at">-f</span> 1<span class="va">)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">yt-dlp</span> <span class="va">$URL</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> <span class="st">&quot;</span><span class="va">$LIST</span><span class="st">&quot;</span></span></code></pre></div>
+<!-- ----------------------------------------- -->
+</section>
+<section id="checksums-hashcodes" class="slide level1">
+<h1>Checksums / Hashcodes</h1>
+<ul>
+<li><p>Create (one file):<br />
+<code>$ md5sum FILENAME &gt; manifest.md5</code></p></li>
+<li><p>Create (by mask/selection):<br />
+<code>$ md5sum *.* &gt; manifest.md5</code></p></li>
+<li><p>Check by manifest:<br />
+<code>$ md5sum -c manifest.md5</code></p></li>
+</ul>
+<!-- ----------------------------------------- -->
+</section>
+<section id="get-all-video-urls-in-a-yt-playlist" class="slide level1">
+<h1>Get all video-URLs in a YT playlist</h1>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-dlp</span> <span class="at">--flat-playlist</span> <span class="va">$YT_PLAYLIST_URL</span> <span class="at">-j</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="at">-r</span> <span class="st">&#39;.url, .title&#39;</span></span></code></pre></div>
+<p><small></p>
+<ul>
+<li><code>yt-dlp</code>: <a
+href="https://github.com/yt-dlp/yt-dlp">sophisticated video download
+tool (CLI)</a></li>
+<li><code>--flat-playlist</code>: Do not extract the videos of a
+playlist</li>
+<li><code>-j</code>: Quiet, but print JSON information for each url</li>
+<li><code>jq</code>: JSON CLI parser</li>
+<li><code>-r</code>: raw output (no quotes)</li>
+<li><code>.url, .title</code>: JSON nodes to filter/output</li>
+</ul>
+<p></small></p>
+<aside class="notes">
+Example playlist: <a
+href="https://www.youtube.com/playlist?list=PLE5OQI8tcDyMEVo70zGl4b61apH_7qG10">64kB
+Demoscene music-videos by ‘Conspiracy’</a>
+</aside>
+<!-- ----------------------------------------- -->
+</section>
+<section id="curious-for-more" class="slide level1">
+<h1>Curious for /more/? 😎️</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

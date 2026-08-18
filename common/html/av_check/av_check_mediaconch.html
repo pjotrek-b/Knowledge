@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Checking AV Properties - with MediaConch</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Checking AV Properties - with MediaConch</h1>
+  <p class="author"><div class="line-block">Peter
+Bubestinger-Steindl<br />
+(email (at) ArkThis com)</div></p>
+  <p class="date">December 2020</p>
+</section>
+
+<section id="mediaconch" class="slide level1">
+<h1>MediaConch</h1>
+<blockquote>
+<p>Conformance- and policy-checker for media files.</p>
+</blockquote>
+<ul>
+<li>Check if container/codecs meet specs.</li>
+<li>Policy-check for numerous media formats.</li>
+<li>Great for ingest of ‘born-digital’.</li>
+<li>etc.</li>
+</ul>
+<p><small> Website: <a
+href="https://mediaarea.net/MediaConch/">mediaarea.net/MediaConch/</a>
+</small></p>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<figure>
+<img data-src="../../../images/tools/mediaconch/mediaconch-checker.png"
+style="width:90.0%" alt="Checker View" />
+<figcaption aria-hidden="true">Checker View</figcaption>
+</figure>
+</section>
+<section id="section-1" class="slide level1">
+<h1></h1>
+<figure>
+<img data-src="../../../images/tools/mediaconch/mediaconch-policies.png"
+style="width:90.0%" alt="Policy list" />
+<figcaption aria-hidden="true">Policy list</figcaption>
+</figure>
+</section>
+<section id="section-2" class="slide level1">
+<h1></h1>
+<figure>
+<img
+data-src="../../../images/tools/mediaconch/mediaconch-policies2.png"
+style="width:90.0%" alt="Policy rules" />
+<figcaption aria-hidden="true">Policy rules</figcaption>
+</figure>
+</section>
+<section id="implementation-checks" class="slide level1">
+<h1>Implementation Checks</h1>
+<p>Currently implemented:</p>
+<ul>
+<li>Container Matroska (.mkv)<br />
+<small>(any codecs)</small></li>
+<li>Video FFV1<br />
+<small>(any container)</small></li>
+<li>Audio LPCM <small>(any container)</small></li>
+</ul>
+<p><small> Additional formats implementable on demand. </small></p>
+</section>
+<section id="policy-checks" class="slide level1">
+<h1>Policy Checks</h1>
+<blockquote>
+<p>Defined rule sets (aka “a policy”) for selected technical
+properties</p>
+</blockquote>
+</section>
+<section id="policy-checks-1" class="slide level1">
+<h1>Policy Checks</h1>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Resolution (image, samplerate)</li>
+<li>Format/codec</li>
+<li>Framerate (fps)</li>
+<li>Bitrate</li>
+<li>…</li>
+</ul>
+</section>
+<section id="policies-and-rules" class="slide level1">
+<h1>Policies and Rules</h1>
+<ul>
+<li>Policy = A branch</li>
+<li>Rule = A leaf</li>
+<li>Nested policies + rules?<br />
+A tree!</li>
+</ul>
+</section>
+<section id="policies-and-rules-1" class="slide level1">
+<h1>Policies and Rules</h1>
+<p>Policy types:</p>
+<ul>
+<li><strong>AND</strong> = <em>all</em> must match</li>
+<li><strong>OR</strong> = at least one match</li>
+</ul>
+</section>
+<section id="exercise-1" class="slide level1">
+<h1>Exercise 1</h1>
+<p>Create a policy matching:</p>
+<ul>
+<li>PAL SD resolution</li>
+<li>PAL framerate</li>
+</ul>
+</section>
+<section id="exercise-2" class="slide level1">
+<h1>Exercise 2</h1>
+<p>Create a policy from existing file.</p>
+<p>Which rules to keep?</p>
+</section>
+<section id="popular-use-cases" class="slide level1">
+<h1>Popular use cases</h1>
+<ul>
+<li>Ingest of born digital “Banana boxes”</li>
+<li>Check before “move to archive”</li>
+<li>3rd party digitization</li>
+</ul>
+</section>
+<section id="comments" class="slide level1">
+<h1>Comments?</h1>
+<h2 id="questions">Questions?</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: 6,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

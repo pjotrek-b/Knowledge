@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Peter Bubestinger-Steindl (email (at) ArkThis com)">
+  <title>FFmpeg - Swiss army knife for AV cross conversion</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">FFmpeg - Swiss army knife for AV cross
+conversion</h1>
+  <p class="author">Peter Bubestinger-Steindl<br />
+<code>(email (at) ArkThis com)</code></p>
+  <p class="institute">ArkThis AV-RD</p>
+</section>
+
+<section id="ffmpeg-whatisthat" class="slide level1">
+<h1>FFmpeg? Whatisthat?</h1>
+<blockquote>
+<p>FFmpeg is a free and open-source software project consisting of a
+suite of libraries and programs for handling video, audio, and other
+multimedia files and streams.</p>
+</blockquote>
+<blockquote>
+<p>At its core is the command-line ffmpeg tool itself, designed for
+processing of video and audio files.</p>
+</blockquote>
+<p><cite> Source: <a
+href="https://en.wikipedia.org/wiki/FFmpeg">Wikipedia: FFmpeg</a>
+</cite></p>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<img data-src="../../../images/icons-logos/programs/ffmpeg_logo.svg"
+class="r-stretch" />
+<p>Some Basics…</p>
+</section>
+<section id="where-to-get-it-from" class="slide level1">
+<h1>Where to get it from?</h1>
+<blockquote>
+<p>…from an <a href="https://ffmpeg.org/download.html">Organic Farmer’s
+Market</a>?</p>
+</blockquote>
+<img data-src="../../../images/open_source/farming/homestead.jpg"
+class="r-stretch" />
+<aside class="notes">
+<p>OpenSource ist wie Waren vom Bio-Bauernmarkt:</p>
+<p>Es ist nicht unbedingt einheitlich, nicht unbedingt gewohnt/schön
+verpackt, evtl. muss man handeln - und ab und zu kriegt man sogar was
+geschenkt. Außerdem stehen oft direkt die die die Waren gemacht haben am
+Stand: Die können einem oft Fragen sogar bis in’s kleinste Detail
+beantworten - und erklären wie’s gemacht wurde.</p>
+Wenn man sein Geld dann aber doch nur im Supermarkt lässt, wird’s den
+Bauernmarkt dann leider bald nicht mehr geben :(
+</aside>
+</section>
+<section id="kind-of.-but-rather" class="slide level1">
+<h1>Kind of. But rather…</h1>
+<ul>
+<li>Pre-compiled binaries for different OSs</li>
+<li>Source code</li>
+</ul>
+</section>
+<section id="digital-video-trinity" class="slide level1">
+<h1>Digital Video Trinity</h1>
+<p><img
+data-src="../../../images/tech-video/trinity/video_trinity2.png" /></p>
+</section>
+<section id="basic-syntax" class="slide level1">
+<h1>Basic Syntax</h1>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> INPUT_FILE <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>-c:v ... <span class="at">-b:v</span> ... [VIDEO PARAMS] <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>-c:a ... <span class="at">-b:a</span> ... [AUDIO PARAMS] <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>[MORE PARAMETERS] <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>[-f FORMAT] OUTPUT_FILE</span></code></pre></div>
+</section>
+<section id="ffmpeg-what-can-you-do" class="slide level1">
+<h1>FFmpeg, what can you do?</h1>
+<ul>
+<li><p>List Containers: <code>-formats</code></p>
+<pre class="smaller"><code>D. = Demuxing supported
+.E = Muxing supported</code></pre></li>
+<li><p>List Codecs:</p>
+<ul>
+<li><code>-codecs</code></li>
+<li><code>-encoder</code></li>
+<li><code>-decoder</code></li>
+</ul>
+<pre class="smaller"><code>Codecs:
+  D..... = Decoding supported
+  .E.... = Encoding supported
+  ..V... = Video codec
+  ..A... = Audio codec
+  ..S... = Subtitle codec
+  ...I.. = Intra frame-only codec
+  ....L. = Lossy compression
+  .....S = Lossless compression</code></pre></li>
+</ul>
+</section>
+<section id="rewrap" class="slide level1">
+<h1>Rewrap</h1>
+<p><code>ffmpeg -i INPUT_FILE -c copy -map 0 OUTPUT_FILE</code></p>
+</section>
+<section id="example-output" class="slide level1">
+<h1>Example output</h1>
+<img data-src="../../../images/tools/ffmpeg/ffmpeg-ffv1_to_dvd.png"
+class="r-stretch" />
+<aside class="notes">
+Explain default/common FFmpeg output.
+</aside>
+<!--
+
+# Check Result
+
+<p class="fragment" data-fragment-index="1">
+    <span class="fragment fade-out" data-fragment-index="2">
+    ` ffprobe -i INPUT_FILE `
+    </span>
+</p>
+
+<span class="fragment fade-in" data-fragment-index="2">
+<p>
+` ffprobe -i INPUT_FILE [-show_format] [-show_streams] [-of ...] [-pretty] `
+</p>
+
+
+<p>&nbsp;</p>
+<small>
+[FFprobe Dokumentation](https://ffmpeg.org/ffprobe.html)
+</small>
+</span>
+
+<aside class="notes">
+    Available output formats ("writers"):
+    compact,csv,flat,ini,json,xml
+</aside>
+
+-->
+</section>
+<section id="av-separately" class="slide level1">
+<h1>A/V separately</h1>
+<ul>
+<li>Video ‘None’: <code>-vn</code></li>
+<li>Audio ‘None’: <code>-an</code></li>
+</ul>
+</section>
+<section id="set-encoding-codec" class="slide level1">
+<h1>Set Encoding Codec</h1>
+<ul>
+<li>Video codec: <code>-c:v CODEC</code></li>
+<li>Audio codec: <code>-c:a CODEC</code></li>
+<li>Copy A + V as-is: <code>-c copy</code><br />
+(no transcoding at all! superfast.)</li>
+</ul>
+</section>
+<section id="transcode" class="slide level1">
+<h1>Transcode</h1>
+<p>FFV1, PCM 24 bits:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> INPUT_FILE <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>-c:v ffv1 <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>-c:a pcm_s24le <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE</span></code></pre></div>
+<p>FFV1, PCM 16 bits:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash fragment"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> INPUT_FILE <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>-c:v ffv1 <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>-c:a pcm_s16le <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE</span></code></pre></div>
+<aside class="notes">
+<p>CODEC enthält bei zB uncompressed PCM auch die
+Bittiefe/Endianess/Signed. Fragen wer weiß was “pcm_s16le” heißt.</p>
+Hier Endianess und “Signed/Unsigned” erklären (WAV 4GB anyone? ;))
+</aside>
+</section>
+<section id="video-1" class="slide level1">
+<h1>Video 1</h1>
+<ul>
+<li>Resolution: <code>-s WIDTHxHEIGHT</code> <small>(eg:
+720x576)</small></li>
+<li>Aspect Ratio (DAR): <code>-aspect X:Y</code></li>
+<li>Framerate: <code>-r FPS</code></li>
+</ul>
+<aside class="notes">
+<p>FPS: Can also be a fraction.</p>
+NTSC anyone? e.g: 30000 / 1001
+</aside>
+</section>
+<section id="change-the-image" class="slide level1">
+<h1>Change the “image”</h1>
+<ul>
+<li><p>Resize:<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -an -c:v ffv1 -vf scale=720:-1 OUTPUT_FILE</code></p></li>
+<li><p>Display Aspect Ratio:<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -an -c:v ffv1 -aspect 4:3 OUTPUT_FILE</code></p></li>
+<li><p>Framerate:<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -an -c:v ffv1 -r 30000/1001 OUTPUT_FILE</code></p></li>
+</ul>
+</section>
+<section id="video-2" class="slide level1">
+<h1>Video 2</h1>
+<blockquote>
+<p>Pixel color model / bit-depth:<br />
+<code>-pix_fmt FORMAT</code></p>
+</blockquote>
+<aside class="notes">
+pix_fmt: Enthält Farbmodell, Subsampling, Farbtiefe Siehe nächste Folie.
+</aside>
+</section>
+<section id="pix_fmt-pixel-format" class="slide level1">
+<h1>pix_fmt? = “pixel format”</h1>
+<ul>
+<li>yuv422p = <strong>YUV 4:2:2 planar</strong></li>
+<li>yuv420p</li>
+<li>–</li>
+<li>yuv422p<strong>10</strong>le (10bpc)</li>
+<li>yuv420p<strong>10</strong>le</li>
+<li>–</li>
+<li>yuv<strong>a</strong>422p (+alpha channel)</li>
+<li><span class="fragment">Keep-or-die:
+<code>-pix_fmt +</code></span></li>
+</ul>
+<p class="fragment">
+List: <code>-pix_fmts</code>
+</p>
+<aside class="notes">
+<p>Hier Endianess erklären!</p>
+btw: “+” wurde auf meine Anfrage hin eingeführt (25.Apr.2012):
+http://www.ffmpeg-archive.org/Preserve-pix-fmt-regardless-of-codec-td4586546.html
+</aside>
+</section>
+<section id="change-subsampling" class="slide level1">
+<h1>Change Subsampling</h1>
+<p><code>ffmpeg -i INPUT_FILE -c:v ffv1 -pix_fmt yuv422p OUTPUT_FILE</code></p>
+<p><small> (Watch out: changing sub-sampling <strong>requires
+re-encoding</strong>!) </small></p>
+</section>
+<section id="audio" class="slide level1">
+<h1>Audio</h1>
+<ul>
+<li>Audiocodec: <code>-c:a CODEC</code></li>
+<li>Samplerate: <code>-ar SAMPLERATE</code></li>
+<li>Channels: <code>-ac CHANNELS</code></li>
+<li>Bitrate: <code>-b:a BITRATE{k,M}</code></li>
+</ul>
+<aside class="notes">
+More on audio channel manipulation:
+https://trac.ffmpeg.org/wiki/AudioChannelManipulation
+</aside>
+</section>
+<section id="av-separately-1" class="slide level1">
+<h1>A/V separately</h1>
+<ul>
+<li><p>Only Image (keep encoding):<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -an -c:v copy OUTPUT_FILE</code></p></li>
+<li><p>Only Audio (keep encoding):<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -vn -c:v copy OUTPUT_FILE</code></p></li>
+<li><p>Only Audio (to <strong>MP3</strong>):<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -vn -c:a libmp3lame -b:a 128k out.mp3</code></p></li>
+<li><p>Only Audio (to <strong>FLAC</strong>):<br />
+<code
+class="small fragment">ffmpeg -i INPUT_FILE -vn -c:a flac out.flac</code></p></li>
+</ul>
+</section>
+<section id="video-3" class="slide level1">
+<h1>Video 3</h1>
+<ul>
+<li>Bitrate: <code>-b:v BITRATE{k,M}</code></li>
+<li>Bitrate (min): <code>-minrate BITRATE</code></li>
+<li>Bitrate (max): <code>-maxrate BITRATE</code></li>
+<li><a href="av_properties.html#gop">GOP</a> size:
+<code>-g FRAMES</code></li>
+</ul>
+</section>
+<section id="video-excerpts" class="slide level1">
+<h1>Video Excerpts</h1>
+<ul>
+<li><a href="https://trac.ffmpeg.org/wiki/Seeking">Start position</a>:
+<code>-ss DURATION</code></li>
+<li>Backwards: <code>-sseof DURATION</code></li>
+<li>Length: <code>-t DURATION</code></li>
+</ul>
+<p><strong>DURATION Syntax:</strong></p>
+<ul>
+<li>Timecode: <code>[-][HH:]MM:SS[.m]</code><br />
+</li>
+<li>or Seconds: <code>[-]S[.m]</code></li>
+</ul>
+<aside class="notes">
+<p>Time duration syntax: See:
+http://ffmpeg.org/ffmpeg-utils.html#time-duration-syntax</p>
+<p>3 seeking options (before FFmpeg v2.1):<br /></p>
+<ul>
+<li>Input seeking: before “-i” Position parsed using keyframes. Fast but
+not 100% accurate (until v2.1)</li>
+<li>Output seeking: after “-i” Very slowly. Later position = longer time
+to wait.</li>
+<li>Combined seeking: before and after “-i” Probably obsolete: replaced
+by accurate “input seeking” since v2.1</li>
+</ul>
+</aside>
+</section>
+<section id="video-excerpts-1" class="slide level1">
+<h1>Video Excerpts</h1>
+<ul>
+<li><p>Start Offset:<br />
+<code
+class="small fragment">ffmpeg -ss DURATION -i INPUT_FILE -c copy OUTPUT_FILE</code></p></li>
+<li><p>Only Beginning:<br />
+<code
+class="small fragment">ffmpeg -t DURATION -i INPUT_FILE -c copy OUTPUT_FILE</code></p></li>
+<li><p>Offset + Length:<br />
+<code
+class="small fragment">ffmpeg -ss DURATION -t DURATION -i INPUT_FILE -c copy OUTPUT_FILE</code></p></li>
+</ul>
+<!--
+# Video skalieren
+
+  *  Resize: `-s WIDTHxHEIGHT` 
+  *  Letterbox:<br/> `-filter:v "pad=iw:iw*3/4:(ow-iw)/2:(oh-ih)/2"` 
+  *  Pillarbox (+resize):<br/> `-filter:v "colormatrix=bt601:bt709, scale=1440:1080:flags=lanczos, pad=1920:1080:240:0"` 
+
+
+# Video beschneiden
+
+  *  Crop: `-vf "crop=width:height"` 
+  *  Crop (offset):<br /> `-vf "crop=width:height:x_position:y_position"` 
+
+
+
+# Videos "zusammenkleben"
+
+`-f concat -i list.txt -c copy`
+
+<aside class="notes">
+Syntax "list.txt":
+<pre>
+file './one.ext'
+file './two.ext'
+...
+file './end.ext'
+</pre>
+
+Bash:
+<pre>
+-f concat -i &lt;(for f in ./*.avi; do echo "file '$PWD/$f'"; done)
+</pre>
+</aside>
+
+-->
+</section>
+<section id="transcoding-ii" class="slide level1">
+<h1>Transcoding II</h1>
+<!-- -->
+</section>
+<section id="h.264" class="slide level1">
+<h1>H.264</h1>
+<blockquote>
+<p>“x264 H.264/MPEG-4 AVC encoder wrapper. […]<br />
+libx264 supports an <a
+href="https://ffmpeg.org/ffmpeg-all.html#libx264_002c-libx264rgb">impressive
+number of features</a>, […]”</p>
+</blockquote>
+</section>
+<section id="h.264-1" class="slide level1">
+<h1>H.264</h1>
+<ul>
+<li>
+Codec: <code>-c:v libx264</code>
+</li>
+<li>
+Bitrate: <code>-b:v BITRATE{k,M}</code>
+</li>
+<li>
+CRF: <code>-crf {0..51}</code> <small>={lossless .. worst}</small>
+</li>
+<li>
+Presets:
+<small><code>-preset:v {ultrafast,superfast,veryfast,faster,fast,medium(*),slow,slower,veryslow}</code></small>
+</li>
+<li>
+Fine tuning: <code>-tune {film,animation,grain,...}</code>
+</li>
+</ul>
+<p><small> Sources/Links: <a
+href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Wiki</a>, <a
+href="https://ffmpeg.org/ffmpeg-all.html#libx264_002c-libx264rgb">FFmpeg
+docs</a> </small></p>
+<aside class="notes">
+“subjectively sane range is 17-28”<br /> Preset: “medium” is default
+</aside>
+</section>
+<section id="h.264-2" class="slide level1">
+<h1>H.264</h1>
+<p><code class="bash" data-noescape> ffmpeg -i INPUT_FILE <span
+class="fragment">-c:v libx264</span> <span
+class="fragment">-preset:v superfast</span> <span
+class="fragment">-crf 22</span> <span class="fragment">-c:a aac
+-b:a 192k</span> OUTPUT_FILE.mp4 </code> <!-- --></p>
+</section>
+<section id="prores" class="slide level1">
+<h1>ProRes</h1>
+<blockquote>
+<p>“Apple ProRes is a lossy video compression format developed by Apple
+Inc. for use in post-production”</p>
+</blockquote>
+<ul>
+<li>Codec: <code>-c:v {prores,prores_aw,prores_ks}</code></li>
+<li>Profiles:
+<code>-profile:v {proxy,lt,standard,hq,4444,4444xq}</code></li>
+</ul>
+<p><small> Sources / Links: <a
+href="https://en.wikipedia.org/wiki/Apple_ProRes">Wikipedia: Apple
+ProRes</a>, <a href="https://ffmpeg.org/ffmpeg-all.html#ProRes">FFmpeg
+docs</a>, <a
+href="https://codecs.multimedia.cx/2012/03/a-few-words-about-my-prores-encoder/">Kieran
+Kunya’s Blog</a>, <a
+href="https://documentation.apple.com/en/finalcutpro/professionalformatsandworkflows/index.html#chapter=10&amp;section=2&amp;tasks=true">FinalCut
+docs</a> </small></p>
+</section>
+<section id="prores-1" class="slide level1">
+<h1>ProRes</h1>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> INPUT_FILE <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>-an <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>-c:v prores_ks <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>-profile:v hq <span class="dt">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE.mov</span></code></pre></div>
+<aside class="notes">
+Mal das “:v” bei “-profile” weglassen und schauen was passiert.
+</aside>
+<!-- -->
+</section>
+<section id="ffv1" class="slide level1">
+<h1>FFV1</h1>
+<blockquote>
+<p>FFV1 (“FF video codec 1”) is a lossless-only video codec.</p>
+</blockquote>
+<ul>
+<li>Codec: <code>-c:v ffv1</code></li>
+<li>Version: <code>-level {1,3}</code></li>
+<li>Coder: <code>-coder {0=golomb,1=range}</code></li>
+<li>Context: <code>-context {0=small,1=large}</code></li>
+<li>Slices: <code>-slices {4,6,9,12,16,24,..}</code></li>
+<li>CRC: <code>-slicecrc {0,1}</code></li>
+</ul>
+<p><cite> Sources: <a
+href="https://en.wikipedia.org/wiki/FFV1%22%3EWikipedia:%20FFV1%3C/a%3E,%20%3Ca%20href=%22http://www.ffv1.info/">ffv1.info</a>
+</cite></p>
+</section>
+<section id="ffv1-1" class="slide level1">
+<h1>FFV1</h1>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> INPUT_FILE <span class="at">-an</span> <span class="at">-c:v</span> ffv1 <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>-level 3 <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>-slices 24 <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>-slicecrc 1 <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE</span></code></pre></div>
+<!-- -->
+</section>
+<section id="from-video-to-images-wav" class="slide level1">
+<h1>From Video to Images + WAV</h1>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> input.mp4 <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>-an out/FRAME_%04d.png <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>-vn <span class="at">-c:a</span> pcm_s16le out/AUDIO.wav </span></code></pre></div>
+<!-- -->
+</section>
+<section id="from-images-audio-to-video" class="slide level1">
+<h1>From Images (+Audio) to Video</h1>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-r</span> <span class="va">$FPS</span> <span class="at">-start_number</span> <span class="va">$FRAMENO</span> <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>-i reel/FRAME_%04d.png <span class="at">-i</span> reel/AUDIO.wav <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>-c:v libx264 <span class="at">-crf</span> 22 <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>-c:a aac <span class="at">-b:a</span> 128k <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>OUTPUT.mkv</span></code></pre></div>
+<!-- -->
+</section>
+<section id="links" class="slide level1">
+<h1>Links</h1>
+<ul>
+<li><a
+href="https://amiaopensource.github.io/ffmprovisr/">ffmprovisr</a></li>
+<li><a href="http://ffmpeg.org/">FFmpeg Website</a></li>
+<li><a href="http://ffmpeg.org/ffmpeg.html">FFmpeg
+Dokumentation</a></li>
+<li><a href="https://trac.ffmpeg.org/">FFmpeg Wiki</a>
+<!-- END / CREDITS --></li>
+</ul>
+</section>
+<section id="fin--" class="slide level1">
+<h1>- Fin -</h1>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions?</h1>
+<h2 id="comments">Comments?</h2>
+<p>Peter Bubestinger-Steindl</p>
+<p><code>email (at) ArkThis com</code></p>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: 6,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

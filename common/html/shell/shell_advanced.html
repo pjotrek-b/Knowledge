@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Commandline Shell Advanced</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Commandline Shell Advanced</h1>
+  <p class="author"><div class="line-block">Peter
+Bubestinger-Steindl<br />
+<code>( email (at) ArkThis com )</code></div></p>
+  <p class="date">2025-03</p>
+</section>
+
+<section id="dynamic-elements-of-a-script" class="slide level1">
+<h1>Dynamic elements of a “script”</h1>
+<ul>
+<li><p><strong>Variables</strong>:<br />
+Placeholders for values.</p></li>
+<li><p><strong>Conditionals</strong>:<br />
+“if this, then do that …”</p></li>
+<li><p><strong>Choices (case)</strong>:<br />
+Run different code for different “use cases”.</p></li>
+<li><p><strong>Loops</strong>:<br />
+repeat x “so many” times, or until…</p></li>
+<li><p><strong>Functions</strong>:<br />
+Code-snippets to re-use within the script.</p></li>
+</ul>
+</section>
+<section id="variables" class="slide level1">
+<h1>Variables</h1>
+<p>Declaration: <code>NAME=value</code></p>
+<ul>
+<li><code>FILENAME="myfile.txt"</code></li>
+<li><code>FRAME_IMAGE="scan_$INDEX.dpx"</code></li>
+<li><code>INDEX=7</code></li>
+</ul>
+<p><small>(Text needs quotes, numbers do not)</small></p>
+<aside class="notes">
+In BASH, there must be /NO/ space around the <code>=</code>, and
+double-quotes are preferred to wrap strings (=text). And variables can
+be used anywhere in your code. Even when declaring other values in
+variables.
+</aside>
+</section>
+<section id="conditionals-if-then-else" class="slide level1">
+<h1>Conditionals (if-then-else)</h1>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">(</span><span class="ex">condition</span> is true<span class="kw">)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># here goes any code you&#39;d like</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<p><small> See: <a
+href="https://www.geeksforgeeks.org/bash-scripting-else-if-statement/">https://www.geeksforgeeks.org/bash-scripting-else-if-statement/</a>
+</small></p>
+</section>
+<section id="conditionals" class="slide level1">
+<h1>Conditionals</h1>
+<ul>
+<li>if … then</li>
+<li>else</li>
+<li>else if (other condition)</li>
+</ul>
+</section>
+<section id="examples" class="slide level1">
+<h1>Examples</h1>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX</span><span class="op">=</span>99</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">LIMIT</span><span class="op">=</span>100</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$INDEX</span> <span class="ot">-lt</span> <span class="va">$LIMIT</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Yes, we&#39;re below the limit (</span><span class="va">$LIMIT</span><span class="st">)!&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+</section>
+<section id="examples-1" class="slide level1">
+<h1>Examples</h1>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">FILENAME</span><span class="op">=</span><span class="st">&quot;x&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="va">$FILENAME</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Empty filename given. :(&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+</section>
+<section id="bash-comparisons-operators" class="slide level1">
+<h1>Bash Comparisons Operators</h1>
+<ul>
+<li><strong>-eq</strong> : equal</li>
+<li><strong>-ne</strong> : not equal</li>
+<li><strong>-gt</strong> : greater than</li>
+<li><strong>-lt</strong> : less than</li>
+<li><strong>-z</strong> : string has zero length
+<small>(=empty)</small></li>
+<li><strong>!</strong> : NOT</li>
+<li>…</li>
+</ul>
+<p><small>See: <a
+href="https://tldp.org/LDP/abs/html/comparison-ops.html">https://tldp.org/LDP/abs/html/comparison-ops.html</a></small></p>
+</section>
+<section id="choices-case" class="slide level1">
+<h1>Choices (case)</h1>
+<p>The BASH “case” statement:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> EXPRESSION <span class="kw">in</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="ss">OPTION_1</span><span class="kw">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="co"># code for option 1 goes here...</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="ss">OPTION_2</span><span class="kw">)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="co"># code for option 2 goes here...</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Anything not matching before, goes here.</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="bu">echo</span> <span class="st">&quot;Syntax: You may select &#39;OPTION_1&#39; or &#39;OPTION_2&#39;&quot;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span></code></pre></div>
+</section>
+<section id="loops" class="slide level1">
+<h1>Loops</h1>
+<p>There are different basic kind of loops:</p>
+<ul>
+<li><strong>while</strong> <small>(condition is true)</small> do
+something.</li>
+<li>do something <strong>until</strong> <small>(condition is
+true)</small></li>
+<li><strong>for</strong> <small>(each of a set)</small> do
+something.</li>
+</ul>
+</section>
+<section id="a-while-loop" class="slide level1">
+<h1>A “while” loop</h1>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$COUNTER</span> <span class="ot">-le</span> 10 <span class="bu">]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Number: </span><span class="va">$COUNTER</span><span class="st">&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">((</span><span class="va">COUNTER</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>(<code>le</code> = less-than-or-equal)</p>
+</section>
+<section id="an-until-loop" class="slide level1">
+<h1>An “until loop</h1>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">until</span> <span class="bu">[</span> <span class="va">$COUNTER</span> <span class="ot">-gt</span> 10 <span class="bu">]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Number: </span><span class="va">$COUNTER</span><span class="st">&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">((</span><span class="va">COUNTER</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>(<code>gt</code> = greater-than)</p>
+</section>
+<section id="a-for-loop" class="slide level1">
+<h1>A “for” loop</h1>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">THINGS</span><span class="op">=</span><span class="st">&quot;cat dog mouse brokkoli&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> THING <span class="kw">in</span> <span class="va">$THINGS</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Here&#39;s a: &#39;</span><span class="va">$THING</span><span class="st">&#39;&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+</section>
+<section id="parameters-arguments" class="slide level1">
+<h1>Parameters / Arguments</h1>
+<ul>
+<li>It’s possible to provide parameters to a script.</li>
+<li>Called: “commandline arguments” (or <code>args</code>)</li>
+</ul>
+<p>Like:</p>
+<ul>
+<li><code>$ ./my_script.sh arg1 arg2 arg3 ...</code></li>
+</ul>
+</section>
+<section id="commandline-arguments-args" class="slide level1">
+<h1>Commandline Arguments (args):</h1>
+<ul>
+<li><code>$@</code> : all args in sequence.</li>
+<li><code>$#</code> : number of args used.</li>
+<li><code>$0</code> : name of the command itself.</li>
+<li><code>$1, $2, ...</code> : 1st arg, 2nd arg, etc.</li>
+</ul>
+</section>
+<section id="args-handling-examples" class="slide level1">
+<h1>“Args” handling: Examples</h1>
+<p><code>$ ./my_script.sh one two three four five</code></p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">ARGS</span><span class="op">=</span><span class="va">$@</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">ARGS_COUNT</span><span class="op">=</span><span class="va">$#</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;All </span><span class="va">$ARGS_COUNT</span><span class="st"> parameters: </span><span class="va">$ARGS</span><span class="st">&quot;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;First:  </span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Second: </span><span class="va">$2</span><span class="st">&quot;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Third:  </span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
+<pre><code>All 5 parameters: one two three four five
+First:  one
+Second: two
+Third:  three</code></pre>
+</section>
+<section id="useful-popular-shell-allstars" class="slide level1">
+<h1>Useful, popular shell “allstars” 🌟️</h1>
+<ul>
+<li><p><code>echo</code>:<br />
+print some text on the screen.</p></li>
+<li><p><code>cat</code>:<br />
+print a file on the screen.</p></li>
+<li><p><code>grep</code>:<br />
+search text by filtering by expression.</p></li>
+<li><p><code>printf</code>:<br />
+print formatted text output (with placeholders).</p></li>
+</ul>
+</section>
+<section id="echo" class="slide level1">
+<h1>echo</h1>
+<ul>
+<li><code>echo "hello world."</code></li>
+<li><code>echo ""</code> (=empty line)</li>
+<li><code>echo "Hello $YOUR_NAME"</code></li>
+</ul>
+</section>
+<section id="cat" class="slide level1">
+<h1>cat</h1>
+<ul>
+<li>Print file contents on screen:<br />
+<code>cat some_file.txt</code></li>
+<li>Same, but use a variable:<br />
+<code>cat $FILENAME</code></li>
+<li>Concatenate 2 files to a new file:<br />
+<code>cat $FILE1 $FILE2 &gt; output.txt</code></li>
+</ul>
+</section>
+<section id="grep" class="slide level1">
+<h1>grep</h1>
+<ul>
+<li><code>grep -Ri "findme!" *.*</code></li>
+<li><code>cat some_file.txt | grep "findme!"</code></li>
+</ul>
+</section>
+<section id="printf" class="slide level1">
+<h1>printf</h1>
+<ul>
+<li><code>printf "image-%s-%05d.dpx" "my_film" 123</code><br />
+(image-my_film-00123.dpx)</li>
+</ul>
+</section>
+<section id="piping" class="slide level1">
+<h1>Piping!</h1>
+<ul>
+<li><code>|</code> : pipe</li>
+<li><code>&gt;</code> : redirect output <em>TO</em>…</li>
+<li><code>&lt;</code> : redirect input <em>FROM</em>…</li>
+<li><code>-</code> : stdin/stdout</li>
+</ul>
+<aside class="notes">
+https://tldp.org/LDP/lpg/node1.html
+</aside>
+</section>
+<section id="manipulating-strings" class="slide level1">
+<h1>Manipulating Strings</h1>
+<ul>
+<li><p><strong>${string:position}</strong> :</p>
+<p><small>Extracts substring from <code>$string</code> at
+<code>$position</code></small></p></li>
+<li><p><strong>${string:position:length}</strong> :</p>
+<p><small>Extracts <code>$length</code> characters from
+<code>$string</code> at <code>$position</code></small></p></li>
+<li><p><strong>${string#substring}</strong> :</p>
+<p><small>Deletes shortest match of <code>$substring</code> from
+<strong>front</strong> of <code>$string</code>.</small></p></li>
+<li><p><strong>${string%substring}</strong> :</p>
+<p><small>Deletes shortest match of <code>$substring</code> from
+<strong>back</strong> of <code>$string</code>.</small></p></li>
+</ul>
+<p><small> See more: <a
+href="https://tldp.org/LDP/abs/html/string-manipulation.html">https://tldp.org/LDP/abs/html/string-manipulation.html</a>
+</small></p>
+</section>
+<section id="comments" class="slide level1">
+<h1>Comments?</h1>
+<h2 id="questions">Questions?</h2>
+</section>
+<section id="the-end--" class="slide level1">
+<h1>- The End -</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

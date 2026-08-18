@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Peter Bubestinger-Steindl">
+  <title>Data Integrity - Introduction</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Data Integrity - Introduction</h1>
+  <p class="author">Peter Bubestinger-Steindl</p>
+  <p class="date">December 2024</p>
+</section>
+
+<section id="data-integrity" class="slide level1">
+<h1>Data Integrity?</h1>
+<figure>
+<img data-src="../../assets/images/team_dp/digiman-bitrot.png"
+style="width:90.0%" alt="Identifying data integrity?" />
+<figcaption aria-hidden="true">Identifying data integrity?</figcaption>
+</figure>
+<aside class="notes">
+<ul>
+<li>What is that?</li>
+<li>How do you identify if a file is <em>intact</em>?</li>
+<li>How do you identify duplicates?</li>
+</ul>
+</aside>
+</section>
+<section id="what-is-fixity-information" class="slide level1">
+<h1>What is “Fixity” information?</h1>
+<blockquote>
+<p>Information/metadata to check/verify if binary data has not (been)
+changed.</p>
+</blockquote>
+<ul>
+<li>Like: document file/folder details and naming</li>
+<li>And: hashcodes / checksums</li>
+</ul>
+<aside class="notes">
+<p>Fixity information is metadata that can be used to check/verify that
+binary data has not (been) changed. This can be used to make sure that
+files were copied properly from A-to-B, or retrieved bit-exactly the way
+they were stored, etc.</p>
+Fixity information is directly linked to so called “hashcodes”.
+</aside>
+</section>
+<section id="when" class="slide level1">
+<h1>When?</h1>
+<blockquote>
+<p>Generate fixity information as early as possible in a file’s
+lifecycle.</p>
+</blockquote>
+</section>
+<section id="hashcodes" class="slide level1">
+<h1>Hashcodes?</h1>
+<aside class="notes">
+<p>Hashcode = A fixed size number that’s like a fingerprint for
+arbitrary binary data sequences.</p>
+<p>A “hash” or “hashcode” is the result of a mathematical algorithm that
+produces something like a fingerprint number for the input data
+provided. With the intention for any source <em>not</em> to map to an
+identical number. That would be called a “hash collision”: 2 different
+sources mapping to the same hash value/number.</p>
+<p>To keep the numbers short(er), they are usually written in
+hexadecimal: <code>0..9, A..F</code></p>
+Hashcode strings have a fixed-width per algorithm.
+</aside>
+</section>
+<section id="different-algorithms" class="slide level1">
+<h1>Different algorithms</h1>
+<ul>
+<li><a
+href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">CRC</a></li>
+<li><a href="https://en.wikipedia.org/wiki/MD5">MD5</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SHA-2">SHA</a> .. 1 .. 2 ..
+256 .. SHA512</li>
+<li><a href="https://github.com/Cyan4973/xxHash">xxHASH</a></li>
+</ul>
+<aside class="notes">
+<p>There are different hashing algorithms. In a nutshell:</p>
+<ul>
+<li><p>Shorter hash = faster<br />
+but higher collision chance<br />
+= less secure</p></li>
+<li><p>Longer hash = slower<br />
+but lower collision chance<br />
+= more secure</p></li>
+</ul>
+<p><strong>For data integrity verification, short hashes are perfectly
+fine though.</strong></p>
+<p>Since hashing algorithms are also used for security purposes (digital
+signatures), MD5 was said to be “broken”. This is only true for
+security/signature purposes. It is still perfectly valid for checking
+data integrity.</p>
+<p>“xxHash” is relatively new, and is the only “Non-cryptographic hash
+function” in the above list, designed for speed and not security. It is
+becoming more common for fixity checks in A/V production, but yet it’s
+still rather the exception.</p>
+<p><a href="https://simplicable.com/new/hashcode">Hashcodes</a> are
+fixed-length numbers that are generated in a way that if even a single
+bit in the source data changes, that number will be completely
+different. They are often written in <a
+href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>,
+therefore including the characters 0-9 and A-F.</p>
+<p>If you have a hashcode for a set of data, it can be used to verify
+the bit-exact integrity of that data, by calculating the same-algorithm
+hashcode again and comparing them. If they’re identical, the data is
+intact. If two distinct sets of data have the same hash, it’s called a
+“<a
+href="https://en.wikipedia.org/wiki/Collision_(computer_science)">hash
+collision</a>. Hash algorithms are designed particularily to keep the
+chance for collision as low as possible.</p>
+<p>Anyways: hashcodes are <em>a must</em> for safe data transfer and
+integrity checks.</p>
+<p>In case someone has heard that <a
+href="https://www.avira.com/en/blog/md5-the-broken-algorithm">MD5 is
+broken</a>, fear not: For plain checking of file transfer or stored data
+integrity, MD5 is sufficient. It was cryptographically “broken” - which
+is relevant for security, but not for data integrity checking.</p>
+<p><strong>Important: Hashcodes are not sufficient for proving
+authenticity!</strong> In case you need to deal with important
+originals/documents and you need to make sure they’re originals and not
+forged, etc. please check out this:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Digital_signature">Digital
+Signatures</a></li>
+<li><a
+href="https://en.wikipedia.org/wiki/Blockchain">Blockchain</a></li>
+</ul>
+<p>Digital signatures are good, but could be signed with a date in the
+past (<a
+href="https://www.investopedia.com/terms/b/backdating.asp">backdating</a>).</p>
+<p>If this is a concern, you may consider blockchain mechanisms:
+Blockchain cipher became popular for digital currency (like <a
+href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a>), but it can
+also be used to proof data authenticity and avoid backdating.</p>
+AFAIK there are currently no systems that implement this productively
+yet, but some have already researched into prototyping blockchain use
+for storage.
+</aside>
+</section>
+<section id="hashcode-examples" class="slide level1">
+<h1>Hashcode Examples</h1>
+<ul>
+<li>CRC <small>(10)</small> =<br />
+<small> <code>4294967295</code> </small></li>
+<li>MD5 <small> (32) </small> =<br />
+<small> <code>d41d8cd98f00b204e9800998ecf8427e</code> </small></li>
+<li>SHA256 <small> (64) </small> =<br />
+<small>
+<code>e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code>
+</small></li>
+<li>xxHash <small> (16) </small> =<br />
+<small> <code>e4c191d091bd8853</code> </small></li>
+</ul>
+<aside class="notes">
+<p>Algorithms in order of complexity/size: &gt; CRC —— MD5 —— SHA256 ——
+SHA512</p>
+<p>Speed matters when it comes to calculating hashes for several
+hundreds of TB or PB of data.</p>
+<p>Execution speed depends on the actual implementation of the
+algorithm. Even if a simpler algorithm may be faster in theory, it may
+not make a difference if the implementation isn’t speed-optimized.
+However, speeding up hashing becomes more and more interesting e.g. for
+transfer of digital cinema files, because validating these data amounts
+may currently be a bottleneck.</p>
+<p>Different hashcodes algorithms/implementations may have significantly
+different runtimes. When dealing with large quantities of data, this may
+matter.</p>
+<p><strong>MD5 is (still) the most popular one around:</strong> Well
+known and widely supported by different applications/systems, etc.</p>
+Anyone transferring lots of uncompressed film? You may want to look at
+<a href="www.xxhash.com">xxHash</a>. It’s designed for speed.
+</aside>
+</section>
+<section id="hashcodes-behavior" class="slide level1">
+<h1>Hashcodes: Behavior</h1>
+<p>Filename: <code>plain.txt</code></p>
+<blockquote>
+<p>“This is a raw text file.”</p>
+</blockquote>
+<p><small class="fragment" style="font-family:courier"> MD5 =
+<strong>b3a2</strong>43d2443037a783c8799fe2c4<strong>926a</strong>
+</small></p>
+<aside class="notes">
+The above example is the hashcode for the string “This is a raw text
+file.”
+</aside>
+</section>
+<section id="hashcodes-1" class="slide level1">
+<h1>Hashcodes</h1>
+<p>Filename: <code>plain.txt</code></p>
+<blockquote>
+<p>“This is a raw text file.⎕”</p>
+</blockquote>
+<p><small style="font-family:courier"> <span class="fragment"> MD5 =
+<strong>7096</strong>384353da7d8cb59b1395e63d<strong>1250</strong><br />
+</span> <span class="fragment"> REF =
+<strong>b3a2</strong>43d2443037a783c8799fe2c4<strong>926a</strong>
+</span> </small></p>
+<aside class="notes">
+<p>Even though only a simple space character was added to the string
+from before, the resulting MD5 hashcode is completely different than
+before. That’s good!</p>
+This allows to quickly and securely identify even the smallest deviation
+in the source data. Even a small change like a single character - or
+even a binary bit. This way, a mismatching hashcode will tell you if
+your data is either <em>exactly</em> the way it was - or if
+<em>anything</em> has changed.
+</aside>
+</section>
+<section id="hashcodes-2" class="slide level1">
+<h1>Hashcodes</h1>
+<p>Filename: <code>plain.txt</code></p>
+<blockquote>
+<p>“this is a raw text file.”</p>
+</blockquote>
+<p><small style="font-family:courier"> <span class="fragment"> MD5 =
+<strong>a94a</strong>15d1b72bbfee7997bf237cf0<strong>347e</strong><br />
+</span> <span class="fragment"> REF =
+<strong>b3a2</strong>43d2443037a783c8799fe2c4<strong>926a</strong>
+</span> </small></p>
+<aside class="notes">
+Now, the case of the first letter “T” was changed to “t”: Different
+character = different hashcode. Again: Good! :)
+</aside>
+</section>
+<section id="hashcodes-3" class="slide level1">
+<h1>Hashcodes</h1>
+<p>Filename: <code>plain-text.txt</code></p>
+<blockquote>
+<p>“this is a raw text file.”</p>
+</blockquote>
+<p><small style="font-family:courier"> <span class="fragment"> MD5 =
+<strong>a94a</strong>15d1b72bbfee7997bf237cf0<strong>347e</strong><br />
+</span> <span class="fragment"> REF =
+<strong>a94a</strong>15d1b72bbfee7997bf237cf0<strong>347e</strong>
+</span> </small></p>
+<aside class="notes">
+<p>Now, the filename - <em>not</em> the content - was changed.</p>
+This has no effect on the hashcode, as the hash only depicts the
+content. The filename is outside, on the filesystem level. The hashcode
+does not include the name of a file.
+</aside>
+</section>
+<section id="different-levels" class="slide level1">
+<h1>Different levels</h1>
+<blockquote>
+<p>Fixity information can be gathered/documented on different
+levels:</p>
+</blockquote>
+<ol type="1">
+<li>Filesystem</li>
+<li>Whole files</li>
+<li>Inside files: Content</li>
+</ol>
+</section>
+<section id="level-1-filesystem-listing" class="slide level1">
+<h1>Level 1: Filesystem Listing</h1>
+<p>Linux / MacOS: <code>$ ls -la &gt; dirlist.txt</code><br />
+Windows: <code>C:\&gt; dir /s /a &gt; dirlist.txt</code></p>
+<figure>
+<img data-src="../../assets/images/fixity/example-dirlist.png"
+style="width:80.0%"
+alt="screenshot of files/folders in a file manager (Thunar)" />
+<figcaption aria-hidden="true">screenshot of files/folders in a file
+manager (Thunar)</figcaption>
+</figure>
+<aside class="notes">
+<p>For preservation, it’s good practice to document these file/folder
+properties too. Especially when receiving personal collections. They can
+be used to tell more about a file than you’d think:</p>
+<ul>
+<li><p>date/time context: Which year? epoch? How old was the author
+then? Where (in his life) was the author when creating this?</p></li>
+<li><p>Ownership / access rights : How private/public was this? For what
+reason?</p></li>
+<li><p>Flags: Why was it hidden? Oh! It was meant to be run as program.
+Interesting…</p></li>
+</ul>
+<p>By default, date/time format may not be sufficient/suitable for
+preservation and/or exchange. Therefore make sure that date/time are
+displayed in a format tht is exactly interpretable.</p>
+<p>GNU/Linux systems offer the ability to format it in <a
+href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a>, which is
+great:</p>
+<p><code>$ ls -la --time-style=full-iso</code></p>
+<p>Nice trick: If you want to transfer files from A-to-B, and want to
+make sure that its timestamps are preserved, you can pack it in a ZIP
+file: If the application allows it, disable compression (or use
+TAR).</p>
+This wraps a layer around the files, so that their timestamps are now
+stored as tech-MD inside the archive file.
+</aside>
+<!--
+# File system metadata
+
+Documenting status &amp; changes:
+
+  * WHO?
+  * Did WHAT?
+  * WHEN?
+  * WHY?
+
+<small>
+Stored in:
+Plaintext or machine readable format (XML, CSV, etc)
+</small>
+
+<aside class="notes">
+</aside>
+-->
+</section>
+<section id="level-2-per-file" class="slide level1">
+<h1>Level 2: Per File</h1>
+<h2 id="the-classic">(The Classic)</h2>
+<p>Generate: <code>md5sum *.* &gt; MD5SUMS.md5</code><br />
+Check: <code>md5sum -c MD5SUMS.md5</code></p>
+<figure>
+<img data-src="../../assets/images/fixity/example-md5sum.png"
+style="width:80.0%" alt="Plain text manifest file" />
+<figcaption aria-hidden="true">Plain text manifest file</figcaption>
+</figure>
+<aside class="notes">
+<p>md5sum exists on all GNU/Linux distros and MacOS by default. On
+Windows, md5sum commandline tool must be manually installed.</p>
+<p>Hashcode manifests are simple plain text files where each line
+represents a file and its hash. This is also called fixity
+information.</p>
+<p>There are different tools to generate/validate hashcode
+manifests.</p>
+<p>The most basic one is “md5sum”, which is available by default on *nix
+systems. For example:</p>
+<ul>
+<li><p>Single file:<br />
+<code>$ md5sum my_file.txt &gt; my_file.txt.md5</code></p></li>
+<li><p>Multiple files:<br />
+<code>$ md5sum *.mkv &gt; MD5SUMS.md5</code></p></li>
+</ul>
+</aside>
+</section>
+<section id="level-3-content" class="slide level1">
+<h1>Level 3: Content</h1>
+<blockquote>
+<p>“Content hashing is still hardly known - yet incredibly
+powerful.”</p>
+</blockquote>
+<ol type="1">
+<li><code>streamhash</code>: One hash per data stream.</li>
+<li><code>framemd5</code>: One hash per frame/group of samples</li>
+</ol>
+</section>
+<section id="level-3-content---streams" class="slide level1">
+<h1>Level 3: Content - Streams</h1>
+<pre><code>$ ffmpeg -i input_file -map 0 \
+-f streamhash -hash md5 \
+-hide_banner - -v quiet</code></pre>
+<p>Output:</p>
+<pre><code>0,v,MD5=3f874757d9c1a2bc8adacb070f1a2e60
+1,a,MD5=484a92455b87cc48d6d9cad5dd93435c
+2,a,MD5=fdb680635a4cc3dd8419c96387760031</code></pre>
+<aside class="notes">
+<p>Generates one hash per media stream.</p>
+<p>The algorithm can be chosen. MD5 is just a very good
+allround-candidate: very popular, well-known, widely supported and
+reasonable computing times.</p>
+<p>By selecting a different value for `-hash’, you can choose a
+different algorithm. See <a
+href="https://ffmpeg.org/ffmpeg-formats.html#hash-1">FFmpeg
+Documentation on ‘4.44 hash’</a>, listing:</p>
+<blockquote>
+<p>“Supported values include MD5, murmur3, RIPEMD128, RIPEMD160,
+RIPEMD256, RIPEMD320, SHA160, SHA224, SHA256 (default), SHA512/224,
+SHA512/256, SHA384, SHA512, CRC32 and adler32.”</p>
+</blockquote>
+</aside>
+</section>
+<section id="level-3-content---image-samples" class="slide level1">
+<h1>Level 3: Content - Image / Samples</h1>
+<p><strong>framemd5</strong> generates one hash <small>(md5)</small> per
+frame:</p>
+<pre><code>ffmpeg -i INPUT.mkv -an -f framemd5 \
+-v quiet OUTPUT.mkv.framemd5</code></pre>
+<figure>
+<img data-src="../../assets/images/fixity/example-framemd5.png"
+style="width:80.0%" alt="Content payload “framemd5”" />
+<figcaption aria-hidden="true">Content payload “framemd5”</figcaption>
+</figure>
+<aside class="notes">
+“framemd5” is not an official term for image/content hashing, but
+originates from the FFmpeg project. There also is “framecrc”. The
+algorithm doesn’t matter here to show the concept of “content-hash” vs
+“file-hash”.
+</aside>
+<!--
+# Some Tools
+
+# HashCheck
+
+GUI to handle hashcodes (Windows only).  
+<small>Website: [code.kliu.org/hashcheck](http://code.kliu.org/hashcheck/)</small>
+
+![HashCheck showing a mismatch error](images/fixity/hashcheck-md5mismatch.png)
+
+
+
+# LoC BagIt "Bags"
+
+> "Bags have built-in inventory checking, to help ensure that content transferred intact."
+
+  * [Intro at 'digitalpreservation.gov'](http://www.digitalpreservation.gov/multimedia/videos/bagit0609.html)
+  * [Same on Youtube](https://www.youtube.com/watch?v=l3p3ao_JSfo)
+
+
+# Bagger
+
+A GUI for handling BagIt bags.
+
+  * Website: [github.com/LibraryOfCongress/bagger](https://github.com/LibraryOfCongress/bagger)
+  * [Cross platform release (Java)](https://github.com/LibraryOfCongress/bagger/releases)
+  * [Open Source License](https://github.com/LibraryOfCongress/bagger/blob/master/LICENSE.txt)
+
+
+# Bagger
+
+![Bagger GUI](images/tools/bagger/bagger-valid_bag.png){ width=74% }
+
+
+-->
+</section>
+<section id="hashcode-use-when" class="slide level1">
+<h1>Hashcode use: When?</h1>
+<ul>
+<li>Ingest into preservation environment</li>
+<li>Periodically in storage/backup</li>
+<li>During transfers or access</li>
+<li>Deduplification</li>
+</ul>
+<!--
+
+# Data Integrity Playtime!
+
+![](images/misc/archiveteam.jpg){ width=50% }
+
+<aside class="notes">
+Only a single bit of this file has flipped (=broken).
+How would you find out which one?
+How would you fix it?
+</aside>
+
+-->
+</section>
+<section id="comments" class="slide level1">
+<h1>Comments?</h1>
+<h2 id="questions">Questions?</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

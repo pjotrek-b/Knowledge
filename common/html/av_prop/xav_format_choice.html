@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Peter Bubestinger-Steindl">
+  <meta name="dcterms.date" content="2022-04-26">
+  <title>Choosing Digital AV File Formats</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Choosing Digital AV File Formats</h1>
+  <p class="author">Peter Bubestinger-Steindl</p>
+  <p class="date">2022-04-26</p>
+</section>
+
+<section id="why-bother-to-choose" class="slide level1">
+<h1>Why bother to choose?</h1>
+<h2 id="lets-just-have">Let’s just have:</h2>
+<table>
+<tr>
+<td>
+<ul>
+<li>Best quality</li>
+<li>Preserve original properties</li>
+<li>Lowest size</li>
+<li>Fast and easy to open/use</li>
+<li>Lasts forever</li>
+<li>+cherries 🍒 &amp; ice cream 🍦on top!</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+<figure>
+<img data-src="../../../images/misc/holy_grail.jpg" width="500"
+alt="The Holy Grail" />
+<figcaption aria-hidden="true">The Holy Grail</figcaption>
+</figure>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>Why bother comparing file formats? Let’s just have… The holy grail!
+:)</p>
+<p>That list actually makes sense:</p>
+They define the desired properties that you have to choose from, which
+ones and how well you want them implemented.
+</aside>
+</section>
+<section id="format-choice-a-balance-of" class="slide level1">
+<h1>Format choice = A balance of …</h1>
+<ul>
+<li>Size</li>
+<li>Quality</li>
+<li>Performance</li>
+<li>plus: time, budget, staff</li>
+</ul>
+<p>Good starting point for assessing practical usefulness.</p>
+<aside class="notes">
+<p>Size: * Smaller = slower processing power * Smaller = less quality *
+Bigger = slower disk I/O</p>
+<p>Quality: * More quality = larger files * More quality = slower
+processing</p>
+Performance: * Often limited by budget * Cameras / recording equipment
+must satisfy real-time and on-site constraints.
+</aside>
+</section>
+<section id="in-greater-detail" class="slide level1">
+<h1>In greater detail…</h1>
+<table>
+<tr>
+<td class="small">
+<p><strong>Sustainability:</strong></p>
+<ol type="1">
+<li>Disclosure?</li>
+<li>Open reference implementation/libs?</li>
+<li>Adoption/popularity?</li>
+<li>Complexity?</li>
+<li>Independence vs external contingencies?</li>
+<li>Artificial restrictions?</li>
+<li>Self descriptive?</li>
+</ol>
+</td>
+<td class="small">
+<p><strong>Quality and functionality:</strong></p>
+<ol type="1">
+<li>Preserve “original”?</li>
+<li>Image/sound quality?</li>
+<li>Interoperability?</li>
+<li>Editing?</li>
+<li>Support for (additional/expected) properties?</li>
+<li>Performance &amp; data size?</li>
+</ol>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>One reason why there is no “one-size-fits-all” file format for AV, is
+that there are different use cases, each having a different focus.</p>
+<p>These lists are a good reference for giving you questions to ask
+about formats that may be considered as an option.</p>
+The next slide translates these buzzwords into more concrete
+questions/situations.
+</aside>
+</section>
+<section id="different-strokes-for-different-folks"
+class="slide level1">
+<h1>“Different strokes for different folks” 😉</h1>
+<ul>
+<li><p><strong>Digitization:</strong> As-original, as-untouched as
+possible. <small> (Plus: headroom for optional
+restoration/improvements.) </small></p></li>
+<li><p><strong>Preservation:</strong> Stand the test of time.<br />
+<small> (Highest ‘original’ quality) </small></p></li>
+<li><p><strong>Production:</strong> For daily work. High quality.<br />
+<small> (Optional, if preservation format can be used for this)
+</small></p></li>
+<li><p><strong>Access</strong> For quick and easy access.<br />
+<small> (Quality not necessarily best/high) </small></p></li>
+</ul>
+<aside class="notes">
+<p>Sometimes one format can be used for all these cases (merely lower
+quality/bitrate for access or production), but with AV it’s not uncommon
+that these are different codecs (and also different containers).</p>
+<p>It is (still) perfectly normal to have a preservation copy that
+requires transcoding before going into other workflows.</p>
+The formats for access and editing are more likely to be changed more
+often than the preservation format, for example.
+</aside>
+</section>
+<section id="format-wars" class="slide level1">
+<h1>Format Wars</h1>
+<blockquote>
+<p>“My format is <code>...</code> than yours. Bäh!”</p>
+</blockquote>
+<p><code>Options = 😝 🤑 🤩 🤫 🤔 🤐 😴 🤮 ...</code><br />
+Have fun!</p>
+<aside class="notes">
+<p>Sometimes the reason for more than 1 suitable format option existing
+may be, because different vendors are interested in promoting “their”
+format.</p>
+If a format becomes widespread/important enough, the “owner” of that
+format has a great saying/control over the conditions such files can be
+used/supported.
+</aside>
+</section>
+<section id="your-use-casespriorities" class="slide level1">
+<h1>Your use cases/priorities?</h1>
+<ul>
+<li>Who will want/need to work with these files?</li>
+<li>Under which conditions?</li>
+<li>For how long?</li>
+<li>Digitization vs Production vs Preservation vs Access?</li>
+<li>Which properties are significant <em>to you</em>?</li>
+</ul>
+<aside class="notes">
+<p>It’s good to define (and write down) what you actually need from a
+file format in which use-case.</p>
+Also align these requirements with your restrictions (budget, time,
+staff, etc)
+</aside>
+</section>
+<section id="significant-properties" class="slide level1">
+<h1>Significant properties</h1>
+<blockquote>
+<p>Knowing and deciding which properties to safeguard and which are
+allowed to change.</p>
+</blockquote>
+<p> </p>
+<p><small> See:<br />
+<a
+href="http://www.digitizationguidelines.gov/guidelines/sigpropvideo.html">LoC
+FADGI: DRAFT Significant Properties for Digital Video</a><br />
+<a
+href="https://files.dnb.de/nestor/materialien/nestor_mat_19.pdf">Nestor
+(DE): Leitfaden DLTP AV Medien</a><br />
+</small></p>
+<aside class="notes">
+<p>For some it’s the resolution, color information, audio quality - for
+others it’s sufficient to see/understand it “good enough”, or to be able
+to quickly edit-and-broadcast as the main focus.</p>
+<p>Depends.</p>
+<p>However, be aware that your recording may possibly be used in a
+different context in the future, so if possible don’t aim “too low”.</p>
+But please make an active decision and possibly document it (which ones
+and why) somewhere.
+</aside>
+</section>
+<section id="significant-properties-1" class="slide level1">
+<h1>Significant properties</h1>
+<p>Depend on media type (and use case).</p>
+<table>
+<tr>
+<th>
+Video
+</th>
+<th>
+Audio
+</th>
+<th>
+Metadata
+</th>
+</tr>
+<tr>
+<td>
+<ul>
+<li>resolution</li>
+<li>framerate</li>
+<li>aspect ratio</li>
+<li>colorspace</li>
+<li>subsampling</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>“resolution”<br />
+<small>(= samplerate, bit-depth)</small></li>
+<li>channels</li>
+<li>channel layout</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>language</li>
+<li>title</li>
+<li>author</li>
+<li>rights information</li>
+<li>…</li>
+</ul>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>Definition fuzziness in the preservation community:</p>
+<p>Some say “Significant” are the properties that must be maintained
+as-is and kind of “must never change”, whereas others define it as
+“should be aware of and decided how to deal with them”.</p>
+Further properties: * scan type (interlaced / progressive) * field order
+* color information * …
+</aside>
+</section>
+<section id="yagni-kiss-moscow" class="slide level1">
+<h1>Yagni Kiss Moscow?</h1>
+<p><img
+data-src="../../../images/tech-video/features/av_container_feature_circles.png"
+class="light" /></p>
+<p><small> <a
+href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI</a>
+/ <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a> / <a
+href="https://en.wikipedia.org/wiki/MoSCoW_method">MoSCoW</a>
+</small></p>
+<aside class="notes">
+<p>It may look cryptic, but is actually quite simple and useful:</p>
+<p>It is an example for finding the “minimalistic data format” that
+suits your needs.</p>
+<ul>
+<li><p><strong>YAGNI = “You Ain’t Gonna Need It”:</strong><br />
+It’s supposed to prevent you from selecting a format that is possibly
+too bloated or unncessarily complex, or less-well supported.</p></li>
+<li><p><strong>KISS = “Keep It Simple, Stupid”:</strong> “The KISS
+principle states that most systems work best if they are kept simple
+rather than made complicated; therefore, simplicity should be a key goal
+in design, and unnecessary complexity should be avoided.”</p></li>
+<li><p><strong>MoSCoW = “Must, Should, Could, Won’t”:</strong> “The
+Moscow method is a prioritization technique used in management, business
+analysis, project management, and software development to reach a common
+understanding with stakeholders on the importance they place on the
+delivery of each requirement”</p></li>
+</ul>
+<p>The example shows 4 different container formats for AV. Each one has
+different number and kinds of supported features, represented by the
+size of its circle.</p>
+<ul>
+<li>Larger circle = more features.</li>
+<li>Smaller circle = less features.</li>
+<li>Overlapping circles = common features.</li>
+</ul>
+</aside>
+</section>
+<section id="exercise-your-format-policy" class="slide level1">
+<h1>Exercise: Your Format Policy</h1>
+<table>
+<thead>
+<tr>
+<th>Must</th>
+<th>Should</th>
+<th>Could</th>
+<th>Won’t</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+</tbody>
+</table>
+<p>Split in groups, choose a use-case and try to phrase your
+requirements and “wishes”.</p>
+<aside class="notes">
+<p>Now, according to the MoSCoW method, write down which features
+you:</p>
+<ul>
+<li>must have</li>
+<li>should have</li>
+<li>could have</li>
+<li>won’t have (this time)</li>
+</ul>
+<p>And check which format provides them, then draw a dot in the
+corresponding circle area.</p>
+<p><strong>For example:</strong> Only MXF may be able to provide support
+for broadcast-specific metadata/functions, therefore that feature will
+only have a dot in the MXF circle. Whereas, all (except) AVI can store
+aspect ratio - so that dot would go into overlap of all - except AVI.
+The feature of “extremely simple, well-documented and stable/unmodified
+for ages” would likely to be a dot in either AVI or MKV.</p>
+Use this to find out which format fits your needs, while being “as
+simple as possible and only as complicated as necessary”.
+</aside>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Commandline Shell Basics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Commandline Shell Basics</h1>
+  <p class="author"><div class="line-block">Peter
+Bubestinger-Steindl<br />
+<code>( email (at) ArkThis com )</code></div></p>
+  <p class="date">2025-11</p>
+</section>
+
+<section id="special-thanks-to" class="slide level1">
+<h1>Special thanks to:</h1>
+<ul>
+<li><a
+href="https://training.ashleyblewer.com/presentations/cli.html">Ashley
+Blewer</a></li>
+<li><a href="https://reto.ch/training/2020/2020-06/">Reto
+Kromer</a></li>
+</ul>
+<p>…whose bash/CLI presentations I’ve used as basis for this.</p>
+<aside class="notes">
+<p>There is sooooooo infinitely much adventurous stuff to know and learn
+about shell and commandline - and all things “native” there.</p>
+<p>Therefore, I was happy to have Ashley and Reto allowing me to
+rip-and-plunder from their existing slides and materials.</p>
+You may find their original wordings here and then still :)
+</aside>
+</section>
+<section id="welcome-to-the-shell" class="slide level1">
+<h1>Welcome to “The Shell”!</h1>
+<p><img data-src="../../../images/shell/hacker.gif" width="900" /></p>
+</section>
+<section id="oookaay-its-usually-more-like-this" class="slide level1">
+<h1>Oookaay, it’s usually more like this:</h1>
+<p><img data-src="../../../images/tools/ffmpeg/ffmpeg-ffv1_to_dvd.png"
+width="500" /></p>
+</section>
+<section id="yes-with-colors" class="slide level1">
+<h1>…yes with colors! 🎉️</h1>
+<p><img data-src="../../../images/shell/btop-large_png_gimp.png"
+width="500" /></p>
+</section>
+<section id="what-is-a-command-line-interface" class="slide level1">
+<h1>What is a “Command Line Interface”?</h1>
+<ul>
+<li><p><strong>Terminal window:</strong><br />
+<small> Text-only window in a GUI (Graphical User Interface) that
+emulates a console and provides “a shell”. </small></p></li>
+<li><p><strong>A command:</strong><br />
+<small> Instruction telling a computer to do something (such as launch a
+program). </small></p></li>
+<li><p><strong>Command Line Interface</strong> (CLI):<br />
+<small> The “text-only black background thing” that computer hackers use
+to talk with machines. </small></p></li>
+</ul>
+<aside class="notes">
+<p>A <strong>terminal window</strong> is a text-only window in a
+<strong>graphical user interface</strong> (GUI) that emulates a
+console.</p>
+<p>A GUI is a type of human-computer interface (i.e., a system for
+people to interact with a computer) that uses windows, icons, pull-down
+menus and a pointer and that can be manipulated by a mouse (and usually
+to some extent by a keyboard as well).</p>
+<p>A <strong>command</strong> is an instruction telling a computer to do
+something, such as launch a program.</p>
+<p>A <strong>command line interface</strong> (CLI) is an all-text
+display mode that has a command interpreter running in it and that shows
+commands, including their arguments, and other data as they are typed in
+at the keyboard as well as the results of most such commands.</p>
+<p>A command interpreter, also referred to as a <strong>shell</strong>,
+is a program whose primary function is to read commands that are typed
+into a console or terminal window and then execute (i.e., run) them.</p>
+<a href="http://www.linfo.org/terminal_window.html">source</a>
+</aside>
+</section>
+<section id="why-learn-this" class="slide level1">
+<h1>Why learn this?</h1>
+<table>
+<tr>
+<td>
+<p><strong>Remember books? 😉️</strong></p>
+<ol type="1">
+<li><strong>GUI</strong> = graphical images.</li>
+<li><strong>CLI</strong> = written text.</li>
+<li><strong>GUI + CLI</strong> = best of both worlds.</li>
+</ol>
+<p>Or do you prefer the classic dependency on “code-literates”?</p>
+</td>
+<td>
+<img data-src="../../../images/shell/code_literacy.jpg" />
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>Just like we learned in history class, that when most people could
+not interpret written text - but only images/drawings - the power was in
+the hands of those who /could/ master the written words.</p>
+Like it or not, but in a digital world, the ones who can read/write and
+master code are in control.
+</aside>
+</section>
+<section id="why-learn-this-1" class="slide level1">
+<h1>Why learn this?</h1>
+<ol type="1">
+<li><p>You can <strong>express</strong> with CLI (words) what no GUI
+(image) can. <small>(And other way around)</small></p></li>
+<li><p>Anything you can express in CLI you can
+<strong>repeat/script/automate</strong>.</p></li>
+<li><p><strong>Remote access</strong>: There are devices, situations
+where there is no GUI. But you can still “talk” with the
+<code>headless machines</code> using CLI <small>(servers, TVs, routers,
+etc)</small></p></li>
+<li><p>And: <strong>magic/spells are always worth learning!</strong>
+🧙</p></li>
+</ol>
+<aside class="notes">
+<p>When working through commands, it may seem strange to learn how to
+use the command line when you can do everything using the desktop. But
+here are a few reasons why CLI skills are good to know:</p>
+<ol type="1">
+<li><p>You can use command-line tools that have no GUI
+equivalent.</p></li>
+<li><p>You can build automated tools and run them, so the computer can
+do your job for you. Anything you can do</p></li>
+<li><p>You may have to access computers over a network/internet that
+either do not have a GUI, or you cannot see them. For example, if you
+need to talk to a server on your network, you might not be able to get a
+visual representation of the files on that server and you will have to
+communicate with this computer “in the dark” using the command
+line.</p></li>
+</ol>
+</aside>
+</section>
+<section id="opening-a-shellterminal" class="slide level1">
+<h1>Opening a shell/terminal</h1>
+<ul>
+<li><p><strong>MacOS</strong>:<br />
+Applications: Search for <code>terminal</code></p></li>
+<li><p><strong>Linux</strong>:<br />
+Applications: Search for <code>terminal</code> <small>(or press:
+<code>ctrl+alt+T</code>)</small></p></li>
+<li><p><strong>Windows</strong>:<br />
+<code>Win+R</code> then type <code>cmd</code>. <small>but there’s a
+catch…</small></p></li>
+</ul>
+<aside class="notes">
+</aside>
+</section>
+<section id="windows" class="slide level1">
+<h1>Windows</h1>
+<ul>
+<li><p><strong>Legacy Commandline</strong>: <small>(aka “DOS
+prompt”)</small><br />
+Very limited; Syntax only valid in DOS/Windows.</p></li>
+<li><p><strong>PowerShell</strong>: <small>(windows-native automation
+shell)</small><br />
+More powerful, but again: syntax /only/ valid in Windows.</p></li>
+<li><p><strong><a
+href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows
+Subsystem for Linux</a></strong> (WSL): <small>(finally, a proper
+’nix-shell)</small><br />
+This is compatible with the rest of the world.<br />
+See: “<a
+href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Running
+Linux on Win10</a>”</p></li>
+</ul>
+<!-- Don't bother: Use WSL!
+# Windows: Other options
+
+  * [gow](https://github.com/bmatzelle/gow)  
+    (GNU On Windows): Installs basic UNIX commands.
+
+  * [Cygwin](http://cygwin.com/)  
+    Cygwin is a "Linux-like environment" for Windows (see [cheat-sheet](https://www.pcwdld.com/cygwin-cheat-sheet) to get started)
+-->
+</section>
+<section id="a-note-about-getting-stuck" class="slide level1">
+<h1>A note about getting stuck</h1>
+<ul>
+<li><strong>Command is taking too long?</strong>:
+<ul>
+<li><code>ctrl+c</code>: Abort whatever the process is doing.</li>
+</ul></li>
+<li><strong>Stuck in a text file?</strong>
+<ul>
+<li><code>:q!</code> (if the editor is <code>vi</code>)</li>
+</ul></li>
+<li><strong>Stuck, confused, and panicking?</strong>
+<ul>
+<li><code>Close the window</code>.</li>
+<li>Breathe. 😎️ 🌻️</li>
+</ul></li>
+</ul>
+<aside class="notes">
+</aside>
+</section>
+<section id="drag-and-drop" class="slide level1">
+<h1>Drag and drop</h1>
+<ul>
+<li>Works on most OSs.</li>
+<li>Inserts path/filename as text in terminal.</li>
+<li>Useful to save typing &amp; avoid typos.</li>
+</ul>
+<aside class="notes">
+In recent OSs, you may try drag-n-drop of files/folders from the GUI
+onto the CLI. It often inserts the full filename/path as text-string in
+the commandline window.
+</aside>
+</section>
+<section id="useful-words-and-terms" class="slide level1">
+<h1>Useful words and terms</h1>
+<ul>
+<li>CLI = shell = terminal = console</li>
+<li>folder = directory = dir = path</li>
+<li>Linux / Mac / etc = <code>unix-like</code> systems.</li>
+</ul>
+</section>
+<section id="lets-get-started" class="slide level1">
+<h1>Let’s get started!</h1>
+</section>
+<section id="list-directory-contents" class="slide level1">
+<h1>List directory contents</h1>
+<ul>
+<li>Unix-like: <code>ls your/path/here/</code></li>
+<li>Win: <code>dir C:\your\path\here\</code></li>
+</ul>
+<aside class="notes">
+Unix-like: Get a nice(r) ASCII-Art view of tree-structured listings:
+<code>tree</code>
+</aside>
+</section>
+<section id="wildcards" class="slide level1">
+<h1>Wildcards</h1>
+<ul>
+<li><code>*</code> = Match 0+ characters of any kind</li>
+<li><code>?</code> = Match a single character</li>
+</ul>
+<p>Classic: <code>ls *.mkv</code></p>
+</section>
+<section id="wildcards-1" class="slide level1">
+<h1>Wildcards</h1>
+<p>You can select files/folders matching patterns:</p>
+<ul>
+<li><p><code>*</code>: <small>Everything</small></p></li>
+<li><p><code>.*</code>: <small>Hidden stuff (Mac/Linux)</small></p></li>
+<li><p><code>*.*</code>: <small>Most regular files (with
+<code>dot-suffix</code>)</small></p></li>
+<li><p><code>VID-*.mp4</code>: <small>Every file starting with
+<code>VID-</code> and ending with <code>.mp4</code></small></p></li>
+<li><p><code>*.txt</code>: <small>Only textfiles.</small></p></li>
+<li><p><code>IMG000?.jpg</code>: <small>Starting with
+<code>IMG000</code> - and then /one/ character - then
+<code>.jpg</code></small></p></li>
+</ul>
+<aside class="notes">
+</aside>
+</section>
+<section id="show-current-directory" class="slide level1">
+<h1>Show current directory</h1>
+<ul>
+<li>Unix-like: <code>pwd</code></li>
+<li>Win: <code>ch</code> or <code>chdir</code></li>
+</ul>
+</section>
+<section id="change-directory" class="slide level1">
+<h1>Change directory</h1>
+<ul>
+<li>Unix-like: <code>cd /path/you/want/to/go</code></li>
+<li>Win: <code>cd d:\here\they\do\backslash\</code></li>
+</ul>
+</section>
+<section id="absolute-or-relative-path" class="slide level1">
+<h1>Absolute or relative (path)?</h1>
+<ul>
+<li><p><strong>Relative</strong> <small>(to the current folder “you are
+in”)</small><br />
+<code>ls ../images/*.jpg</code></p></li>
+<li><p><strong>Absolute</strong> <small>(=full-path)</small><br />
+Starts with <code>/</code> (*nix) or drive-letter <code>X:\</code>
+(Win).<br />
+<code>cd /home/username/Documents/</code></p></li>
+</ul>
+<aside class="notes">
+<p>Whether the path you are typing in has a slash in front of it or not
+is significant – it determines whether or not the computer should look
+for that path within the context of the folder you are in, or within the
+context of your entire machine.</p>
+The slash in front lets the computer know you are setting your path from
+anywhere, and without the slash, it is within the context of the folder
+you are in. If you are on the Desktop and want to go to a folder on the
+desktop, you can just type the name of that folder OR you can drag the
+folder into the CLI, which will show you the FULL path (and will work no
+matter what folder you are in).
+</aside>
+</section>
+<section id="more-moving-around" class="slide level1">
+<h1>More moving around:</h1>
+<ul>
+<li><code>cd ..</code>: <small>Go UP one level</small></li>
+<li><code>cd ../..</code>: <small>Go UP two levels…</small></li>
+<li><code>cd ~</code>: <small>Go home.
+<code>~ = $HOME</code></small></li>
+<li><code>cd -</code>: <small>Go back to previous folder (wherever that
+was)</small></li>
+</ul>
+</section>
+<section id="create-a-directory" class="slide level1">
+<h1>Create a directory</h1>
+<ul>
+<li><code>mkdir name/of/directory</code></li>
+</ul>
+</section>
+<section id="create-a-file" class="slide level1">
+<h1>Create a file</h1>
+<ul>
+<li><code>touch myfile.xxx</code><br />
+(Also used to update timestamps 😄️)</li>
+</ul>
+</section>
+<section id="copying-a-file" class="slide level1">
+<h1>Copying a file</h1>
+<ul>
+<li>Unix-like: <code>cp SOURCE TARGET</code></li>
+<li>Win: <code>copy</code></li>
+</ul>
+<p><strong>Example:</strong>
+<code>cp -av file.txt filecopy.txt</code></p>
+<aside class="notes">
+btw: <code>cp -av</code> will preserve as much of the original
+properties as-it-can (timestamps, ownership, etc)
+</aside>
+</section>
+<section id="move-or-rename" class="slide level1">
+<h1>Move or Rename:</h1>
+<ul>
+<li>Unix-like: <code>mv SOURCE TARGET</code></li>
+<li>Win: <code>ren</code></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>mv file.txt Nicer_Name.txt</code></li>
+<li><code>mv *.dpx other_folder/</code><br />
+<small>(hint: works great with wildcards!)</small></li>
+</ul>
+</section>
+<section id="deleting-removing" class="slide level1">
+<h1>Deleting (Removing):</h1>
+<ul>
+<li>Unix-like: <code>rm WHATEVER</code></li>
+<li>Win: <code>del</code></li>
+</ul>
+<p><strong>NOTE:</strong> There’s no Recycle-bin used here. Deleted
+things are gone, once you hit <code>Enter</code>.</p>
+<aside class="notes">
+I once read something like “Unix-like systems treat you like an adult.”
+True. And with great power comes great responsibility ;)
+</aside>
+</section>
+<section id="removing-empty-directories" class="slide level1">
+<h1>Removing empty directories:</h1>
+<ul>
+<li><p><code>rmdir my_folder</code><br />
+Will remove “my_folder” <strong>only if it’s empty</strong> <small>(and
+return an error it’s NOT empty)</small></p>
+<p>Very useful!</p></li>
+</ul>
+<aside class="notes">
+<p>rmdir will only remove /empty/ directories. Therefore, rmdir can be
+used to cautiously delete folders that you believe to be empty. If they
+are: good. then they’re gone.</p>
+If they weren’t empty: rmdir will refuse to remove them. So you can
+check again if you’ve overlooked something.
+</aside>
+</section>
+<section id="additional-resources" class="slide level1">
+<h1>Additional Resources</h1>
+<p><small></p>
+<ul>
+<li><a href="https://tldp.org/LDP/abs/html/index.html">Advanced Bash
+Scripting Guide (TLDP)</a></li>
+<li><a
+href="https://github.com/alebcay/awesome-shell">awesome-shell</a></li>
+<li><a
+href="https://www.git-tower.com/blog/posts/command-line-cheat-sheet">Command
+Line Cheat Sheet</a></li>
+<li><a
+href="http://simplyadvanced.net/blog/cheat-sheet-for-windows-command-prompt/">Command
+Prompt Cheat Sheet</a></li>
+<li><a href="https://www.pcwdld.com/cygwin-cheat-sheet">Cygwin Cheat
+Sheet</a></li>
+<li><a href="http://swcarpentry.github.io/shell-novice/">Software
+Carpentry Course</a></li>
+<li><a href="https://github.com/veltman/clmystery">Command Line Mystery
+Game</a></li>
+<li><a href="https://digiprez.com/cli-scavenger-hunt">Command Line
+Scavenger Hunt</a></li>
+<li><a href="https://explainshell.com/">ExplainShell.com</a></li>
+<li><a
+href="https://learnpythonthehardway.org/book/appendixa.html">Command
+Line Crash Course</a></li>
+<li><a href="http://dd388.github.io/crals/">Script Ahoy</a></li>
+<li><a href="https://datapraxis.github.io/sourcecaster/">the
+sourcecaster</a></li>
+<li><a
+href="https://docs.google.com/presentation/d/1c3xhHbgpF3KQVwY9P_VpECZbwCTqwdQFh1DiBjWDue0/edit#slide=id.p">AMIA
+Digipres101 presentation</a></li>
+</ul>
+<p></small></p>
+</section>
+<section id="opening-a-file" class="slide level1">
+<h1>Opening a file</h1>
+<ul>
+<li>MacOS: <code>open MyFile.xxx</code></li>
+<li>Linux: <code>xdg-open MyFile.xxx</code></li>
+<li>Win: <code>MyFile.xxx</code></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Peter Bubestinger-Steindl (email (at) ArkThis com)">
+  <title>Understanding and Selecting a File Format for AV</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal4.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../../../reveal4.js/dist/theme/avrd.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Understanding and Selecting a File Format for
+AV</h1>
+  <p class="author">Peter Bubestinger-Steindl<br />
+<code>(email (at) ArkThis com)</code></p>
+  <p class="institute">ArkThis AV-RD</p>
+</section>
+
+<section class="slide level1">
+
+<!--
+   Understanding and Selecting a File Format for AV media files.
+-->
+</section>
+<section id="artificial-restrictions" class="slide level1">
+<h1>Artificial restrictions</h1>
+<figure>
+<img data-src="../../../images/retro/amstrad_pcw-schneider_joyce2.jpg"
+alt="Amstrad Schneider Joyce" />
+<figcaption aria-hidden="true">Amstrad Schneider Joyce</figcaption>
+</figure>
+<aside class="notes">
+<p>Preservability is greatly influenced not only by its technical-, but
+also legal- or political-properties of a file format.</p>
+<p><a href="http://www.seasip.info/Unix/Joyce/faq.html">Quote from John
+Elliot</a> (the JOYCE emulator developer):</p>
+<blockquote>
+<p>Q: “Where can I find images of the boot discs?” A: “To the best of my
+knowledge, you can’t. They are copyrighted software and can’t be
+distributed.”</p>
+</blockquote>
+That’s computer programs from the 1980s, and only valid on that
+platform.
+</aside>
+</section>
+<section id="digital-video-trinity" class="slide level1">
+<h1>Digital Video Trinity</h1>
+<p><img data-src="../../../images/tech-video/trinity/video_trinity2.png"
+class="plain" /></p>
+<aside class="notes">
+<p>The uncomfortable truth. It’s more than “1 format” to choose/consider
+for AV.</p>
+<p>The container format is the one you see in the filename as suffix:
+mov, mkv, mxf, avi, flv, 3gp, wav, etc.</p>
+<p>A/V media files: “The” format of video files usually consists of 3
+different formats:</p>
+<ul>
+<li>Container</li>
+<li>Video codec</li>
+<li>Audio codec</li>
+</ul>
+<p>Optional:</p>
+<p>Embedded metadata of all kinds:</p>
+<ul>
+<li>Descriptive</li>
+<li>Technical</li>
+<li>non time-based / time-based</li>
+</ul>
+<p>Additional data streams: (usually “time-based”)</p>
+<ul>
+<li>subtitles</li>
+<li>timecode</li>
+<li>crazy special feature xy</li>
+<li>etc, etc, etc…</li>
+</ul>
+</aside>
+</section>
+<section id="whats-a-container-wrapper" class="slide level1">
+<h1>What’s a Container / Wrapper?</h1>
+<blockquote>
+<p>“A container format […] is a file format that allows multiple data
+streams to be embedded into a single file.</p>
+<p>Usually along with metadata for identifying and further detailing
+those streams.”</p>
+</blockquote>
+<p><small> Source: <a
+href="https://en.wikipedia.org/wiki/Container_format_(computing)">Wikipedia:
+Container format (computing)</a> </small></p>
+</section>
+<section id="whats-a-container" class="slide level1">
+<h1>What’s a Container?</h1>
+<table>
+<tr>
+<td>
+<p><strong>Think of a regular paper folder…</strong></p>
+<ul>
+<li>It’s a wrapper around content.</li>
+<li>Contains Metadata.</li>
+<li>Structures the content streams.</li>
+</ul>
+</td>
+<td>
+<figure>
+<img
+data-src="../../../images/tech-video/trinity/pb-video_container_mockup.jpg"
+width="500" alt="Videofile paper mockup" />
+<figcaption aria-hidden="true">Videofile paper mockup</figcaption>
+</figure>
+</td>
+</tr>
+</table>
+<aside class="notes">
+Metadata: * Index (which streams are contained, etc) * Descriptive MD
+(title, language, etc) * as well as technical MD (fps, aspect ratio,
+color handling, etc) * NOTE: Some technical MD may be stored in the
+container <em>and</em> the codec/stream. This may be a blessing and a
+curse… Example: Aspect ratio or fps.
+</aside>
+</section>
+<section id="whats-a-codec" class="slide level1">
+<h1>What’s a Codec?</h1>
+<blockquote>
+<p>“A codec is a device or computer program which encodes or decodes a
+data stream or signal.”</p>
+</blockquote>
+<p><small>Source: <a
+href="https://en.wikipedia.org/wiki/Codec">Wikipedia:
+Codec</a></small></p>
+</section>
+<section id="whats-a-codec-1" class="slide level1">
+<h1>What’s a Codec?</h1>
+<p><strong>Think of a human language…</strong></p>
+<ul>
+<li>It’s coded information.</li>
+<li>There may be dialects.</li>
+<li>Different people may<br />
+“speak / understand” differently.</li>
+</ul>
+</section>
+<section id="best-practices-for-ingestdigitization"
+class="slide level1">
+<h1>Best practices for ingest/digitization</h1>
+<p><small></p>
+<ul>
+<li><p>Stay as “unmodified” to the original source as possible.</p></li>
+<li><p>Capture analog video without adding generation loss.<br />
+Uncompressed <sup>(v210)</sup> or lossless <sup>(FFV1,
+J2K)</sup>.</p></li>
+<li><p>Or fallback option: high-quality lossy.<br />
+At the highest quality (bitrate) you can store and manage well over
+time.</p></li>
+<li><p>Capture digital tape as “natively” as possible.<br />
+<sup>(MiniDV, DAT, DigiBeta, etc.)</sup></p></li>
+<li><p>Store already-digital files “as original” as possible.<br />
+Transcode only if codec does not satisfy “sustainability” checklist.
+Rewrap/rewrite container. Always. Even if identical.</p></li>
+</ul>
+<p></small></p>
+</section>
+<section id="bitrate-data-per-time" class="slide level1">
+<h1>Bitrate = Data per Time</h1>
+<ul>
+<li>Mbps / 8 = MB / second</li>
+<li>MB/s * 60 = MB / minute</li>
+<li>MB/min * 60 = MB / hour</li>
+<li>MB / 1024 = GB / 1024 = TB</li>
+</ul>
+<aside class="notes">
+<p>If you know the bitrate, you can calculate the size of your files, by
+multiplying the bitrate by the runtime duration (time).</p>
+<p>A fixed bitrate however is only available for:</p>
+<ul>
+<li>constant bitrate (lossy) compression.</li>
+<li>uncompressed.</li>
+</ul>
+<p>For lossy compression, bitrate is an encoding parameter, but for
+uncompressed we’ll show later in this session how to calculate the
+size.</p>
+<p>For lossless or variable bitrate, the exact size cannot be
+pre-calculated - only estimated. The actual size can still vary, since
+the size of these kind of encodings greatly depends on the content being
+encoded. Rule of thumb: Less motion = smaller size and vice versa. Noise
+make files larger.</p>
+There’s also the choice with some formats between constant bitrate and
+variable bitrate. Constant bitrate is simpler, more robust, straight to
+calculate/estimate. Simpler=preserves better. Variable bitrate is
+another way to compress space, but makes decoding/interpreting the data
+more complicated and may lead to different behavior in different
+tools/setups.
+</aside>
+</section>
+<section id="bitrate-data-per-time-1" class="slide level1">
+<h1>Bitrate = Data per Time</h1>
+<blockquote>
+<p>= How many bytes your (lossy) encoder may spend on the quality of the
+material.</p>
+</blockquote>
+<p>
+ 
+</p>
+<table>
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr>
+<th>Higher bitrate</th>
+<th>Better Codec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Better quality, but larger files</td>
+<td>Better quality at same size or: Same quality at smaller size</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bitrate-modes-constant-vs-variable" class="slide level1">
+<h1>Bitrate modes: Constant vs Variable</h1>
+<ul>
+<li><p><strong>CBR: Constant BitRate</strong><br />
+<small> Fixed value of data-per-time.<br />
+Great to calculate/estimate size/bandwidth.<br />
+Not optimized for saving space.<br />
+</small></p></li>
+<li><p><strong>VBR: Variable BitRate</strong><br />
+<small> Encoder increases/decreases bitrate, depending on complexity of
+AV content.<br />
+Common to define min/max boundaries.<br />
+Smaller files, but hard(er) to estimate size/bandwidth.<br />
+</small></p></li>
+</ul>
+</section>
+<section id="bitrate-quality" class="slide level1">
+<h1>Bitrate &amp; Quality</h1>
+<blockquote>
+<p>“Your initial bitrate will inform the quality of all subsequent
+footage that comes from that video data. Aim for the highest practical
+bitrate.” <small> — Source: <a
+href="https://www.adobe.com/creativecloud/video/discover/bit-rate.html">Adobe.com</a>
+</small></p>
+</blockquote>
+<p><small></p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Bitrate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DVCPro50 (SD)</td>
+<td>50 Mbps</td>
+</tr>
+<tr>
+<td>DVCPro HD</td>
+<td>100 Mbps</td>
+</tr>
+<tr>
+<td>DVD (max)</td>
+<td>9.8 Mbps</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>720p</td>
+<td>5 Mbps</td>
+</tr>
+<tr>
+<td>1080p</td>
+<td>8 Mbps</td>
+</tr>
+<tr>
+<td>4K</td>
+<td>35-45 Mbps</td>
+</tr>
+</tbody>
+</table>
+<p></small></p>
+</section>
+<section id="size" class="slide level1">
+<h1>Size</h1>
+<ul>
+<li>Bitrate = Size vs Quality<br />
+<small>(bitrate as parameter exists <em>only</em> for lossy
+encoding)</small></li>
+<li>Uncompressed &gt; lossless &gt; lossy</li>
+<li>Larger = less processing power, but:<br />
+More disk/net I/O bandwidth required.</li>
+</ul>
+<aside class="notes">
+<ul>
+<li><p>Bitrate as tuning parameter only applies to lossy codecs, because
+lossless/uncompressed are not allowed to throw anything away - therefore
+their bitrate cannot be adjusted by definition.</p>
+<ul>
+<li><p>Only reason for compression: data size.</p></li>
+<li><p>Any form of compression adds complexity to a format. Complexity
+in terms of understanding (=implementing) a codec. Complexity in terms
+of performance requirements. Uncompressed is always the
+least-CPU-requirement.</p></li>
+<li><p>Why “compressed” is often equated as “lossy”. Because moving
+images produce a lot of data and lossy compression produces the best
+compromise between quality/size/performance - lossy is the de-facto
+default when producing videos.</p></li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="calculating-filesize-image" class="slide level1">
+<h1>Calculating filesize: IMAGE</h1>
+<ul>
+<li>Width(px) x Height(px)</li>
+<li>x Bits-Per-Pixel(bpp)</li>
+<li>x FPS</li>
+<li>/ 8 = <strong>1 second (in Byte)</strong></li>
+</ul>
+<aside class="notes">
+<p>Having calculated the size of an uncompressed image, consider it a
+<code>frame</code> or <code>field</code> and multiply it by:</p>
+<ul>
+<li>x frames per second</li>
+<li>x time (= duration)</li>
+</ul>
+…to get the size of uncompressed video/film recordings.
+</aside>
+</section>
+<section id="calculating-filesize-audio" class="slide level1">
+<h1>Calculating filesize: AUDIO</h1>
+<ul>
+<li>Samplerate x bit-depth</li>
+<li>x channels <small>(even if silence!)</small></li>
+<li>/ 8 = <strong>1 second (in Byte)</strong></li>
+<li>x time (= duration)</li>
+</ul>
+<aside class="notes">
+So how large is an 8bpc SD PAL minute - with 4 channels audio at SDI
+standard (48kHz/16bit)?<br />
+Or a 2k 16bpc(!) scan (including 6 channels audio at 48kHz/24bit)?<br />
+Or 74min. of audio CD (red-book standard: 44.1kHz/16bit)?
+</aside>
+</section>
+<section id="calculating-lossy-sizes" class="slide level1">
+<h1>Calculating lossy sizes</h1>
+<ul>
+<li>Bitrate mode: CBR vs VBR/CRF?</li>
+<li>VBR/CRF: min/max Bitrate set for encoding?</li>
+<li>CBR: Multiply bitrate by duration</li>
+<li>VBR: Use min/max to multiply by duration</li>
+</ul>
+<aside class="notes">
+<p>That’s one of the reasons why most broadcast or AV-hardware player
+formats use CBR. Because it’s clear to calculate and support.</p>
+<p>VBR is cheaper, as it produces smaller data-frame sizes - yet is a
+bit trickier to handle, due to its flexibility. However, most content on
+the internet - and consumer/prosumer environments is VBR. Possibly CRF
+encoded. So VBR works, and is quite a common property.</p>
+There’s a <a href="https://trac.ffmpeg.org/wiki/Encode/H.264">great
+FFmpeg Wiki Article: on h.264 encoding</a> which covers many relevant
+options and parameters for lossy MPEG-4 AVC encoding.
+</aside>
+</section>
+<section id="per-expected-users" class="slide level1">
+<h1>Per (expected) users</h1>
+<ul>
+<li>Consider all data/file-sizes as bandwidth (size per time)</li>
+<li>Multiply per number of users</li>
+<li>To plan your network &amp; (online) servers.</li>
+</ul>
+</section>
+<section id="preservation-checklist-translated" class="slide level1">
+<h1>Preservation Checklist: translated! ⭐</h1>
+<table>
+<tr>
+<td class="small">
+<p><strong>Sustainability:</strong></p>
+<ol type="1">
+<li>Documentation openly accessible?</li>
+<li>Open reference implementation?</li>
+<li>How likely is it to be supported in tools/devices for which
+userbase?</li>
+<li>Which features are implemented/tested/stable?</li>
+<li>Which choice/requirements do I have to handle it beyond “shelf
+life”?</li>
+<li>Is it legal/possible to handle it in future/different
+situations?</li>
+<li>Can it contain proper metadata?</li>
+</ol>
+</td>
+<td class="small">
+<p><strong>Quality and functionality:</strong></p>
+<ol type="1">
+<li>Preserve significant properties?</li>
+<li>Sufficient image/sound quality and robustness to multi-generation
+copies?</li>
+<li>Interoperability / ease of usage &amp; access?</li>
+<li>Direct use for editing?</li>
+<li>How many different formats will I need (pile up)?</li>
+<li>Handle performance / data size requirements?</li>
+</ol>
+</td>
+</tr>
+</table>
+<p><small> Original source: <a href="https://meemoo.be/">meemoo.be</a>
+</small></p>
+<aside class="notes">
+<ol type="1">
+<li><p>Documentation openly accessible? Without documentation (or access
+to it), a file format is the equivalent of a secret code/language. You
+can imagine how well “secret code” satisfies preservation
+requirements?</p></li>
+<li><p>Open reference implementation? Any code that implements a file
+format can be called an “implementation” of that format. A “reference
+implementation” is an application that is able to read/write that format
+in a proper way, used to check the validity of other implementations
+that read/write the same format. With proprietary (=closed source)
+formats it is not uncommon that there is no real “offical” reference
+implementation - but merely a black-box binary provided by the vendor,
+not necessarily freely accessible and possibly subject to change at
+their will. Without an open reference implementation (=including source
+code), interoperability issues are more likely to happen.</p></li>
+<li><p>How likely is it to be supported in tools/devices &amp; for which
+userbase?</p>
+<p>Adoption of a format plays a major role in how easy (=cheaper) vs
+hard (=more expensive) it is to use a format. It may be necessary/useful
+to engage with vendors of developers and ask for supporting a certain
+format in tools you would like to use.</p></li>
+</ol>
+<p>The userbase is important, as it has a great impact on where a format
+is supported, and for which use-cases it is real-world tested. If a
+format is common in a userbase that covers your use cases, it’s good. If
+a format was designed/intended for a userbase further away from your use
+cases, you may find that you get less support (or understanding) for
+your needs.</p>
+<ol start="4" type="1">
+<li><p>Which features are implemented/tested/stable?</p>
+<p>Developing, testing and supporting a file format is a tricky task.
+Therefore it is common that the “most popular/important” features are
+the ones most likely to be tested and working reliably. Other functions
+that may also be defined (even in a standardized format), may not
+receive the same attention by its supporters, often leading to
+(interoperability-)issues with not-so-popular functions. This is
+especially important for us, since certain features required for
+preservation are often less important for the main intended use-case of
+a format.</p></li>
+</ol>
+<p>A popular example is “lossless”: both, JPEG2000 as well as H.264 can
+produce lossy as well as lossless encodings. However in practice, the
+lossless feature is often neither tested (and sometimes not even
+supported) in many of their implementations.</p>
+<ol start="5" type="1">
+<li><p>Which choice/requirements do I have to handle it beyond “shelf
+life”? For digital formats, this can be reduced to: If you have an Open
+Source version that is able to encode/decode a format, you can most
+likely continue using it under future (=unknown), possibly changing
+conditions.</p></li>
+<li><p>Is it legal/possible to handle it in future/different situations?
+Patents, proprietary licensing and copy protection mechanisms are merely
+artificial restrictions that must be considered when choosing a file
+format for preservation. Especially since access to the material should
+not be hindered by them.</p></li>
+<li><p>Can it contain proper metadata? It is good practice to include at
+least rudimentary metadata that allows to “identify” a file if found in
+the wild. Typical fields are: title, unique-identifier, institution
+name, etc.</p>
+<p>Depending on your collection and users, different metadata may be
+useful or required to create a proper AIP.</p></li>
+</ol>
+<p><strong>Quality and functionality:</strong></p>
+<ol type="1">
+<li><p>Preserve significant properties? Can the format maintain certain,
+relevant properties of the source as close to the original as
+possible?</p></li>
+<li><p>Sufficient image/sound quality and robustness to multi-generation
+copies? Can the format provide sufficient quality, and how much impact
+would repeated encoding (lossy) have on it?</p></li>
+<li><p>Interoperability / ease of usage &amp; access? Can the format
+easily be used with different tools, under different operating systems,
+environments, devices, etc?</p></li>
+<li><p>Direct use for editing? Can the format be used directly for
+non-linear editing or extracting parts, or does it require
+pre-transcoding in order to do so?</p></li>
+<li><p>How many different formats will I need (pile up)? Can the format
+handle and depict the majority of my collection, or would I need
+different formats for other source material? It is intended to have a
+small number of different file formats in an archive, as maintaining
+workflows/tools becomes more difficult (=expensive) with more formats.
+However, it is also not advisable to simply choose a “can do anything
+and everything” format, as mentioned above: More features = harder to
+implement, support, maintain, etc.</p></li>
+<li><p>Handle performance / data size requirements? Can the required
+(daily) workflows be supported in due time, or are there bottlenecks,
+budget constraints, etc?</p></li>
+</ol>
+</aside>
+</section>
+<section id="checklist-for-a-preservation-format" class="slide level1">
+<h1>Checklist for a Preservation Format</h1>
+<table>
+<tr>
+<td class="small">
+<p><strong>Sustainability:</strong></p>
+<ol type="1">
+<li>Disclosure?</li>
+<li>Open reference implementation/libs?</li>
+<li>Adoption/popularity?</li>
+<li>Complexity?</li>
+<li>Independence vs external contingencies?</li>
+<li>Artificial restrictions?</li>
+<li>Self descriptive?</li>
+</ol>
+</td>
+<td class="small">
+<p><strong>Quality and functionality:</strong></p>
+<ol type="1">
+<li>Preserve “original”?</li>
+<li>Image/sound quality?</li>
+<li>Interoperability?</li>
+<li>Editing?</li>
+<li>Support for (additional/expected) properties?</li>
+<li>Performance &amp; data size?</li>
+</ol>
+</td>
+</tr>
+</table>
+<p><small> Source: <a href="https://meemoo.be/">meemoo.be</a>
+</small></p>
+<aside class="notes">
+<p>One reason why there is no “one-size-fits-all” file format for AV, is
+that there are different use cases, each having a different focus.</p>
+<p>These lists are a good reference for giving you questions to ask
+about formats that may be considered as an option.</p>
+The next slide translates these buzzwords into more concrete
+questions/situations.
+</aside>
+</section>
+<section id="format-choice-a-balance-of" class="slide level1">
+<h1>Format choice = A balance of …</h1>
+<ul>
+<li>Size vs Quality</li>
+<li>Features</li>
+<li>Performance</li>
+<li>Sustainability</li>
+<li>plus: time, budget, staff</li>
+<li>and of course: convenience</li>
+</ul>
+<p><small>Good starting point for assessing practical
+usefulness.</small></p>
+<aside class="notes">
+<p>Size: * Smaller = slower processing power * Smaller = less quality *
+Bigger = slower disk I/O</p>
+<p>Quality: * More quality = larger files * More quality = slower
+processing</p>
+<p>Performance: * How “fast” can a format be encoded/decoded? * Which
+hardware is required/desired? * Making it faster: Often limited by
+budget * Cameras / recording workflows must satisfy real-time and
+on-site constraints. * Editing</p>
+Features: * Can the format handle information/feature XY? (Can it do
+start timecode? timecode track? subtitles? extended metadata? etc)
+</aside>
+</section>
+<section id="rather" class="slide level1">
+<h1>Rather…</h1>
+<ul>
+<li>ask, ask, ask.</li>
+<li>get documentation.</li>
+<li>get sample files.</li>
+<li>try handling/opening them <em>outside their “usual
+bubble”</em>.</li>
+<li>with at least 1 open implementation. <small>(FOSS
+licensed)</small></li>
+<li>Before you commit to a format.</li>
+<li>Try transcoding it to a “<a
+href="https://en.wikipedia.org/wiki/Lossless_compression"><em>lossless</em></a>”
+or “<a
+href="https://en.wikipedia.org/wiki/Uncompressed_video"><em>uncompressed</em></a>”
+form. <small>(to know if you can migrate/convert later)</small></li>
+</ul>
+<aside class="notes">
+<ul>
+<li><p>Ask users with similar/identical use cases than yours how they’re
+doing with that format.</p>
+<ul>
+<li><p>Get file format data layout specifications and other related
+documentation that you can get your hands on. We’ve already profited
+from the ones who did this for past “data formats”: analogue ones or
+even ancient writings on clay stone tablets, etc.</p></li>
+<li><p>Get sample files and try using them as-if in your desired
+workflow. Ask manufacturers or service-providers to provide you samples,
+or show you how your samples behave in their
+application/environment.</p></li>
+<li><p>Try sample files “outside their usual bubble”: This means that
+sometimes certain format behave well within expected environments
+(e.g. ProRes on Apple stuff, certain MXF-flavors in broadcast tools,
+etc) - but when deviating from thes tested grounds, things may look
+quite differently.</p></li>
+<li><p>If you have at least 1 open implementation (=binary plus source
+code under a copyleft license), you have everything you need to get out
+of that format under any future conditions. Without artificial
+restrictions.</p></li>
+<li><p>If you can transcode the format to an uncompressed form, without
+losing any information, you know that you have means of getting out of
+that format once you may decide to switch to another one (in the
+future).</p></li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="tempting" class="slide level1">
+<h1>Tempting…</h1>
+<ul>
+<li>Hey, it’s <strong>a standard</strong>!</li>
+<li>Hey, <strong>everyone’s using it</strong>!</li>
+<li>Hey, the “<strong>big ones</strong>” are using it!</li>
+<li>Hey, it’s from a <strong>major company</strong>!</li>
+<li>Hey, it can do <strong>everything</strong>!</li>
+<li>Hey, it’s so <strong>easy</strong> to use!</li>
+<li>Hey, it’s <strong>gratis</strong>!</li>
+</ul>
+<aside class="notes">
+<p>Of course all of these are valid reasons to adopt a file format, but
+when it comes to long-term preservation requirements and independent
+sustainability, they may not be sufficient, and sometimes even
+misleading.</p>
+<p>And yes, sometimes choosing such a format can be “just fine” too.</p>
+At least take some time to align <em>your</em> needs and wishes with any
+format option.
+</aside>
+</section>
+<section id="data-structure-hex-editor" class="slide level1">
+<h1>Data Structure (Hex Editor)</h1>
+<table>
+<tr>
+<td>
+<figure>
+<img
+data-src="../../../images/formats/riff-avi-wav/hexedit-wav-header.png"
+alt="Hex view of WAV header (annotated)" />
+<figcaption aria-hidden="true">Hex view of WAV header
+(annotated)</figcaption>
+</figure>
+</td>
+<td>
+<img
+data-src="../../../images/formats/obsolescence/holy-gibberish.jpg" />
+</td>
+</tr>
+</table>
+</section>
+<section id="documented-data-structure" class="slide level1">
+<h1>(Documented?) Data Structure</h1>
+<p><img data-src="../../../images/formats/angea/binary/PNG.png" /></p>
+</section>
+<section id="different-strokes-for-different-folks"
+class="slide level1">
+<h1>“Different strokes for different folks” 😉</h1>
+<ul>
+<li><p><strong>Digitization:</strong> <small>(<green>V210, FFV1, MPEG-4
+/ PCM</green>)</small> <small> uncompressed/lossless or very-high
+quality lossy.<br />
+</small></p></li>
+<li><p><strong>Preservation:</strong> <small>(<green>V210, FFV1, MPEG-2,
+MPEG-4 / PCM</green>)</small> <small> uncompressed/lossless or
+(very)high-quality lossy, open &amp; documented, error-robust.<br />
+</small></p></li>
+<li><p><strong>Production:</strong> <small>(<green>MPEG-2, MPEG-4,
+ProRes / PCM</green>)</small> <small> high-quality/high-bitrate
+(lossy).<br />
+</small></p></li>
+<li><p><strong>Access:</strong> <small>(<green>H.264 / AAC in
+MP4</green>)</small> <small> Most often lossy-compressed
+currently-popular format combination.<br />
+</small></p></li>
+</ul>
+<aside class="notes">
+<p>Notice: The container does not really matter regarding quality or
+size.</p>
+<p>The container does play an important role regarding:</p>
+<ul>
+<li>metadata</li>
+<li>structural features</li>
+<li>certain (technical) features not supported by other containers (eg
+timecode tracks)</li>
+</ul>
+</aside>
+</section>
+<section id="different-strokes-for-different-folks-1"
+class="slide level1">
+<h1>“Different strokes for different folks” 😉</h1>
+<ul>
+<li><p><strong>Digitization:</strong> <small> <green>As-original,
+as-untouched as possible. Records in realtime?</green> </small><br />
+<small> (Plus: has headroom for optional restoration/improvements.)
+</small></p></li>
+<li><p><strong>Preservation:</strong> <small> <green>Stand the tests of
+time.</green> </small><br />
+<small> (Highest ‘original’ quality) </small></p></li>
+<li><p><strong>Production:</strong> <small> <green>For daily work. High
+quality.</green> </small><br />
+<small> (Optional, if preservation format can be used for this)
+</small></p></li>
+<li><p><strong>Access</strong> <small> <green>For quick and easy
+access.</green> </small><br />
+<small> (Quality not necessarily best/high, but very convenient to play)
+</small></p></li>
+</ul>
+<aside class="notes">
+<p>Sometimes one format can be used for all these cases (merely lower
+quality/bitrate for access or production), but with AV it’s not uncommon
+that these are different codecs (or even containers).</p>
+<p>It is perfectly normal to have a preservation copy that requires
+transcoding before going into other workflows.</p>
+The formats for access and editing are more likely to be chanced more
+often than the preservation format.
+</aside>
+</section>
+<section id="for-audio-were-lucky." class="slide level1">
+<h1>For audio: we’re lucky.</h1>
+<blockquote>
+<p>PCM/WAV is used from digitization to preservation - and if bandwidth
+ain’t narrow: even as access format.</p>
+</blockquote>
+<p>Why? Because it became “<red>small enough</red>”.</p>
+</section>
+<section id="data-errors-error-resilience" class="slide level1">
+<h1>Data errors: Error resilience?</h1>
+<table>
+<tr>
+<td class="small">
+<ul>
+<li><p><strong>Bitstream checksums:</strong><br />
+Ability to <em>know</em> if the content is intact.</p></li>
+<li><p><strong>Error concealment:</strong> Optional choice of decoder to
+“mask” decoding issues. (decoder specific)</p></li>
+<li><p><strong>Make backup copies!</strong> 😇</p></li>
+</ul>
+</td>
+<td>
+<img data-src="../../../images/fixity/bubble-wrapped-person.jpg" />
+</td>
+</tr>
+</table>
+<aside class="notes">
+Error resilience of a format is nice, but don’t solely rely only on it:
+Make backups! :)
+</aside>
+</section>
+<section id="the-eternal-replayer" class="slide level1">
+<h1>The Eternal Replayer</h1>
+<p><img
+data-src="../../../images/open_source/immortal_replayer/A807_transformer_remove.jpg"
+height="300" /> + <img
+data-src="../../../images/open_source/immortal_replayer/bauteile2.jpg"
+height="300" /> = <img
+data-src="../../../images/open_source/immortal_replayer/A807_Scaled.jpg"
+height="300" /></p>
+<aside class="notes">
+<p>As an example:</p>
+<ul>
+<li>Schematics</li>
+<li>Building components</li>
+<li>+the right to use, study, share and improve them.</li>
+</ul>
+<p>= “The Immortal Replayer”</p>
+<p>Because it can be kept alive, or rebuilt or adapted to future needs
+or with future technology (whatever there may be).</p>
+<p>Since software <em>is</em> the schematics and building components at
+the same time, having the source code and the right (=license) to use,
+adapt and share them - gives you an immortal file format. By
+definition.</p>
+This has been proven in the real world in many different digital domains
+outside AV or preservation many times already, with different tools and
+data formats from ancient computer systems. Even popular ones now dead
+(Atari, Amiga, C64, Amstrad Schneider, etc etc.)
+</aside>
+</section>
+<section id="rebranded-format-names" class="slide level1">
+<h1>“Rebranded” Format Names</h1>
+<blockquote>
+<p>Some (professional) video formats are actually a profile-set for
+existing (standards) formats.</p>
+</blockquote>
+<p>This is good! 😇️</p>
+<aside class="notes">
+<p>Such profiles may include declaring what is “allowed”
+(=supported):</p>
+<ul>
+<li>number of audio channels</li>
+<li>audio resolution (samplerate, bits, channels)</li>
+<li>allowed bit-rates</li>
+<li>image resolutions, frame-rates</li>
+<li>etc.</li>
+</ul>
+<p>Why is this good?</p>
+<p>The reason why this is a good thing is, that these formats can now be
+treated with tools that support their underlying encodings, simply by
+adhering to their profile-specifications, using existing file-format
+libraries and tools.</p>
+For example, broadcast formats can now often be handled using FFmpeg, as
+long as sticking to the right profile constraints.
+</aside>
+</section>
+<section id="popular-examples" class="slide level1">
+<h1>Popular examples:</h1>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="https://en.wikipedia.org/wiki/Digital_Cinema_Package">Digital
+Cinema Package (DCP)</a> =</td>
+<td><a
+href="https://en.wikipedia.org/wiki/Motion_JPEG_2000">Motion-JPEG2000</a>
+(lossy), PCM in <a
+href="https://en.wikipedia.org/wiki/Material_Exchange_Format">MXF</a> +
+XML</td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/AVC-Intra">AVC-Intra</a>
+=</td>
+<td><a
+href="https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC">H.264/MPEG-4
+AVC</a></td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Betacam#MPEG_IMX">MPEG
+IMX</a> =</td>
+<td><a
+href="https://en.wikipedia.org/wiki/H.262/MPEG-2_Part_2">H.262/MPEG-2</a></td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/HDCAM#HDCAM_SR">HDCAM SR</a>
+=</td>
+<td><a
+href="https://en.wikipedia.org/wiki/MPEG-4_Part_2">MPEG-4/Part2</a>
+Simple Studio Profile (SStP)</td>
+</tr>
+<tr>
+<td><a
+href="https://en.wikipedia.org/wiki/Broadcast_Wave_Format">Broadcast
+Wave Format (BWF)</a> =</td>
+<td><a href="https://en.wikipedia.org/wiki/Pulse-code_modulation">linear
+PCM</a> in <a href="https://en.wikipedia.org/wiki/WAV">WAV</a></td>
+</tr>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/WebM">WebM</a> =</td>
+<td><a href="https://en.wikipedia.org/wiki/Matroska">Matroska (MKV)</a>
+container</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+XviD: A (legacy/retro) popular format that also implements MPEG-4/Part2
+(MPEG-4 SP).
+</aside>
+</section>
+<section id="calculating-size" class="slide level1">
+<h1>Calculating Size</h1>
+</section>
+<section id="filesize" class="slide level1">
+<h1>Filesize</h1>
+<h2 id="uncompressed-image">Uncompressed Image</h2>
+<ul>
+<li>Width(px) x Height(px)</li>
+<li>x Bits-Per-Pixel(bpp)</li>
+<li>x FPS</li>
+<li>/ 8 = <strong>1 second (in Byte)</strong></li>
+</ul>
+</section>
+<section id="filesize-1" class="slide level1">
+<h1>Filesize</h1>
+<h2 id="uncompressed-audio">Uncompressed Audio</h2>
+<ul>
+<li>Samplerate x Bit-depth</li>
+<li>x channels <small>(even if silence!)</small></li>
+<li>/ 8 = <strong>1 second (in Byte)</strong></li>
+</ul>
+</section>
+<section id="filesize-still-matters" class="slide level1">
+<h1>Filesize (still) matters</h1>
+<p><small></p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Type</th>
+<th>Duration</th>
+<th>Bitrate</th>
+<th>Filesize</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Video</td>
+<td>1 hour</td>
+<td>210 Mb/s</td>
+<td>92 GB</td>
+<td>Preservation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>50 Mb/s</td>
+<td>22 GB</td>
+<td>Preservation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>25 Mb/s</td>
+<td>11 GB</td>
+<td>Preservation / Mezzanine</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1,5 Mb/s</td>
+<td>1 GB</td>
+<td>Access</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>1 hour</td>
+<td>4,6 Mb/s</td>
+<td>2 GB</td>
+<td>Preservation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>128 kb/s</td>
+<td>56 MB</td>
+<td>Access</td>
+</tr>
+</tbody>
+</table>
+<p></small></p>
+</section>
+<section id="format-complexity" class="slide level1">
+<h1>Format Complexity</h1>
+<p><img data-src="../../../images/formats/wenger_giant.png"
+class="plain" width="800" /></p>
+<aside class="notes">
+<p>Be careful with “one size fits all”: Sporks are good for camping, but
+there’s a reason why we still have separate tools for the job: spoon,
+knife and fork.</p>
+<p>Considerations:</p>
+<ul>
+<li>More features = more complex / chance that only parts of
+specifications are supported by tool X.</li>
+<li>Can be non-trivial to judge what is “simple” and what is
+“complex”</li>
+<li>Find the sweet spot for your use case(s).</li>
+</ul>
+</aside>
+</section>
+<section id="format-complexity-less-is-more" class="slide level1">
+<h1>Format Complexity: Less is More</h1>
+<table>
+<tr>
+<td>
+<p>Good rule = “<a
+href="https://fsfe.org/freesoftware/standards/minimalisticstandards.en.html">Minimalistic
+Data Format</a>”:</p>
+<ul>
+<li>As simple as possible</li>
+<li>As complicated as necessary</li>
+</ul>
+</td>
+<td>
+<img data-src="../../../images/formats/knife.png" class="plain"
+width="300" />
+</td>
+</tr>
+</table>
+<blockquote>
+<p>Simpler = more stable, easier to use, keep alive, reconstruct or
+fix.</p>
+</blockquote>
+</section>
+<section id="format-examples" class="slide level1">
+<h1>Format Examples</h1>
+<table>
+<tr>
+<th>
+</th>
+<th>
+Video
+</th>
+<th>
+Audio
+</th>
+<th>
+in Container
+</th>
+</tr>
+<tr>
+<th>
+Preservation:
+</th>
+<td class="small">
+<ul>
+<li>V210</li>
+<li>FFV1, J2K</li>
+<li>High-bitrate lossy</li>
+<li>DPX/TIFF</li>
+<li>…</li>
+</ul>
+</td>
+<td class="small">
+<ul>
+<li>PCM (WAV)</li>
+<li>FLAC</li>
+</ul>
+</td>
+<td class="small">
+<ul>
+<li>MOV</li>
+<li>MKV</li>
+<li>MXF</li>
+<li>Folder (film)</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+Production:
+</th>
+<td class="small">
+<ul>
+<li>ProRes</li>
+<li>H.264</li>
+<li>DVCPRO50</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Access:
+</th>
+<td class="small">
+<ul>
+<li>H.264</li>
+<li>VP9</li>
+<li>DVD</li>
+<li>BluRay</li>
+<li>…</li>
+</ul>
+</td>
+<td class="small">
+<ul>
+<li>MP3</li>
+<li>AAC</li>
+<li>Opus</li>
+<li>…</li>
+</ul>
+</td>
+<td class="small">
+<ul>
+<li>MP4 <sup>(M4V)</sup></li>
+<li>MKV <sup>(WebM)</sup></li>
+<li>MPG</li>
+</ul>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>I’ve intentionally used fuzzy wording for access formats, since it
+better depicts the perception and wording used in daily life.</p>
+Later in this session, we’ll get to how to select properties for these
+use cases, which helps to decide which format to use for which case.
+</aside>
+</section>
+<section id="format-wars" class="slide level1">
+<h1>Format Wars</h1>
+<blockquote>
+<p>“My format is <code>...</code> than yours. Bäh!”</p>
+</blockquote>
+<p><code>Options = 😝 🤑 🤩 🤫 🤔 🤐 😴 🤮 ...</code> Have fun!</p>
+<aside class="notes">
+<p>Sometimes the reason for more than 1 suitable format option existing
+may be, because different vendors are interested in promoting “their”
+format.</p>
+If a format becomes widespread/important enough, the “owner” of that
+format has a great saying/control over the conditions such files can be
+used/supported.
+</aside>
+</section>
+<section id="lets-look-inside" class="slide level1">
+<h1>Let’s look inside! :)</h1>
+</section>
+<section id="obsolescence-vendor-lock-in" class="slide level1">
+<h1>Obsolescence / Vendor Lock-in</h1>
+</section>
+<section id="why-bother---lets-just-have" class="slide level1">
+<h1>Why bother? - Let’s just have:</h1>
+<table>
+<tr>
+<td>
+<ul>
+<li>Best quality</li>
+<li>Smallest filesize</li>
+<li>Preserve original properties</li>
+<li>Fast and easy to open/use/edit</li>
+<li>Lasts forever</li>
+<li>+cherries 🍒 &amp; ice cream 🍦on top!</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+<figure>
+<img data-src="../../../images/misc/holy_grail.jpg" width="500"
+alt="The Holy Grail" />
+<figcaption aria-hidden="true">The Holy Grail</figcaption>
+</figure>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>That list actually makes sense:</p>
+They define the desired properties that you have to choose from, which
+ones and how well you want them implemented.
+</aside>
+</section>
+<section id="links" class="slide level1">
+<h1>Links</h1>
+<p><small></p>
+<ul>
+<li><a
+href="https://www.avpreserve.com/wp-content/uploads/2010/04/AVPS_Codec_Primer.pdf">Primer
+on Codecs for Moving Image and Sound Archives</a></li>
+<li><a
+href="http://www.av-rd.com/knowhow/data/hexedit_archivists-1.html">Hex
+Editing for Archivists</a></li>
+<li><a
+href="http://www.av-rd.com/knowhow/video/comparison_video_codecs_containers.html">Comparing
+Video Codecs and Containers for Archives</a></li>
+<li><a href="https://www.xiph.org/video/vid1.shtml">Digital Media Primer
+for Geeks</a></li>
+<li><a
+href="https://www.scart.be/?q=en/content/short-guide-choosing-digital-format-video-archiving-masters">A
+short guide to choosing a digital format for video archiving
+masters</a></li>
+<li><a href="https://mdpi.iu.edu/doc/MDPIwhitepaper.pdf">Media
+Digitization and Preservation Initiative (MDPI)</a></li>
+<li><a
+href="https://www.adobe.com/sea/creativecloud/video/discover/audio-bitrate.html">Understanding
+audio bitrate</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Data_compression">Data
+Compression (Wikipedia)</a></li>
+</ul>
+<p></small></p>
+</section>
+<section id="yagni-kiss-moscow" class="slide level1">
+<h1>Yagni Kiss Moscow?</h1>
+<p><img
+data-src="../../../images/tech-video/features/av_container_feature_circles.png"
+class="light" /></p>
+<p><small> <a
+href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI</a>
+/ <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a> / <a
+href="https://en.wikipedia.org/wiki/MoSCoW_method">MoSCoW</a>
+</small></p>
+<aside class="notes">
+<p>It may look cryptic, but is actually quite simple and useful:</p>
+<p>It is an example for finding the “minimalistic data format” that
+suits your needs.</p>
+<ul>
+<li><p><strong>YAGNI = “You Ain’t Gonna Need It”:</strong><br />
+It’s supposed to prevent you from selecting a format that is possibly
+too bloated or unncessarily complex, or less-well supported.</p></li>
+<li><p><strong>KISS = “Keep It Simple, Stupid”:</strong> “The KISS
+principle states that most systems work best if they are kept simple
+rather than made complicated; therefore, simplicity should be a key goal
+in design, and unnecessary complexity should be avoided.”</p></li>
+<li><p><strong>MoSCoW = “Must, Should, Could, Won’t”:</strong> “The
+Moscow method is a prioritization technique used in management, business
+analysis, project management, and software development to reach a common
+understanding with stakeholders on the importance they place on the
+delivery of each requirement”</p></li>
+</ul>
+<p>The example shows 4 different container formats for AV. Each one has
+different number and kinds of supported features, represented by the
+size of its circle.</p>
+<ul>
+<li>Larger circle = more features.</li>
+<li>Smaller circle = less features.</li>
+<li>Overlapping circles = common features.</li>
+</ul>
+</aside>
+</section>
+<section id="exercise-your-format-policy" class="slide level1">
+<h1>Exercise: Your Format Policy</h1>
+<table>
+<thead>
+<tr>
+<th>Must</th>
+<th>Should</th>
+<th>Could</th>
+<th>Won’t</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+<tr>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+<td>______</td>
+</tr>
+</tbody>
+</table>
+<p>Choose a use-case and try to phrase your “wishes”.</p>
+<aside class="notes">
+<p>Now, according to the MoSCoW method, write down which features
+you:</p>
+<ul>
+<li>must have</li>
+<li>should have</li>
+<li>could have</li>
+<li>won’t have (this time)</li>
+</ul>
+<p>And check which format provides them, then draw a dot in the
+corresponding circle area.</p>
+<p><strong>For example:</strong> Only MXF may be able to provide support
+for broadcast-specific metadata/functions, therefore that feature will
+only have a dot in the MXF circle. Whereas, all (except) AVI can store
+aspect ratio - so that dot would go into overlap of all - except AVI.
+The feature of “extremely simple, well-documented and stable/unmodified
+for ages” would likely to be a dot in either AVI or MKV.</p>
+Use this to find out which format fits your needs, while being “as
+simple as possible and only as complicated as necessary”.
+</aside>
+</section>
+<section id="vlc-mediainfo" class="slide level1">
+<h1>VLC / MediaInfo</h1>
+<table>
+<tr>
+<td>
+<img
+data-src="../../../images/tools/vlc/VLC-media_information-ffv1_1.png"
+class="plain" width="400" /> <small> Website: <a
+href="https://www.videolan.org/vlc/">videolan.org/vlc</a> </small>
+</td>
+<td>
+<img
+data-src="../../../images/tools/mediainfo/mediainfo-techmd_overview.png"
+class="plain" width="500" alt="Mediainfo’s “Easy View”" /> <small>
+Website: <a
+href="https://mediaarea.net/MediaInfo">mediaarea.net/MediaInfo</a>
+</small>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>“MediaInfo is a convenient unified display of the most relevant
+technical and tag data for video and audio files.”</p>
+btw: A VLC-related WARNING: There’s a major fraud out there:
+“www.vlc.de” - aka “VLC Plus Player”. It contains the original VLC, but
+with unknown - possibly malicious - additions/modifications. Stay away
+from it.
+</aside>
+</section>
+<section id="paper-analogy" class="slide level1">
+<h1>Paper analogy</h1>
+<p><img
+data-src="../../../images/tech-video/trinity/Container_Mockup_Contents.png"
+width="800" /></p>
+</section>
+<section id="characteristics-properties" class="slide level1">
+<h1>Characteristics / Properties</h1>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>File 1</th>
+<th>File 2</th>
+<th>File 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Container</strong></td>
+<td><red>MOV</red></td>
+<td><red>MOV</red></td>
+<td><red>MOV</red></td>
+</tr>
+<tr>
+<td><strong>Videocodec</strong></td>
+<td><blue>UYVY</blue></td>
+<td><blue>H.264</blue></td>
+<td><blue>XviD</blue></td>
+</tr>
+<tr>
+<td><strong>Resolution</strong></td>
+<td>720 x 576px</td>
+<td>1920 x 1080</td>
+<td>640 x 480</td>
+</tr>
+<tr>
+<td><strong>FPS</strong></td>
+<td>25</td>
+<td>24</td>
+<td>30000/1001</td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Audiocodec</strong></td>
+<td><green>PCM</green></td>
+<td><green>AAC</green></td>
+<td><green>MP3</green></td>
+</tr>
+<tr>
+<td><strong>Samplerate</strong></td>
+<td>48 kHz</td>
+<td>48 kHz</td>
+<td>44.1 kHz</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Stereo</td>
+<td>Surround 5.1</td>
+<td>Mono</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>This is just a random example to show that from the “outside” (=file
+explorer) you would only see that all files are “.mov” - whereas their
+actual audio/video codecs, as well as their technical properties are
+completely different. It therefore always makes sense to use proper
+tools to “look inside” (MediaInfo, etc).</p>
+As you can see, just declaring the file-ending “.mov” does not really
+tell us much about the actual video/audio formats/encodings being used.
+</aside>
+</section>
+<section id="format-naming" class="slide level1">
+<h1>Format Naming</h1>
+<p>Triplet notation greatly helps reducing confusion:</p>
+<ul>
+<li><strong>H.264</strong> / <strong>AAC</strong> in
+<strong>MP4</strong></li>
+<li><strong>FFV1</strong> / <strong>PCM</strong> in <strong>MKV</strong>
+(Matroska)</li>
+<li><strong>ProRes</strong> / <strong>PCM</strong> in
+<strong>MOV</strong></li>
+<li><strong>DPX</strong> / <strong>WAV</strong> (PCM) in <strong>a
+folder</strong></li>
+<li>etc</li>
+</ul>
+<p><small> See <a
+href="http://www.av-rd.com/knowhow/video/simplicity-mpeg4.html">The
+MPEG-4 confusion</a> 😜️ </small></p>
+<aside class="notes">
+<p>When communicating “which video format”, please consider using a
+triplet-notation, like: “video/audio in container”.</p>
+It is unfortunately most common to simply quote the file suffix as “the
+format”.
+</aside>
+</section>
+<section id="fourcc" class="slide level1">
+<h1>FourCC</h1>
+</section>
+<section id="fourcc-1" class="slide level1">
+<h1>FourCC</h1>
+<blockquote>
+<p>Is short for ‘<strong>Four Character Code</strong>’ -<br />
+an identifier for a video codec, compression format, color or pixel
+format used in media files.</p>
+</blockquote>
+<p><small> (FourCC is the legacy format identifier in AVI &amp;
+Quicktime) </small></p>
+<aside class="notes">
+<p>Originating from AVI/MOV, and somewhat still in use today, not all
+container formats use the FourCC codes to identify stream encodings.
+Some keep FourCC alongside other, container-specific, identifiers.</p>
+<p>FourCCs are still practical handles/names to refer to a specific
+coding format. You may therefore see FourCC identifiers being used as
+the go-to-term to indicate certain pixel/color layouts.</p>
+<p>For example, when configuring an analog-digital video capture source,
+you may see terms like:</p>
+<ul>
+<li>UYVY</li>
+<li>VYUY</li>
+<li>YUY2</li>
+</ul>
+<p>These are the FourCC names</p>
+</aside>
+</section>
+<section id="fourcc-examples" class="slide level1">
+<h1>FourCC Examples</h1>
+<ul>
+<li><strong>FFV1</strong> = FFV1</li>
+<li><strong>v210</strong> = v210</li>
+<li><strong>X264</strong> = H.264</li>
+<li><strong>XviD</strong> = XviD</li>
+<li><strong>DV25</strong> = DVCPro</li>
+<li><strong>DV50</strong> = DVCPro 50</li>
+<li><strong>MJ2C, LCW2, LJ2K</strong> = MJPEG 2000</li>
+<li>…</li>
+</ul>
+</section>
+<section id="links-1" class="slide level1">
+<h1>Links:</h1>
+<ul>
+<li><a href="https://fourcc.org/">FourCC.org</a></li>
+<li><a href="http://abcavi.kibi.ru/fourcc.php">List of FourCCs (abcAVI
+Tag Editor documentation)</a></li>
+<li><a href="https://www.moviecodec.com/fcc/">Video Codecs by FourCC
+(MovieCodec.com)</a></li>
+<li><a
+href="https://learn.microsoft.com/en-us/windows/win32/directshow/fourcc-codes">Microsoft:
+DirectShow FourCC Codes</a></li>
+<li><a
+href="https://learn.microsoft.com/en-us/windows/win32/directshow/yuv-video-subtypes">Microsoft:
+YUV Video Subtypes</a></li>
+<li><a
+href="https://web.archive.org/web/20211204012739/https://www.fourcc.org/rgb.php">RGB
+pixel formats</a></li>
+<li><a
+href="https://web.archive.org/web/20211015201859/https://www.fourcc.org/yuv.php">YUV
+pixel formats</a></li>
+</ul>
+<!-- Outdated links:
+  * [List of codecs](https://fourcc.org/codecs.php)
+  * [Uncompressed YUV](https://fourcc.org/yuv.php)
+  * [Uncompressed RGB](https://fourcc.org/rgb.php)
+-->
+</section>
+<section id="its-already-a-mess" class="slide level1">
+<h1>It’s already a mess…</h1>
+<p><img
+data-src="../../../images/tools/magix/VHS_rescue/magix-file_formats-20150208-cut_av.png"
+style="width:40.0%" /></p>
+<p><cite> Source: <a
+href="http://www.magix.com/at/retten-sie-ihre-videokassetten/detail/">MAGIX
+product website (Feb.2015)</a> </cite></p>
+</section>
+<section id="but-getting-better" class="slide level1">
+<h1>But getting better:</h1>
+<p><img
+data-src="../../../images/tools/magix/VHS_rescue/magix-file_formats-20161025-cut_av.png" /></p>
+<p><cite> Source: <a
+href="http://www.magix.com/at/retten-sie-ihre-videokassetten/detail/">MAGIX
+Produkt-Website (Okt.2016)</a> </cite> # It’s “MPEG-4”: All clear?</p>
+<p><small> See: <a
+href="http://www.av-rd.com/knowhow/video/simplicity-mpeg4.html">The
+MPEG-4 Confusion</a></p>
+<ul>
+<li>MPEG-4 video</li>
+<li>MPEG-4 audio</li>
+<li>MPEG-4 Flash video</li>
+<li>MPEG-4 (AVI)</li>
+<li>.mp4 .m4v .m4a .m4p .aac</li>
+<li>AAC</li>
+<li>H.264</li>
+<li>XviD &amp; DivX</li>
+<li>QuickTime</li>
+<li>BluRay</li>
+<li>Apple Lossless (ALAC/ALE)</li>
+<li>MPEG-4 SP (Simple Profile)</li>
+<li>MPEG-4 ASP (Advanced Simple Profile)</li>
+<li>MPEG-4 SStP (Simple Studio Profile)</li>
+<li>MPEG-4 AVC (Advanced Video Coding)</li>
+<li>H.263</li>
+<li>…</li>
+</ul>
+<p></small></p>
+</section>
+<section id="open-vs-closed" class="slide level1">
+<h1>Open vs Closed</h1>
+<figure>
+<img data-src="../../../images/retro/enigma-rotor-windows2.jpg"
+height="400" alt="Enigma encryption rotor windows" />
+<figcaption aria-hidden="true">Enigma encryption rotor
+windows</figcaption>
+</figure>
+<aside class="notes">
+What will be easier (=more likely) to be understood/accessible now and
+in the future: Documented language or secret code?
+</aside>
+</section>
+<section id="performance" class="slide level1">
+<h1>Performance</h1>
+<p>Often a tradeoff between:</p>
+<table>
+<tr>
+<td>
+<strong>Processing power <small>(CPU/RAM)</small></strong><br />
+(format/algorithm complexity, smaller files)
+</td>
+<td>
+<strong>I/O bandwidth <small>(disk/network)</small></strong><br />
+(data size)
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>Better compressed, usually meaning more complex codec - resulting in
+smaller files. These files travel lighter, but require more processing
+power (CPU/RAM) to encode/decode. If these requirements reach the limits
+of currently available processing power, realtime issues may occur. This
+also means: can the daily workflows be processed in due time?</p>
+Oh, btw: Hardware acceleration plays an important role when it comes to
+codec performance. However, hardware acceleration is not necessarily
+available or implemented for all formats. Usually you will find this for
+“popular” formats or ones that are used in professional domains.
+</aside>
+</section>
+<section id="examples-of-published-policies" class="slide level1">
+<h1>Examples of published Policies</h1>
+<ul>
+<li><a
+href="https://www.filmmuseum.at/jart/prj3/filmmuseum/data/uploads/Filmsammlung_Restaurierung/AFM_GuidelinesDigitalFilmCollection.pdf">Guidelines
+for the Digital Film Collection</a><br />
+<small>(Austrian Filmmuseum, 2018)</small></li>
+<li><a href="http://www.ifi.ie/wp-content/uploads/DPAS-V.2.pdf">Digital
+Preservation &amp; Access Strategy</a><br />
+<small>(Irish Film Archive, 2016)</small></li>
+<li><a href="http://publications.beeldengeluid.nl/pub/388">Digital
+Preservation: Policy, Standards and Procedures</a><br />
+<small>(Netherlands Institute for Sound and Vision, 2016)</small></li>
+</ul>
+<aside class="notes">
+<p>The above links point to preservation policies published by other AV
+archival institutions. They also contain information about file format
+choices - in the context of AV preservation.</p>
+<p>As you can see, the length and level of detail of such policies can
+vary greatly. Often it is great to simply have a rather short written
+form that at least provides insights in “how” and “why” someone has
+chosen one (format) option over another.</p>
+<p>It is also good practice to write such policies in a way that they
+can be interpreted and applied properly even if the actual technical
+options/conditions change. For example, it’s okay to say “we chose
+format XY” - but without writing down “why”, this choice may seem
+incomprehensible and outdated once “format XY” is superseded by another
+format, or something else in the tech-envirionment or the conditions has
+changed.</p>
+<p>Another example: It was common to use “MP3” for some (longer)
+recordings in the audio archiving domain, instead of WAV/PCM. Now this
+may seem odd, but at that time 10 MB/Minute WAV/PCM (CD-Resolution) was
+heavy lifting in terms of digital computer storage.</p>
+<p>But back then, a “large” HDD RAID was 80 GB. Consisting of several 20
+GB harddisks. Now, this would fit on a USB-Stick.</p>
+<blockquote>
+<p>“Nothing ever doesn’t change, but nothing changes much.”</p>
+</blockquote>
+All the time.
+</aside>
+</section>
+<section id="significant-properties" class="slide level1">
+<h1>Significant properties</h1>
+<blockquote>
+<p>Knowing and deciding which properties to safeguard and which are
+allowed to change.</p>
+</blockquote>
+<p> </p>
+<p><small> See:<br />
+<a
+href="http://www.digitizationguidelines.gov/guidelines/sigpropvideo.html">LoC
+FADGI: DRAFT Significant Properties for Digital Video</a><br />
+<a
+href="https://files.dnb.de/nestor/materialien/nestor_mat_19.pdf">Nestor
+(DE): Leitfaden DLTP AV Medien</a><br />
+</small></p>
+<aside class="notes">
+<p>For some it’s the resolution, color information, audio quality - for
+others it’s sufficient to see/understand it “good enough”, or to be able
+to quickly edit-and-broadcast as the main focus.</p>
+<p>Depends.</p>
+<p>However, be aware that your recording may possibly be used in a
+different context in the future, so if possible don’t aim “too low”.</p>
+But please make an active decision and possibly document it (which ones
+and why) somewhere.
+</aside>
+</section>
+<section id="significant-properties-1" class="slide level1">
+<h1>Significant properties</h1>
+<p>Depend on media type (and use case).</p>
+<table>
+<tr>
+<th>
+Video
+</th>
+<th>
+Audio
+</th>
+<th>
+Metadata
+</th>
+</tr>
+<tr>
+<td>
+<ul>
+<li>resolution</li>
+<li>framerate</li>
+<li>aspect ratio</li>
+<li>colorspace</li>
+<li>subsampling</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>“resolution”<br />
+<small>(= samplerate, bit-depth)</small></li>
+<li>channels</li>
+<li>channel layout</li>
+<li>…</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>language</li>
+<li>title</li>
+<li>author</li>
+<li>rights information</li>
+<li>…</li>
+</ul>
+</td>
+</tr>
+</table>
+<aside class="notes">
+<p>Definition fuzziness in the preservation community:</p>
+<p>Some say “Significant” are the properties that must be maintained
+as-is and kind of “must never change”, whereas others define it as
+“should be aware of and decided how to deal with them”.</p>
+Further properties: * scan type (interlaced / progressive) * field order
+* color information * …
+</aside>
+</section>
+<section id="quality-tips" class="slide level1">
+<h1>Quality Tips</h1>
+<ul>
+<li>Avoid generation loss. <sup>(if possible)</sup></li>
+<li>Avoid resizing. <sup>(=rescaling)</sup></li>
+<li>Don’t invent more bits. <sup>(e.g. DV as v210)</sup></li>
+<li>Preserve colorspace / bit-depth, etc.</li>
+<li>More headroom for lower quality. <sup>(e.g. 24bit/96kHz for
+Shellack)</sup></li>
+<li>Select high enough bitrate. <sup>(lossy)</sup><br />
+<small> (Or proper “<a
+href="https://trac.ffmpeg.org/wiki/Encode/H.264#crf">Constant Rate
+Factor (CRF)</a>”) </small></li>
+</ul>
+<aside class="notes">
+These are some guidelines for maintaining the highest (reasonable)
+quality for preservation copies.
+</aside>
+</section>
+<section id="digital-av-formats" class="slide level1">
+<h1>Digital AV formats…</h1>
+<ul>
+<li>Which do <em>you</em> know?</li>
+<li>Which do <em>you</em> use?</li>
+<li>Which would <em>you</em> like to know more about?</li>
+</ul>
+<div>
+ 
+</div>
+<blockquote>
+<p>What are <strong>your</strong> wishes, needs, expectations of a
+format? 🤔️</p>
+</blockquote>
+</section>
+<section id="your-use-casespriorities" class="slide level1">
+<h1>Your use cases/priorities?</h1>
+<ul>
+<li>Who will want/need to work with these files?</li>
+<li>Under which conditions?</li>
+<li>For how long?</li>
+<li>Digitization vs Production vs Preservation vs Access?</li>
+<li>Which properties are significant <em>to you</em>?</li>
+</ul>
+<aside class="notes">
+<p>It’s good to define (and write down) what you actually need from a
+file format in which use-case.</p>
+Also align these requirements with your restrictions (budget, time,
+staff, etc)
+</aside>
+</section>
+<section id="digital-av-formats-1" class="slide level1">
+<h1>Digital AV formats…</h1>
+<blockquote>
+<p>What are <strong>your</strong> wishes, needs, expectations of a
+format? 🤔️</p>
+</blockquote>
+</section>
+<section id="risks-to-format-longevity" class="slide level1">
+<h1>Risks to format longevity</h1>
+<ul>
+<li>Data errors</li>
+<li>Obsolescence</li>
+<li>Vendor lock-in</li>
+<li>Interoperability/complexity issues</li>
+<li>Quality degradation</li>
+</ul>
+<p>Countermeasures?</p>
+<aside class="notes">
+<ul>
+<li><p>Data errors: Files are corrupt. These errors may include
+filenames or filesystem tech-MD.</p>
+<ul>
+<li><p>Obsolescence: Not supported anymore by accessible tools. This is
+neither God-given, nor irreversible, unless it’s a black-box format.
+Format obsolescense/support is a human-made decision.
+Documentation/schematics are an important game changer.</p></li>
+<li><p>Vendor lock-in: For long-term preservation, vendor- and
+technology-neutrality is a must: They will come and go, and with lock-in
+situations Eternal Migration is hindered or even impossible. Format
+normalization helps here.</p></li>
+<li><p>Interoperability issues: If a format is read and written
+differently by different applications, it might “morph”. This morphed
+version might work fine with the tools used in a certain environment,
+but might be completely broken if read/written by another tool that
+misunderstands the “dialect”.</p>
+<p>A format offering more features, can be considered more “complex”.
+Whereas a format offering less features is considered “simpler”. Simpler
+(and more popular) formats are usually less susceptible to
+interoperability issues, than complex (and/or less popular
+ones)</p></li>
+<li><p>Quality degradation: Avoid unncessary copy/encoding generation
+losses, or property conversion. This may include, avoiding additional
+lossy encoding steps, resizing the image, resampling audio,
+etc.</p></li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="summary-preservation-format" class="slide level1">
+<h1>Summary: Preservation Format</h1>
+<table>
+<tr>
+<td class="small">
+<ul>
+<li>Can be used to generate all other versions.</li>
+<li>Depicts the “original” source as accurately as possible.</li>
+<li>No artifical restrictions for using it.<br />
+Now and under unknown future (=unknown) conditions.</li>
+<li>Well documented, no secrets, FOSS implementation exists.</li>
+<li>Bit error resilience would be nice.</li>
+<li>Consider GOP=1 (=Intraframe only).</li>
+<li>Audio format: Normalize to uncompressed PCM/WAV.</li>
+<li>For video container formats, consider using MKV or MOV.<br />
+MXF only if really necessary because:</li>
+<li><strong>As simple as possible, as complicated as
+necessary.</strong></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<blockquote>
+<p>summarizes as: “<strong>preserves well</strong>”</p>
+</blockquote>
+</td>
+</table>
+</section>
+<section id="theory-vs-practice" class="slide level1">
+<h1>Theory vs Practice</h1>
+<p><img data-src="../../../images/formats/lego-instructions1.jpg"
+height="400" /> <img data-src="../../../images/formats/carriage2.png"
+class="plain" /></p>
+<p><small>“Implementation overrules paper specs. Always.”</small></p>
+<aside class="notes">
+<p>If the implementation is open: you can use, study, share and improve
+if necessary.</p>
+<p>If it’s closed/proprietary then there’s nothing you can do about it:
+Black box. Vendor lock-in. With digital, this means that it’s quite
+likely that this as-is binary may not be able to keep
+running/functioning when its environment changes.</p>
+<p>You’ve probably seen how fast even good and stable programs “age”
+until they stop working, once their native Windows version is “too long
+ago…”?</p>
+<p>Even with official standards, their implementation is what creates
+the actual encoding/decoding. Regardless of what’s written in any paper
+manual (=theory): The code implementation (=practice) is what
+counts.</p>
+Therefore, it makes sense to demand an openly accessible reference
+implementation, with its source code under a license that allows to make
+use of it as you see fit.
+</aside>
+<!-- END / CREDITS -->
+</section>
+<section id="fin--" class="slide level1">
+<h1>- Fin -</h1>
+</section>
+<section id="questions" class="slide level1">
+<h1>Questions?</h1>
+<h2 id="comments">Comments?</h2>
+<p>Peter Bubestinger-Steindl</p>
+<p><code>email (at) ArkThis com</code></p>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal4.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal4.js/plugin/notes/notes.js"></script>
+  <script src="../../../reveal4.js/plugin/search/search.js"></script>
+  <script src="../../../reveal4.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: 6,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
