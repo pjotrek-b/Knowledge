@@ -45,4 +45,4 @@ Should do the trick.
 Have fun!
 
 
-Thanks to: https://ryan.himmelwright.net/post/setting-up-tmuxinator/ for the tip about `tmux list-windows`.
+Thanks to: ["Templating tmux with tmuxinator" (by Simon van Dyk), 2019-03-13](https://thoughtbot.com/blog/templating-tmux-with-tmuxinator) for the tip about `tmux list-windows`.
