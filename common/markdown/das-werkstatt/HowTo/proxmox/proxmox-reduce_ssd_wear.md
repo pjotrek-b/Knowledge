@@ -24,7 +24,8 @@ Run the following commands as `root`:
 
   2. Add the repository to APT:
 
-    `echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bookworm main" | tee /etc/apt/sources.list.d/azlux.list`
+    `echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ trixie main" | tee /etc/apt/sources.list.d/azlux.list`
+    (Replace `trixie` with your Debian version)
 
   3. Update the repository index and install `log2ram` package:
 
@@ -43,3 +44,9 @@ Run the following commands as `root`:
 I have not yet done additional tests on the effectiveness myself, but even just moving logs away from a flash disk already makes sense.
 
 Have fun!
+
+
+# More related links
+
+  * https://homelab.casaursus.net/minimize-wear-and-tear-on-system-ssd/
+  * https://github.com/azlux/log2ram
